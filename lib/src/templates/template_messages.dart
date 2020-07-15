@@ -13,7 +13,8 @@ class TemplateMessages {
   String get cancel => "Cancel";
 
   static TemplateMessages of(BuildContext context) {
-    final widget = Localizations.of(context, TemplateMessages);
+    final widget =
+        Localizations.of<TemplateMessages>(context, TemplateMessages);
     if (widget == null) {
       throw StateError("TemplateMessages not found in the widget tree");
     }
