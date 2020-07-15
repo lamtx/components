@@ -126,6 +126,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
           contentPadding: EdgeInsets.zero,
           hintText: hintText,
           helperText: helperText,
+          labelText: labelText,
         ),
         autofocus: autofocus,
         textAlignVertical: textAlignVertical,
