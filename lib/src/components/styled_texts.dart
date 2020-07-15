@@ -11,13 +11,14 @@ class Body extends StatelessWidget {
     this.maxLines,
     this.style,
     this.textAlign,
+    this.overflow,
   });
 
   final String text;
   final int maxLines;
   final TextAlign textAlign;
   final TextStyle style;
-
+  final TextOverflow overflow;
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -25,6 +26,7 @@ class Body extends StatelessWidget {
       style: Theme.of(context).textTheme.bodyText2.merge(style),
       maxLines: maxLines,
       textAlign: textAlign,
+      overflow: overflow,
     );
   }
 }

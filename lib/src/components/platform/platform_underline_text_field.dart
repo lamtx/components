@@ -12,6 +12,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
     this.controller,
     this.hintText,
     this.labelText,
+    this.helperText,
     this.keyboardType,
     this.textCapitalization = TextCapitalization.none,
     this.autofocus = false,
@@ -33,6 +34,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final String labelText;
+  final String helperText;
   final TextInputType keyboardType;
   final TextCapitalization textCapitalization;
   final bool autofocus;
@@ -89,13 +91,18 @@ class PlatformUnderlineTextField extends StatelessWidget {
                 child: prefixIcon,
               ),
       );
-      if (labelText != null) {
+      if (labelText != null || helperText != null) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Caption(labelText),
+            if (labelText != null) Caption(labelText),
             textField,
+            if (helperText != null)
+              Padding(
+                padding: textSpacingTop,
+                child: Caption(helperText),
+              )
           ],
         );
       } else {
@@ -118,6 +125,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
           ),
           contentPadding: EdgeInsets.zero,
           hintText: hintText,
+          helperText: helperText,
         ),
         autofocus: autofocus,
         textAlignVertical: textAlignVertical,
