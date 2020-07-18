@@ -10,3 +10,14 @@ extension Core<T> on T {
     return this;
   }
 }
+
+bool log(String tagOrMessage, [String message, Object exception]) {
+  final msg = message == null ? tagOrMessage : "$tagOrMessage: $message";
+  // ignore: avoid_print
+  print(msg);
+  if (exception != null) {
+    // ignore: avoid_print
+    print(exception);
+  }
+  return true;
+}
