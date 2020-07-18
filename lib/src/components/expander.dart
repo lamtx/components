@@ -1,27 +1,36 @@
 import 'package:flutter/material.dart';
 
+import '../../components.dart';
 import '../../dimens.dart';
-import 'fade_slide_transition.dart';
 import 'platform.dart';
+
+typedef AnimationBuilder = Widget Function(
+    BuildContext context, Animation<double> animation, Widget child);
 
 class Expander extends StatefulWidget {
   const Expander({
-    @required this.onTitlePressed,
     Key key,
-    this.title,
-    this.child,
+    @required this.onTitlePressed,
+    @required this.title,
+    @required this.child,
     this.expanded = false,
     this.showExpanderIcon = false,
     this.onTitleLongPressed,
+    this.animationDuration = shortAnimationDuration,
+    this.animationBuilder,
   })  : assert(onTitlePressed != null),
+        assert(title != null),
+        assert(child != null),
         super(key: key);
 
   final Widget title;
   final Widget child;
   final bool expanded;
   final bool showExpanderIcon;
+  final Duration animationDuration;
   final void Function(bool expanded) onTitlePressed;
   final VoidCallback onTitleLongPressed;
+  final AnimationBuilder animationBuilder;
 
   @override
   State<StatefulWidget> createState() => _ExpanderState();
@@ -34,7 +43,7 @@ class _ExpanderState extends State<Expander> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration: shortAnimationDuration,
+      duration: widget.animationDuration,
       vsync: this,
     );
     _controller.value = widget.expanded ? 1 : 0;
@@ -68,17 +77,20 @@ class _ExpanderState extends State<Expander> with TickerProviderStateMixin {
             ],
           )
         : widget.title;
+    final child = widget.animationBuilder == null
+        ? FadeSlideTransition(
+            sizeFactor: _controller,
+            child: widget.child,
+          )
+        : widget.animationBuilder(context, _controller, widget.child);
     return Column(
       children: <Widget>[
         PlatformInkWell(
-          onTap: () => widget.onTitlePressed(widget.expanded),
+          onTap: () => widget.onTitlePressed(!widget.expanded),
           onLongPress: widget.onTitleLongPressed,
           child: title,
         ),
-        FadeSlideTransition(
-          sizeFactor: _controller,
-          child: widget.child,
-        ),
+        child,
       ],
     );
   }
