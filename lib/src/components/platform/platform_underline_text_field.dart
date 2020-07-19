@@ -123,7 +123,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
               color: color,
             ),
           ),
-          contentPadding: EdgeInsets.zero,
+          contentPadding: textSpacingVertical,
           hintText: hintText,
           helperText: helperText,
           labelText: labelText,
