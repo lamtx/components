@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'int_ext.dart';
 
-extension on EdgeInsets {
+extension EdgeInsetsExt on EdgeInsets {
   EdgeInsets coerceAtLeast(EdgeInsets minimumValue) => EdgeInsets.only(
         left: left.coerceAtLeast(minimumValue.left),
         right: left.coerceAtLeast(minimumValue.right),
