@@ -18,6 +18,10 @@ extension IntExt on int {
     return this > maximumValue ? maximumValue : this;
   }
 
+  int coerceAtLeast(int minimumValue) {
+    return this < minimumValue ? minimumValue : this;
+  }
+
   DateTime toDate() {
     return DateTime.fromMillisecondsSinceEpoch(this);
   }

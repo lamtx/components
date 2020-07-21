@@ -3,6 +3,7 @@ export 'src/ext/comparision.dart';
 export 'src/ext/core.dart';
 export 'src/ext/date_time_ext.dart';
 export 'src/ext/duration_ext.dart';
+export 'src/ext/edge_insets_ext.dart';
 export 'src/ext/enum_set.dart';
 export 'src/ext/file_system_entity_ext.dart';
 export 'src/ext/indexed_iterable/indexed_iterable.dart';
