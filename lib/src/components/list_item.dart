@@ -35,7 +35,7 @@ class ListItem extends StatelessWidget {
         title: title,
         leading: leading,
         onTap: onTap,
-        contentPadding: EdgeInsets.zero,
+        contentPadding: itemSpacingVertical,
       );
   final Widget title;
   final Widget subtitle;
