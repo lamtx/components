@@ -21,7 +21,10 @@ class ListItem extends StatelessWidget {
     this.trailing,
     this.leading,
     this.onTap,
-    this.contentPadding = activityHorizontalMargin,
+    this.contentPadding = const EdgeInsets.symmetric(
+      vertical: kItemSpacing / 2,
+      horizontal: kActivityHorizontalMargin,
+    ),
     this.itemHeight,
     this.onLongPress,
   }) : super(key: key);
@@ -35,7 +38,7 @@ class ListItem extends StatelessWidget {
         title: title,
         leading: leading,
         onTap: onTap,
-        contentPadding: itemSpacingVertical,
+        contentPadding: halfItemSpacingVertical,
       );
   final Widget title;
   final Widget subtitle;

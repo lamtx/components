@@ -2,39 +2,39 @@
 
 import 'package:flutter/widgets.dart';
 
-const double _activityHorizontalMargin = 22;
-const double _activityVerticalMargin = 16;
-const double _itemSpacing = 12;
+const double kActivityHorizontalMargin = 22;
+const double kActivityVerticalMargin = 16;
+const double kItemSpacing = 12;
 const double _verticalTextSpacing = 4;
 const double _horizontalTextSpacing = 3;
 
 const activityMargin = EdgeInsets.only(
-  left: _activityHorizontalMargin,
-  right: _activityHorizontalMargin,
-  bottom: _activityVerticalMargin,
+  left: kActivityHorizontalMargin,
+  right: kActivityHorizontalMargin,
+  bottom: kActivityVerticalMargin,
 );
 const activityHorizontalMargin = EdgeInsets.symmetric(
-  horizontal: _activityHorizontalMargin,
+  horizontal: kActivityHorizontalMargin,
 );
-const activityMarginBottom = EdgeInsets.only(bottom: _activityVerticalMargin);
+const activityMarginBottom = EdgeInsets.only(bottom: kActivityVerticalMargin);
 
-const itemSpacing = EdgeInsets.all(_itemSpacing);
-const itemSpacingTop = EdgeInsets.only(top: _itemSpacing);
-const itemSpacingBottom = EdgeInsets.only(bottom: _itemSpacing);
-const itemSpacingVertical = EdgeInsets.symmetric(vertical: _itemSpacing);
-const itemSpacingHorizontal = EdgeInsets.symmetric(horizontal: _itemSpacing);
-const itemSpacingStart = EdgeInsets.only(left: _itemSpacing);
-const itemSpacingEnd = EdgeInsets.only(right: _itemSpacing);
+const itemSpacing = EdgeInsets.all(kItemSpacing);
+const itemSpacingTop = EdgeInsets.only(top: kItemSpacing);
+const itemSpacingBottom = EdgeInsets.only(bottom: kItemSpacing);
+const itemSpacingVertical = EdgeInsets.symmetric(vertical: kItemSpacing);
+const itemSpacingHorizontal = EdgeInsets.symmetric(horizontal: kItemSpacing);
+const itemSpacingStart = EdgeInsets.only(left: kItemSpacing);
+const itemSpacingEnd = EdgeInsets.only(right: kItemSpacing);
 
-const halfItemSpacing = EdgeInsets.all(_itemSpacing / 2);
-const halfItemSpacingStart = EdgeInsets.only(left: _itemSpacing / 2);
-const halfItemSpacingEnd = EdgeInsets.only(right: _itemSpacing / 2);
-const halfItemSpacingTop = EdgeInsets.only(top: _itemSpacing / 2);
+const halfItemSpacing = EdgeInsets.all(kItemSpacing / 2);
+const halfItemSpacingStart = EdgeInsets.only(left: kItemSpacing / 2);
+const halfItemSpacingEnd = EdgeInsets.only(right: kItemSpacing / 2);
+const halfItemSpacingTop = EdgeInsets.only(top: kItemSpacing / 2);
 
 const halfItemSpacingVertical =
-    EdgeInsets.symmetric(vertical: _itemSpacing / 2);
+    EdgeInsets.symmetric(vertical: kItemSpacing / 2);
 const halfItemSpacingHorizontal =
-    EdgeInsets.symmetric(horizontal: _itemSpacing / 2);
+    EdgeInsets.symmetric(horizontal: kItemSpacing / 2);
 
 const textSpacingTop = EdgeInsets.only(
   top: _verticalTextSpacing,
