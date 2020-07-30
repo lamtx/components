@@ -27,7 +27,9 @@ class PlatformUnderlineTextField extends StatelessWidget {
     this.enabled,
     this.showClearButtonOniOS = true,
     this.prefixIcon,
+    this.suffixIcon,
     this.contentPadding = itemSpacingVertical,
+    this.textInputAction,
   }) : super(key: key);
 
   @required
@@ -49,10 +51,15 @@ class PlatformUnderlineTextField extends StatelessWidget {
   final bool enabled;
   final bool showClearButtonOniOS;
   final Widget prefixIcon;
+  final Widget suffixIcon;
   final EdgeInsets contentPadding;
+  final TextInputAction textInputAction;
 
   @override
   Widget build(BuildContext context) {
+    final color =
+        Theme.of(context).inputDecorationTheme.enabledBorder.borderSide.color;
+
     if (Platform.isIOS) {
       final textField = CupertinoTextField(
         placeholder: hintText ?? labelText,
@@ -76,11 +83,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: Theme.of(context)
-                  .inputDecorationTheme
-                  .enabledBorder
-                  .borderSide
-                  .color,
+              color: color,
             ),
           ),
         ),
@@ -90,6 +93,8 @@ class PlatformUnderlineTextField extends StatelessWidget {
                 padding: const EdgeInsets.all(8),
                 child: prefixIcon,
               ),
+        textInputAction: textInputAction,
+        suffix: suffixIcon,
       );
       if (labelText != null || helperText != null) {
         return Column(
@@ -109,8 +114,6 @@ class PlatformUnderlineTextField extends StatelessWidget {
         return textField;
       }
     } else {
-      final color =
-          Theme.of(context).inputDecorationTheme.enabledBorder.borderSide.color;
       return TextField(
         style: style,
         controller: controller,
@@ -128,6 +131,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
           helperText: helperText,
           labelText: labelText,
           prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
         ),
         autofocus: autofocus,
         textAlignVertical: textAlignVertical,
@@ -138,6 +142,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
         maxLines: maxLines,
         minLines: minLines,
         enabled: enabled,
+        textInputAction: textInputAction,
       );
     }
   }
