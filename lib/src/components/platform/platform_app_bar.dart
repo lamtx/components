@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import '../../../dimens.dart';
 
-
 abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
   factory PlatformAppBar({
     Key key,
@@ -15,6 +14,7 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
     Color backgroundColor,
     Brightness brightness,
     Color actionsForegroundColor,
+    bool automaticallyImplyLeading = true,
   }) {
     if (Platform.isIOS) {
       Widget trailing;
@@ -36,6 +36,7 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
         backgroundColor: backgroundColor,
         brightness: brightness,
         actionsForegroundColor: actionsForegroundColor,
+        automaticallyImplyLeading: automaticallyImplyLeading,
       );
     } else {
       return _AppBar(
@@ -45,6 +46,7 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
         backgroundColor: backgroundColor,
         brightness: brightness,
         actionsForegroundColor: actionsForegroundColor,
+        automaticallyImplyLeading: automaticallyImplyLeading,
       );
     }
   }
@@ -60,6 +62,7 @@ class _CupertinoNavigationBar extends CupertinoNavigationBar
     Color backgroundColor,
     Brightness brightness,
     Color actionsForegroundColor,
+    bool automaticallyImplyLeading = true,
   }) : super(
           key: key,
           middle: title,
@@ -70,6 +73,7 @@ class _CupertinoNavigationBar extends CupertinoNavigationBar
           brightness: brightness,
           actionsForegroundColor: actionsForegroundColor,
           automaticallyImplyMiddle: false,
+          automaticallyImplyLeading: automaticallyImplyLeading,
         );
 
   @override
@@ -90,6 +94,7 @@ class _AppBar extends AppBar implements PlatformAppBar {
     Color backgroundColor,
     Brightness brightness,
     Color actionsForegroundColor,
+    bool automaticallyImplyLeading = true,
   }) : super(
           key: key,
           title: title,
@@ -108,6 +113,7 @@ class _AppBar extends AppBar implements PlatformAppBar {
                   color: actionsForegroundColor,
                 ),
           titleSpacing: activityHorizontalMargin.left,
+          automaticallyImplyLeading: automaticallyImplyLeading,
         );
 
   @override
