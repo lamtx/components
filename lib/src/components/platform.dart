@@ -122,18 +122,21 @@ Future<T> showPlatformDialog<T>({
   @required BuildContext context,
   @required WidgetBuilder builder,
   bool useRootNavigator = true,
+  bool barrierDismissible,
 }) {
   if (Platform.isIOS) {
     return showCupertinoDialog(
       context: context,
       builder: builder,
       useRootNavigator: useRootNavigator,
+      barrierDismissible: barrierDismissible ?? false,
     );
   } else {
     return showDialog(
       context: context,
       builder: builder,
       useRootNavigator: useRootNavigator,
+      barrierDismissible: barrierDismissible ?? true,
     );
   }
 }
