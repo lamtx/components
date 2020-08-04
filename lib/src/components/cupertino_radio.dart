@@ -56,9 +56,9 @@ class _CupertinoRadioState<T> extends State<CupertinoRadio<T>>
         children: <Widget>[
           Transform.scale(
             scale: _controller.value,
-            child: Icon(CupertinoIcons.check_mark_circled_solid),
+            child: const Icon(CupertinoIcons.check_mark_circled_solid),
           ),
-          Icon(CupertinoIcons.circle),
+          const Icon(CupertinoIcons.circle),
         ],
       );
     }

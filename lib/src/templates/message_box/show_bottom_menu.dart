@@ -76,7 +76,7 @@ extension<T> on MenuItemEntry<T> {
       child = item.icon ?? (item.iconData != null ? Icon(item.iconData) : null);
     } else if (item is CheckboxMenuItem<T>) {
       child = item.value == item.groupValue
-          ? Icon(CupertinoIcons.check_mark)
+          ? const Icon(CupertinoIcons.check_mark)
           : const SizedBox(width: 24, height: 24);
     } else {
       child = null;

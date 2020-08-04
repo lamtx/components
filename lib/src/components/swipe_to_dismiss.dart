@@ -72,7 +72,6 @@ class _SwipeToDismissState extends State<SwipeToDismiss>
       sizeFactor: _dismissAnimation,
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
-        dragStartBehavior: DragStartBehavior.start,
         onHorizontalDragStart: (_) {
           assert(!_dismissed,
               "Dismssed SwipeToDismiss widget should be removed from tree and do not use");

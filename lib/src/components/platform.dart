@@ -13,7 +13,6 @@ export 'platform/platform_expand_icon.dart';
 export 'platform/platform_filled_text_field.dart';
 export 'platform/platform_icon_button.dart';
 export 'platform/platform_scaffold.dart';
-export 'platform/platform_silver_app_bar.dart';
 export 'platform/platform_tab_scaffold.dart';
 export 'platform/platform_underline_text_field.dart';
 // ignore_for_file: non_constant_identifier_names
