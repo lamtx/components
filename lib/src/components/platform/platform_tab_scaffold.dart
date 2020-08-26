@@ -57,24 +57,26 @@ class _BottomNavigationScaffold extends StatefulWidget {
 
 class _BottomNavigationScaffoldState extends State<_BottomNavigationScaffold> {
   final _bucket = PageStorageBucket();
+  var _cache = const <Widget>[];
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Expanded(
-          child: PageStorage(
-            bucket: _bucket,
-            child: widget.tabBuilder(context, widget.tabController.index),
-          ),
-        ),
-        BottomNavigationBar(
-          currentIndex: widget.tabController.index,
-          onTap: (index) => widget.tabController.index = index,
-          items: widget.tabs,
-          type: BottomNavigationBarType.fixed,
-        ),
-      ],
+    var child = _cache[widget.tabController.index];
+    if (child == null) {
+      child = widget.tabBuilder(context, widget.tabController.index);
+      _cache[widget.tabController.index] = child;
+    }
+    return Scaffold(
+      body: PageStorage(
+        bucket: _bucket,
+        child: child,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: widget.tabController.index,
+        onTap: (index) => widget.tabController.index = index,
+        items: widget.tabs,
+        type: BottomNavigationBarType.fixed,
+      ),
     );
   }
 
@@ -82,6 +84,7 @@ class _BottomNavigationScaffoldState extends State<_BottomNavigationScaffold> {
   void initState() {
     super.initState();
     widget.tabController.addListener(_onTabChanged);
+    _cache = List<Widget>(widget.tabs.length);
   }
 
   @override
@@ -89,6 +92,9 @@ class _BottomNavigationScaffoldState extends State<_BottomNavigationScaffold> {
     super.didUpdateWidget(oldWidget);
     oldWidget.tabController.removeListener(_onTabChanged);
     widget.tabController.addListener(_onTabChanged);
+    if (widget.tabs.length != oldWidget.tabs.length) {
+      _cache = List<Widget>(widget.tabs.length);
+    }
   }
 
   @override
