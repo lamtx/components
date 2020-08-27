@@ -30,6 +30,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
     this.suffixIcon,
     this.contentPadding = itemSpacingVertical,
     this.textInputAction,
+    this.readOnly = false,
   }) : super(key: key);
 
   @required
@@ -54,6 +55,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
   final Widget suffixIcon;
   final EdgeInsets contentPadding;
   final TextInputAction textInputAction;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +97,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
               ),
         textInputAction: textInputAction,
         suffix: suffixIcon,
+        readOnly: readOnly,
       );
       if (labelText != null || helperText != null) {
         return Column(
@@ -143,6 +146,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
         minLines: minLines,
         enabled: enabled,
         textInputAction: textInputAction,
+        readOnly: readOnly,
       );
     }
   }
