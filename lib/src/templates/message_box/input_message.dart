@@ -11,6 +11,8 @@ Future<String> inputMessage(
   String title,
   String action,
   String defaultValue,
+  TextInputType keyboardType = TextInputType.text,
+  TextCapitalization textCapitalization = TextCapitalization.words,
 }) {
   final controller = TextEditingController(text: defaultValue);
 
@@ -28,8 +30,8 @@ Future<String> inputMessage(
           padding: itemSpacingTop,
           child: PlatformTextField(
             controller: controller,
-            keyboardType: TextInputType.text,
-            textCapitalization: TextCapitalization.words,
+            keyboardType: keyboardType,
+            textCapitalization: textCapitalization,
             decoration: const InputDecoration(
               contentPadding: EdgeInsets.symmetric(vertical: 6),
               border: UnderlineInputBorder(),
