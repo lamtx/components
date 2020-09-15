@@ -60,6 +60,9 @@ class _CupertinoHighlightState extends State<CupertinoHighlight> with TickerProv
     }
     final isDark = Theme.of(context).brightness == Brightness.dark;
     _colorTween.end = isDark ? _darkColor : _lightColor;
+    if (widget.onTap == null && widget.onLongPress == null) {
+      return child;
+    }
     return GestureDetector(
       onTap: widget.onTap,
       onLongPress: widget.onLongPress,
