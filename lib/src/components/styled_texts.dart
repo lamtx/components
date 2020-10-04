@@ -19,6 +19,7 @@ class Body extends StatelessWidget {
   final TextAlign textAlign;
   final TextStyle style;
   final TextOverflow overflow;
+
   @override
   Widget build(BuildContext context) {
     return Text(
@@ -59,12 +60,21 @@ class Body1 extends StatelessWidget {
 }
 
 class Subtitle1 extends StatelessWidget {
-  const Subtitle1(this.text, {this.style, this.textAlign, this.maxLines});
+  const Subtitle1(
+    this.text, {
+    this.style,
+    this.textAlign,
+    this.maxLines,
+    this.overflow,
+    this.softWrap,
+  });
 
   final String text;
   final int maxLines;
   final TextStyle style;
   final TextAlign textAlign;
+  final TextOverflow overflow;
+  final bool softWrap;
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +83,8 @@ class Subtitle1 extends StatelessWidget {
       style: Theme.of(context).textTheme.subtitle1.merge(style),
       maxLines: maxLines,
       textAlign: textAlign,
+      overflow: overflow,
+      softWrap: softWrap,
     );
   }
 }
@@ -177,6 +189,7 @@ class Headline4 extends StatelessWidget {
   final String text;
   final TextStyle style;
   final int maxLines;
+
   @override
   Widget build(BuildContext context) {
     return Text(

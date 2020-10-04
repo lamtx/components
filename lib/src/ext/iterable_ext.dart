@@ -156,4 +156,20 @@ extension IterableExt<T> on Iterable<T> {
     }
     return map;
   }
+
+  T maxBy<R extends Comparable<R>>(R Function(T element) selector) {
+    if (isEmpty) {
+      return null;
+    }
+    var value = selector(first);
+    T element;
+    for (final e in this) {
+      final tmp = selector(e);
+      if (tmp.compareTo(value) > 0) {
+        value = tmp;
+        element = e;
+      }
+    }
+    return element;
+  }
 }
