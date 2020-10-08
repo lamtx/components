@@ -241,18 +241,3 @@ class Headline1 extends StatelessWidget {
     );
   }
 }
-
-class TextButton extends StatelessWidget {
-  const TextButton(this.text, {this.style});
-
-  final String text;
-  final TextStyle style;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.button.merge(style),
-    );
-  }
-}

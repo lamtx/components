@@ -83,7 +83,7 @@ Widget Button({
 }) {
   if (Platform.isIOS) {
     return CupertinoButton(
-      padding: EdgeInsets.zero,
+      padding: padding,
       onPressed: onPressed,
       child: child,
     );
