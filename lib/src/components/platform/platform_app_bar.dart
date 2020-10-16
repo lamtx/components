@@ -15,6 +15,7 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
     Brightness brightness,
     Color actionsForegroundColor,
     bool automaticallyImplyLeading = true,
+    Widget leading,
   }) {
     if (Platform.isIOS) {
       Widget trailing;
@@ -37,6 +38,7 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
         brightness: brightness,
         actionsForegroundColor: actionsForegroundColor,
         automaticallyImplyLeading: automaticallyImplyLeading,
+        leading: leading,
       );
     } else {
       return _AppBar(
@@ -47,6 +49,7 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
         brightness: brightness,
         actionsForegroundColor: actionsForegroundColor,
         automaticallyImplyLeading: automaticallyImplyLeading,
+        leading: leading,
       );
     }
   }
@@ -63,6 +66,7 @@ class _CupertinoNavigationBar extends CupertinoNavigationBar
     Brightness brightness,
     Color actionsForegroundColor,
     bool automaticallyImplyLeading = true,
+    Widget leading,
   }) : super(
           key: key,
           middle: title,
@@ -74,6 +78,7 @@ class _CupertinoNavigationBar extends CupertinoNavigationBar
           actionsForegroundColor: actionsForegroundColor,
           automaticallyImplyMiddle: false,
           automaticallyImplyLeading: automaticallyImplyLeading,
+          leading: leading,
         );
 
   @override
@@ -95,6 +100,7 @@ class _AppBar extends AppBar implements PlatformAppBar {
     Brightness brightness,
     Color actionsForegroundColor,
     bool automaticallyImplyLeading = true,
+    Widget leading,
   }) : super(
           key: key,
           title: title,
@@ -114,6 +120,7 @@ class _AppBar extends AppBar implements PlatformAppBar {
                 ),
           titleSpacing: activityHorizontalMargin.left,
           automaticallyImplyLeading: automaticallyImplyLeading,
+          leading: leading,
         );
 
   @override
