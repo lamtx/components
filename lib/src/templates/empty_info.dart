@@ -4,9 +4,9 @@ import '../../dimens.dart';
 import 'template_messages.dart';
 
 class EmptyInfo extends StatelessWidget {
-  const EmptyInfo({Key key, this.child}) : super(key: key);
+  const EmptyInfo({Key? key, this.child}) : super(key: key);
 
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class EmptyInfo extends StatelessWidget {
         child: Padding(
           padding: activityMargin + itemSpacingTop,
           child: DefaultTextStyle(
-            style: Theme.of(context).textTheme.bodyText2,
+            style: Theme.of(context).textTheme.bodyText2!,
             textAlign: TextAlign.center,
             child: child ?? Text(TemplateMessages.of(context).noItems),
           ),

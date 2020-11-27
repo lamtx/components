@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'platform/platform_icon_button.dart';
 
 class MenuButton extends StatelessWidget {
-  const MenuButton({Key key, this.onPressed}) : super(key: key);
+  const MenuButton({Key? key, this.onPressed}) : super(key: key);
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {

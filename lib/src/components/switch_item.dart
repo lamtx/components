@@ -6,14 +6,12 @@ import 'platform.dart';
 
 class SwitchItem extends StatelessWidget {
   const SwitchItem({
-    Key key,
-    @required this.value,
-    @required this.onChanged,
-    this.title,
+    Key? key,
+    required this.value,
+    required this.onChanged,
+    required this.title,
     this.contentPadding = activityHorizontalMargin,
-  })  : assert(value != null),
-        assert(onChanged != null),
-        super(key: key);
+  })  : super(key: key);
 
   final bool value;
   final ValueChanged<bool> onChanged;

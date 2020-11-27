@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 
 
 class BrokenImage extends StatelessWidget {
-  const BrokenImage({Key key, this.width, this.height}) : super(key: key);
+  const BrokenImage({Key? key, this.width, this.height}) : super(key: key);
 
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     double size;
     if (width == null || height == null) {
       size = 96;
-    } else if (width.isInfinite) {
-      size = height / 2;
-    } else if (height.isInfinite) {
-      size = width / 2;
+    } else if (width!.isInfinite) {
+      size = height! / 2;
+    } else if (height!.isInfinite) {
+      size = width! / 2;
     } else {
-      size = (width + height) / 4;
+      size = (width! + height!) / 4;
     }
     return Container(
       width: width,

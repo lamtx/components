@@ -7,31 +7,27 @@ import 'loading_info.dart';
 
 class AsyncGridView extends StatelessWidget {
   const AsyncGridView({
-    Key key,
-    @required this.itemCount,
-    @required this.itemExtent,
-    @required this.columnCount,
-    @required this.itemBuilder,
+    Key? key,
+    required this.itemCount,
+    required this.itemExtent,
+    required this.columnCount,
+    required this.itemBuilder,
     this.exception,
     this.emptyInfo = const EmptyInfo(),
     this.isLoading = false,
     this.padding,
     this.onLoadMore,
-  })  : assert(itemCount != null),
-        assert(itemExtent != null),
-        assert(columnCount != null),
-        assert(itemBuilder != null),
-        super(key: key);
+  }) : super(key: key);
 
   final bool isLoading;
   final int itemCount;
   final IndexedWidgetBuilder itemBuilder;
-  final Exception exception;
-  final Widget emptyInfo;
-  final EdgeInsets padding;
+  final Exception? exception;
+  final Widget? emptyInfo;
+  final EdgeInsets? padding;
   final double itemExtent;
   final int columnCount;
-  final VoidCallback onLoadMore;
+  final VoidCallback? onLoadMore;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +53,7 @@ class AsyncGridView extends StatelessWidget {
               if (scrollInfo.metrics.pixels >=
                   scrollInfo.metrics.maxScrollExtent - 22) {
                 if (itemCount != 0) {
-                  onLoadMore();
+                  onLoadMore!();
                 }
               }
               return false;
@@ -79,9 +75,9 @@ class AsyncGridView extends StatelessWidget {
         children: <Widget>[
           child,
           if (exception != null)
-            ExceptionInfo(exception)
+            ExceptionInfo(exception!)
           else if (emptyInfo != null)
-            emptyInfo,
+            emptyInfo!,
         ],
       );
     } else {

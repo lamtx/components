@@ -1,7 +1,8 @@
-import '../../ext.dart';
+import 'package:ext/ext.dart';
+
 import 'list_state.dart';
 
-extension ListStateExt<T> on ListState<T> {
+extension ListStateExt<T extends Object> on ListState<T> {
   void addItem(T item) {
     listKey.currentState?.insertItem(items.length);
     items.add(item);
@@ -46,7 +47,7 @@ extension ListStateExt<T> on ListState<T> {
     final oldItems = items;
     assert(!identical(oldItems, newItems),
         "detecting changes from same collection looks like an error");
-    if (oldItems.isNullOrEmpty || newItems.isNullOrEmpty) {
+    if (oldItems.isEmpty || newItems.isEmpty) {
       setItems(newItems);
       return;
     }

@@ -4,9 +4,9 @@ import "package:flutter/material.dart";
 
 class FadeSizeTransition extends AnimatedWidget {
   const FadeSizeTransition({
-    @required Animation<double> sizeFactor,
-    this.child,
-    Key key,
+    required Animation<double> sizeFactor,
+    required this.child,
+    Key? key,
     this.axis = Axis.vertical,
     this.axisAlignment = 0.0,
   }) : super(key: key, listenable: sizeFactor);
@@ -35,10 +35,9 @@ class FadeSizeTransition extends AnimatedWidget {
       opacity: sizeFactor.value,
       child: Align(
         alignment: alignment,
-        heightFactor:
-        axis == Axis.vertical ? math.max(sizeFactor.value, 0) : 1,
+        heightFactor: axis == Axis.vertical ? math.max(sizeFactor.value, 0) : 1,
         widthFactor:
-        axis == Axis.horizontal ? math.max(sizeFactor.value, 0) : 1,
+            axis == Axis.horizontal ? math.max(sizeFactor.value, 0) : 1,
         child: child,
       ),
     );

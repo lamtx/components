@@ -15,16 +15,16 @@ class Body extends StatelessWidget {
   });
 
   final String text;
-  final int maxLines;
-  final TextAlign textAlign;
-  final TextStyle style;
-  final TextOverflow overflow;
+  final int? maxLines;
+  final TextAlign? textAlign;
+  final TextStyle? style;
+  final TextOverflow? overflow;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.bodyText2.merge(style),
+      style: Theme.of(context).textTheme.bodyText2!.merge(style),
       maxLines: maxLines,
       textAlign: textAlign,
       overflow: overflow,
@@ -42,17 +42,17 @@ class Body1 extends StatelessWidget {
   });
 
   final String text;
-  final TextAlign textAlign;
-  final TextStyle style;
-  final int maxLines;
-  final TextOverflow overflow;
+  final TextAlign? textAlign;
+  final TextStyle? style;
+  final int? maxLines;
+  final TextOverflow? overflow;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       textAlign: textAlign,
-      style: Theme.of(context).textTheme.bodyText1.merge(style),
+      style: Theme.of(context).textTheme.bodyText1!.merge(style),
       maxLines: maxLines,
       overflow: overflow,
     );
@@ -70,17 +70,17 @@ class Subtitle1 extends StatelessWidget {
   });
 
   final String text;
-  final int maxLines;
-  final TextStyle style;
-  final TextAlign textAlign;
-  final TextOverflow overflow;
-  final bool softWrap;
+  final int? maxLines;
+  final TextStyle? style;
+  final TextAlign? textAlign;
+  final TextOverflow? overflow;
+  final bool? softWrap;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.subtitle1.merge(style),
+      style: Theme.of(context).textTheme.subtitle1!.merge(style),
       maxLines: maxLines,
       textAlign: textAlign,
       overflow: overflow,
@@ -93,15 +93,15 @@ class Subtitle2 extends StatelessWidget {
   const Subtitle2(this.text, {this.maxLines, this.textAlign, this.style});
 
   final String text;
-  final int maxLines;
-  final TextAlign textAlign;
-  final TextStyle style;
+  final int? maxLines;
+  final TextAlign? textAlign;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.subtitle2.merge(style),
+      style: Theme.of(context).textTheme.subtitle2!.merge(style),
       maxLines: maxLines,
       textAlign: textAlign,
     );
@@ -118,16 +118,16 @@ class Caption extends StatelessWidget {
   });
 
   final String text;
-  final TextOverflow overflow;
-  final int maxLines;
-  final TextAlign textAlign;
-  final TextStyle style;
+  final TextOverflow? overflow;
+  final int? maxLines;
+  final TextAlign? textAlign;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.caption.merge(style),
+      style: Theme.of(context).textTheme.caption!.merge(style),
       maxLines: maxLines,
       overflow: overflow,
       textAlign: textAlign,
@@ -139,13 +139,13 @@ class Overline extends StatelessWidget {
   const Overline(this.text, {this.style});
 
   final String text;
-  final TextStyle style;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text.toUpperCase(),
-      style: Theme.of(context).textTheme.overline.merge(style),
+      style: Theme.of(context).textTheme.overline!.merge(style),
     );
   }
 }
@@ -154,7 +154,7 @@ class Headline6 extends StatelessWidget {
   const Headline6(this.text, {this.maxLines});
 
   final String text;
-  final int maxLines;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -170,14 +170,14 @@ class Headline5 extends StatelessWidget {
   const Headline5(this.text, {this.maxLines, this.style});
 
   final String text;
-  final int maxLines;
-  final TextStyle style;
+  final int? maxLines;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.headline5.merge(style),
+      style: Theme.of(context).textTheme.headline5!.merge(style),
       maxLines: maxLines,
     );
   }
@@ -187,14 +187,14 @@ class Headline4 extends StatelessWidget {
   const Headline4(this.text, {this.style, this.maxLines});
 
   final String text;
-  final TextStyle style;
-  final int maxLines;
+  final TextStyle? style;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.headline4.merge(style),
+      style: Theme.of(context).textTheme.headline4!.merge(style),
       maxLines: maxLines,
     );
   }

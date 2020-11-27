@@ -9,19 +9,16 @@ typedef AnimationBuilder = Widget Function(
 
 class Expander extends StatefulWidget {
   const Expander({
-    Key key,
-    @required this.onTitlePressed,
-    @required this.title,
-    @required this.child,
+    Key? key,
+    required this.onTitlePressed,
+    required this.title,
+    required this.child,
     this.expanded = false,
     this.showExpanderIcon = false,
     this.onTitleLongPressed,
     this.animationDuration = shortAnimationDuration,
     this.animationBuilder,
-  })  : assert(onTitlePressed != null),
-        assert(title != null),
-        assert(child != null),
-        super(key: key);
+  }) : super(key: key);
 
   final Widget title;
   final Widget child;
@@ -29,15 +26,15 @@ class Expander extends StatefulWidget {
   final bool showExpanderIcon;
   final Duration animationDuration;
   final void Function(bool expanded) onTitlePressed;
-  final VoidCallback onTitleLongPressed;
-  final AnimationBuilder animationBuilder;
+  final VoidCallback? onTitleLongPressed;
+  final AnimationBuilder? animationBuilder;
 
   @override
   State<StatefulWidget> createState() => _ExpanderState();
 }
 
 class _ExpanderState extends State<Expander> with TickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
@@ -82,7 +79,7 @@ class _ExpanderState extends State<Expander> with TickerProviderStateMixin {
             sizeFactor: _controller,
             child: widget.child,
           )
-        : widget.animationBuilder(context, _controller, widget.child);
+        : widget.animationBuilder!(context, _controller, widget.child);
     return Column(
       children: <Widget>[
         PlatformInkWell(

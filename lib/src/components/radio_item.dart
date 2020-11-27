@@ -5,32 +5,30 @@ import 'platform.dart';
 
 class RadioItem<T> extends StatelessWidget {
   const RadioItem({
-    Key key,
-    this.value,
+    Key? key,
+    required this.value,
     this.groupValue,
-    this.onChanged,
-    @required this.title,
+    required this.onChanged,
+    required this.title,
     this.contentPadding = activityHorizontalMargin,
     this.toggleable = false,
   })  : _isDense = false,
-        assert(title != null),
         super(key: key);
 
   const RadioItem.dense({
-    Key key,
-    this.value,
+    Key? key,
+    required this.value,
     this.groupValue,
-    this.onChanged,
-    @required this.title,
+    required this.onChanged,
+    required this.title,
     this.contentPadding = EdgeInsets.zero,
     this.toggleable = false,
   })  : _isDense = true,
-        assert(title != null),
         super(key: key);
 
   final T value;
-  final T groupValue;
-  final ValueChanged<T> onChanged;
+  final T? groupValue;
+  final ValueChanged<T?> onChanged;
   final Widget title;
   final EdgeInsets contentPadding;
   final bool _isDense;

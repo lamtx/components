@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 
 class PlatformScaffold extends StatelessWidget {
   const PlatformScaffold({
-    Key key,
-    this.body,
+    Key? key,
+    required this.body,
     this.appBar,
     this.extendBodyBehindAppBar = false,
   }) : super(key: key);
 
   final Widget body;
-  final ObstructingPreferredSizeWidget appBar;
+  final ObstructingPreferredSizeWidget? appBar;
   final bool extendBodyBehindAppBar;
 
   @override

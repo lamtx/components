@@ -4,7 +4,7 @@ import '../../dimens.dart';
 import 'get_exception_message.dart';
 
 class ExceptionInfo extends StatelessWidget {
-  const ExceptionInfo(this.exception) : assert(exception != null);
+  const ExceptionInfo(this.exception);
 
   final Exception exception;
 

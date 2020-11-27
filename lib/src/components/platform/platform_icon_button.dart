@@ -7,21 +7,19 @@ import '../cupertino_highlight.dart';
 
 class PlatformIconButton extends StatelessWidget {
   const PlatformIconButton({
-    Key key,
-    @required
-    this.icon,
-    @required
-    this.onPressed,
+    Key? key,
+    required this.icon,
+    required this.onPressed,
     this.iconSize = 24,
     this.color,
     this.tooltip,
   }) : super(key: key);
 
   final Widget icon;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final double iconSize;
-  final Color color;
-  final String tooltip;
+  final Color? color;
+  final String? tooltip;
 
   @override
   Widget build(BuildContext context) {

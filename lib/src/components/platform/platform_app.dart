@@ -5,32 +5,32 @@ import 'package:flutter/material.dart';
 
 class PlatformApp extends StatelessWidget {
   const PlatformApp({
-    Key key,
+    Key? key,
     this.debugShowCheckedModeBanner = true,
     this.home,
-    this.theme,
-    this.darkTheme,
+    required this.theme,
+    required this.darkTheme,
     this.themeMode,
-    this.localizationsDelegates,
+    required this.localizationsDelegates,
     this.navigatorKey,
     this.locale,
     this.supportedLocales = const <Locale>[Locale('en', 'US')],
   }) : super(key: key);
 
   final bool debugShowCheckedModeBanner;
-  final Widget home;
+  final Widget? home;
   final ThemeData theme;
   final ThemeData darkTheme;
-  final ThemeMode themeMode;
-  final GlobalKey<NavigatorState> navigatorKey;
+  final ThemeMode? themeMode;
+  final GlobalKey<NavigatorState>? navigatorKey;
   final Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates;
-  final Locale locale;
+  final Locale? locale;
   final Iterable<Locale> supportedLocales;
 
   @override
   Widget build(BuildContext context) {
     if (Platform.isIOS) {
-      final brightness = WidgetsBinding.instance.window.platformBrightness;
+      final brightness = WidgetsBinding.instance!.window.platformBrightness;
       final isDark = themeMode == ThemeMode.dark ||
           (themeMode == ThemeMode.system && brightness == Brightness.dark);
 

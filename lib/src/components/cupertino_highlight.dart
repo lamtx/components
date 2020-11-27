@@ -2,28 +2,29 @@ import 'package:flutter/material.dart';
 
 class CupertinoHighlight extends StatefulWidget {
   const CupertinoHighlight({
-    Key key,
+    Key? key,
     this.child,
     this.onTap,
     this.onLongPress,
     this.tooltip,
   }) : super(key: key);
 
-  final Widget child;
-  final VoidCallback onTap;
-  final VoidCallback onLongPress;
-  final String tooltip;
+  final Widget? child;
+  final VoidCallback? onTap;
+  final VoidCallback? onLongPress;
+  final String? tooltip;
 
   @override
   _CupertinoHighlightState createState() => _CupertinoHighlightState();
 }
 
-class _CupertinoHighlightState extends State<CupertinoHighlight> with TickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation<Color> _colorAnimation;
-  Color _backgroundColor = Colors.transparent;
+class _CupertinoHighlightState extends State<CupertinoHighlight>
+    with TickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<Color?> _colorAnimation;
+  Color? _backgroundColor = Colors.transparent;
   bool _buttonHeldDown = false;
-  final Tween<Color> _colorTween = ColorTween(begin: Colors.transparent);
+  final Tween<Color?> _colorTween = ColorTween(begin: Colors.transparent);
   static const Duration kFadeOutDuration = Duration(milliseconds: 10);
   static const Duration kFadeInDuration = Duration(milliseconds: 100);
   static const _darkColor = Color(0x0FFFFFFF);
@@ -54,7 +55,7 @@ class _CupertinoHighlightState extends State<CupertinoHighlight> with TickerProv
     );
     if (widget.tooltip != null) {
       child = Tooltip(
-        message: widget.tooltip,
+        message: widget.tooltip!,
         child: child,
       );
     }

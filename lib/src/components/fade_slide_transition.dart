@@ -4,9 +4,9 @@ import "package:flutter/material.dart";
 
 class FadeSlideTransition extends AnimatedWidget {
   const FadeSlideTransition({
-    @required Animation<double> sizeFactor,
-    this.child,
-    Key key,
+    required Animation<double> sizeFactor,
+    required this.child,
+    Key? key,
     this.axis = Axis.vertical,
     this.axisAlignment = 0.0,
   }) : super(key: key, listenable: sizeFactor);

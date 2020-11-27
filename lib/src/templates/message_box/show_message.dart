@@ -8,8 +8,8 @@ enum ButtonStyle { normal, cancellation, destructive }
 
 class ActionButton {
   const ActionButton({
-    @required this.text,
-    @required this.type,
+    required this.text,
+    required this.type,
     this.style = ButtonStyle.normal,
   });
 
@@ -39,22 +39,23 @@ class ActionButton {
   final ButtonType type;
   final ButtonStyle style;
 
-  static final ActionButton ok = ActionButton(
+  static const ActionButton ok = ActionButton(
     type: ButtonType.positive,
-    text: (context) => "OK",
+    text: _okText,
   );
+
+  static String _okText(BuildContext context) => "OK";
 }
 
-Future<ActionButton> showMessage(
+Future<ActionButton?> showMessage(
   BuildContext context, {
-  String message,
-  Widget content,
-  String title,
-  List<ActionButton> actions,
+  String? message,
+  Widget? content,
+  String? title,
+  List<ActionButton> actions = const [ActionButton.ok],
 }) {
   final titleUI = title == null ? null : Text(title);
-  final contentUI = content ?? Text(message);
-  actions ??= [ActionButton.ok];
+  final contentUI = content ?? Text(message!);
   return showPlatformDialog(
     context: context,
     builder: (context) => PlatformAlertDialog(
@@ -68,7 +69,7 @@ Future<ActionButton> showMessage(
       actions: actions.map((e) {
         return DialogButton(
           onPressed: () {
-            Navigator.of(context).pop(e);
+            Navigator.of(context)?.pop(e);
           },
           isDefaultAction: e.style == ButtonStyle.cancellation,
           isDestructiveAction: e.style == ButtonStyle.destructive,
@@ -82,10 +83,10 @@ Future<ActionButton> showMessage(
 
 Future<bool> askMessage(
   BuildContext context, {
-  @required String message,
-  String title,
-  String action,
-  String negativeAction,
+  required String message,
+  String? title,
+  String? action,
+  String? negativeAction,
   bool isDeletion = false,
 }) async {
   final val = await showMessage(

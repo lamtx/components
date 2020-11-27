@@ -8,9 +8,9 @@ import 'safe_padding.dart';
 
 class AsyncListView extends StatelessWidget {
   const AsyncListView({
-    Key key,
-    @required this.itemCount,
-    @required this.itemBuilder,
+    Key? key,
+    required this.itemCount,
+    required this.itemBuilder,
     this.reverse = false,
     this.isLoading = false,
     this.emptyInfo = const EmptyInfo(),
@@ -18,19 +18,17 @@ class AsyncListView extends StatelessWidget {
     this.padding,
     this.onLoadMore,
     this.onRefresh,
-  })  : assert(itemCount != null),
-        assert(itemBuilder != null),
-        super(key: key);
+  })  : super(key: key);
 
   final bool isLoading;
   final int itemCount;
   final IndexedWidgetBuilder itemBuilder;
-  final Exception exception;
-  final Widget emptyInfo;
-  final EdgeInsets padding;
-  final VoidCallback onLoadMore;
+  final Exception? exception;
+  final Widget? emptyInfo;
+  final EdgeInsets? padding;
+  final VoidCallback? onLoadMore;
   final bool reverse;
-  final RefreshCallback onRefresh;
+  final RefreshCallback? onRefresh;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +40,7 @@ class AsyncListView extends StatelessWidget {
     );
     if (onRefresh != null) {
       listView = RefreshIndicator(
-        onRefresh: onRefresh,
+        onRefresh: onRefresh!,
         child: listView,
       );
     }
@@ -53,7 +51,7 @@ class AsyncListView extends StatelessWidget {
               if (scrollInfo.metrics.pixels >=
                   scrollInfo.metrics.maxScrollExtent - 22) {
                 if (itemCount != 0) {
-                  onLoadMore();
+                  onLoadMore!();
                 }
               }
               return false;
@@ -81,9 +79,9 @@ class AsyncListView extends StatelessWidget {
           if (isLoading)
             const LoadingInfo()
           else if (exception != null)
-            ExceptionInfo(exception)
+            ExceptionInfo(exception!)
           else if (emptyInfo != null)
-            emptyInfo,
+            emptyInfo!,
         ],
       );
     } else {

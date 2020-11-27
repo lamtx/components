@@ -18,10 +18,10 @@ export 'platform/platform_underline_text_field.dart';
 // ignore_for_file: non_constant_identifier_names
 
 Widget PlatformAlertDialog({
-  Widget title,
-  Widget content,
-  List<Widget> actions,
-  ShapeBorder shape,
+  Widget? title,
+  Widget? content,
+  List<Widget> actions = const <Widget>[],
+  ShapeBorder? shape,
 }) {
   if (Platform.isIOS) {
     return CupertinoAlertDialog(
@@ -40,9 +40,9 @@ Widget PlatformAlertDialog({
 }
 
 Widget PlatformInkWell({
-  Widget child,
-  VoidCallback onTap,
-  VoidCallback onLongPress,
+  Widget? child,
+  VoidCallback? onTap,
+  VoidCallback? onLongPress,
 }) {
   if (Platform.isIOS) {
     return CupertinoHighlight(
@@ -60,8 +60,8 @@ Widget PlatformInkWell({
 }
 
 Widget FilledButton({
-  VoidCallback onPressed,
-  Widget child,
+  VoidCallback? onPressed,
+  required Widget child,
 }) {
   if (Platform.isIOS) {
     return CupertinoButton.filled(
@@ -69,7 +69,7 @@ Widget FilledButton({
       child: child,
     );
   } else {
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: onPressed,
       child: child,
     );
@@ -77,9 +77,9 @@ Widget FilledButton({
 }
 
 Widget Button({
-  @required VoidCallback onPressed,
-  @required Widget child,
-  EdgeInsets padding,
+  required VoidCallback? onPressed,
+  required Widget child,
+  EdgeInsets? padding,
 }) {
   if (Platform.isIOS) {
     return CupertinoButton(
@@ -97,8 +97,8 @@ Widget Button({
 }
 
 Widget DialogButton({
-  VoidCallback onPressed,
-  Widget child,
+  VoidCallback? onPressed,
+  required Widget child,
   bool isDefaultAction = false,
   bool isDestructiveAction = false,
 }) {
@@ -117,11 +117,11 @@ Widget DialogButton({
   }
 }
 
-Future<T> showPlatformDialog<T>({
-  @required BuildContext context,
-  @required WidgetBuilder builder,
+Future<T?> showPlatformDialog<T>({
+  required BuildContext context,
+  required WidgetBuilder builder,
   bool useRootNavigator = true,
-  bool barrierDismissible,
+  bool? barrierDismissible,
 }) {
   if (Platform.isIOS) {
     return showCupertinoDialog(
@@ -141,20 +141,20 @@ Future<T> showPlatformDialog<T>({
 }
 
 Widget PlatformTextField({
-  @required TextEditingController controller,
-  TextInputType keyboardType,
+  required TextEditingController? controller,
+  TextInputType? keyboardType,
   TextCapitalization textCapitalization = TextCapitalization.none,
-  InputDecoration decoration = const InputDecoration(),
+  InputDecoration? decoration = const InputDecoration(),
   bool autofocus = false,
-  TextAlignVertical textAlignVertical,
-  ValueChanged<String> onSubmitted,
-  FocusNode focusNode,
+  TextAlignVertical? textAlignVertical,
+  ValueChanged<String>? onSubmitted,
+  FocusNode? focusNode,
   bool obscureText = false,
-  TextStyle style,
-  ValueChanged<String> onChanged,
-  int maxLines = 1,
-  int minLines,
-  bool enabled,
+  TextStyle? style,
+  ValueChanged<String>? onChanged,
+  int? maxLines = 1,
+  int? minLines,
+  bool? enabled,
 }) {
   if (Platform.isIOS) {
     final textField = CupertinoTextField(
@@ -219,10 +219,10 @@ Widget PlatformTextField({
 }
 
 PageRoute<T> PlatformPageRoute<T>({
-  @required WidgetBuilder builder,
-  @required String title,
+  required WidgetBuilder builder,
+  required String? title,
   bool fullscreenDialog = false,
-  RouteSettings settings,
+  RouteSettings? settings,
 }) {
   if (Platform.isIOS) {
     return CupertinoPageRoute(
@@ -241,15 +241,14 @@ PageRoute<T> PlatformPageRoute<T>({
 }
 
 Widget PlatformRadio<T>({
-  @required T value,
-  @required T groupValue,
-  @required ValueChanged<T> onChanged,
+  required T value,
+  required T? groupValue,
+  required ValueChanged<T?> onChanged,
 }) {
   if (Platform.isIOS) {
     return CupertinoRadio<T>(
       value: value,
       groupValue: groupValue,
-      onChanged: onChanged,
     );
   } else {
     return Radio<T>(
@@ -261,8 +260,8 @@ Widget PlatformRadio<T>({
 }
 
 Widget PlatformSwitch({
-  bool value,
-  ValueChanged<bool> onChanged,
+  required bool value,
+  required ValueChanged<bool>? onChanged,
 }) {
   if (Platform.isIOS) {
     return CupertinoSwitch(
@@ -278,14 +277,13 @@ Widget PlatformSwitch({
 }
 
 Widget PlatformCheckbox({
-  bool value,
-  ValueChanged<bool> onChanged,
+  required bool value,
+  required ValueChanged<bool?> onChanged,
 }) {
   if (Platform.isIOS) {
     return CupertinoRadio<bool>(
       value: value,
       groupValue: true,
-      onChanged: onChanged,
     );
   } else {
     return Checkbox(
@@ -296,18 +294,15 @@ Widget PlatformCheckbox({
 }
 
 Widget PlatformSlider({
-  ValueChanged<double> onChanged,
+  ValueChanged<double>? onChanged,
   double max = 1,
   double min = 0,
-  @required double value,
-  Color inactiveColor,
-  Color activeColor,
-  int divisions,
+  required double value,
+  Color? inactiveColor,
+  Color? activeColor,
+  int? divisions,
   bool avoidPadding = false,
 }) {
-  assert(min != null);
-  assert(max != null);
-  assert(value != null);
   assert(max >= min);
   assert(min <= value && value <= max);
   if (Platform.isIOS) {
@@ -362,7 +357,7 @@ class PlatformCloseButton extends StatelessWidget {
       return CupertinoButton(
         padding: EdgeInsets.zero,
         onPressed: () {
-          Navigator.of(context).maybePop();
+          Navigator.of(context)?.maybePop();
         },
         child: const Text('Close'),
       );

@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 class BaseState with ChangeNotifier {
   bool _isDisposed = false;
   bool _isLoading = false;
-  Exception _exception;
+  Exception? _exception;
 
   bool get isLoading => _isLoading;
 
@@ -16,9 +16,9 @@ class BaseState with ChangeNotifier {
     }
   }
 
-  Exception get exception => _exception;
+  Exception? get exception => _exception;
 
-  set exception(Exception newValue) {
+  set exception(Exception? newValue) {
     _exception = newValue;
     if (!_isDisposed) {
       notifyListeners();

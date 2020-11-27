@@ -4,7 +4,7 @@ import '../../components.dart';
 import '../../dimens.dart';
 
 class LoadingText extends StatelessWidget {
-  const LoadingText(this.text) : assert(text != null);
+  const LoadingText(this.text);
 
   final String text;
 

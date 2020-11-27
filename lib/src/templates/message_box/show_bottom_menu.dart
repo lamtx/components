@@ -10,40 +10,39 @@ import '../safe_padding.dart';
 abstract class MenuItemEntry<T> {
   Widget get title;
 
-  T get value;
+  T? get value;
 
-  T get groupValue;
+  T? get groupValue;
 }
 
 class MenuItem<T> implements MenuItemEntry<T> {
   const MenuItem({
-    @required this.value,
-    @required this.title,
+    required this.value,
+    required this.title,
     this.groupValue,
     this.icon,
     this.iconData,
-  })  : assert(value != null),
-        assert(title != null);
+  });
 
   @override
   final Widget title;
   @override
-  final T value;
+  final T? value;
   @override
-  final T groupValue;
-  final IconData iconData;
-  final Widget icon;
+  final T? groupValue;
+  final IconData? iconData;
+  final Widget? icon;
 }
 
 class CheckboxMenuItem<T> implements MenuItemEntry<T> {
-  CheckboxMenuItem({this.title, this.value, this.groupValue});
+  CheckboxMenuItem({required this.title, required this.value, this.groupValue});
 
   @override
   final Widget title;
   @override
-  final T value;
+  final T? value;
   @override
-  final T groupValue;
+  final T? groupValue;
 }
 
 class TitleMenuItem<T> implements MenuItemEntry<T> {
@@ -62,16 +61,16 @@ class TitleMenuItem<T> implements MenuItemEntry<T> {
   }
 
   @override
-  T get value => null;
+  T? get value => null;
 
   @override
-  T get groupValue => null;
+  T? get groupValue => null;
 }
 
 extension<T> on MenuItemEntry<T> {
-  Widget leading(ThemeData theme) {
+  Widget? leading(ThemeData theme) {
     final item = this;
-    Widget child;
+    Widget? child;
     if (item is MenuItem<T>) {
       child = item.icon ?? (item.iconData != null ? Icon(item.iconData) : null);
     } else if (item is CheckboxMenuItem<T>) {
@@ -97,10 +96,10 @@ extension<T> on MenuItemEntry<T> {
   bool get checked => groupValue != null && groupValue == value;
 }
 
-Future<T> showBottomMenu<T>(
+Future<T?> showBottomMenu<T>(
   BuildContext context, {
-  String title,
-  List<MenuItemEntry<T>> items,
+  String? title,
+  required List<MenuItemEntry<T>> items,
   List<Widget> actions = const [],
 }) {
   return showModalBottomSheet<T>(
@@ -109,7 +108,7 @@ Future<T> showBottomMenu<T>(
       onClosing: () {},
       builder: (context) {
         final theme = Theme.of(context);
-        final subtitle1 = theme.textTheme.subtitle1;
+        final subtitle1 = theme.textTheme.subtitle1!;
         final selectedSubtitle1 = subtitle1.copyWith(
           color: theme.colorScheme.primary,
         );
@@ -135,7 +134,7 @@ Future<T> showBottomMenu<T>(
                   ),
                   leading: item.leading(theme),
                   onTap: () {
-                    Navigator.of(context).pop(item.value);
+                    Navigator.of(context)?.pop(item.value);
                   },
                 ),
             ...actions,

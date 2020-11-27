@@ -7,7 +7,7 @@ import '../../../dimens.dart';
 
 class PlatformFilledTextField extends StatelessWidget {
   const PlatformFilledTextField({
-    Key key,
+    Key? key,
     this.controller,
     this.hintText,
     this.keyboardType,
@@ -26,20 +26,20 @@ class PlatformFilledTextField extends StatelessWidget {
   }) : super(key: key);
 
   @required
-  final TextEditingController controller;
-  final String hintText;
-  final TextInputType keyboardType;
+  final TextEditingController? controller;
+  final String? hintText;
+  final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
   final bool autofocus;
-  final TextAlignVertical textAlignVertical;
-  final ValueChanged<String> onSubmitted;
-  final FocusNode focusNode;
+  final TextAlignVertical? textAlignVertical;
+  final ValueChanged<String>? onSubmitted;
+  final FocusNode? focusNode;
   final bool obscureText;
-  final TextStyle style;
-  final ValueChanged<String> onChanged;
-  final int maxLines;
-  final int minLines;
-  final bool enabled;
+  final TextStyle? style;
+  final ValueChanged<String>? onChanged;
+  final int? maxLines;
+  final int? minLines;
+  final bool? enabled;
   final bool isDense;
 
   @override

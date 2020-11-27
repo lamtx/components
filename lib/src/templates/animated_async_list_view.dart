@@ -8,9 +8,9 @@ import 'safe_padding.dart';
 
 class AnimatedAsyncListView<T extends Object> extends StatefulWidget {
   const AnimatedAsyncListView({
-    @required this.items,
-    Key key,
-    @required this.itemBuilder,
+    required this.items,
+    Key? key,
+    required this.itemBuilder,
     this.exception,
     this.emptyInfo = const EmptyInfo(),
     this.isLoading = false,
@@ -18,29 +18,26 @@ class AnimatedAsyncListView<T extends Object> extends StatefulWidget {
     this.onLoadMore,
     this.reverse = false,
     this.onRefresh,
-  })  : assert(items != null),
-        assert(itemBuilder != null),
-        assert(isLoading != null),
-        assert(reverse != null),
-        super(key: key);
+  }) : super(key: key);
 
   final bool isLoading;
   final List<T> items;
   final Widget Function(BuildContext context, T item) itemBuilder;
-  final Exception exception;
-  final Widget emptyInfo;
-  final EdgeInsets padding;
+  final Exception? exception;
+  final Widget? emptyInfo;
+  final EdgeInsets? padding;
 
-  final VoidCallback onLoadMore;
+  final VoidCallback? onLoadMore;
   final bool reverse;
-  final RefreshCallback onRefresh;
+  final RefreshCallback? onRefresh;
 
   @override
   AnimatedAsyncListViewState<T> createState() =>
       AnimatedAsyncListViewState<T>();
 }
 
-class AnimatedAsyncListViewState<T> extends State<AnimatedAsyncListView<T>> {
+class AnimatedAsyncListViewState<T extends Object>
+    extends State<AnimatedAsyncListView<T>> {
   final _listKey = GlobalKey<AnimatedListState>();
   bool _disableAnimation = false;
 
@@ -71,7 +68,7 @@ class AnimatedAsyncListViewState<T> extends State<AnimatedAsyncListView<T>> {
     );
     if (widget.onRefresh != null) {
       listView = RefreshIndicator(
-        onRefresh: widget.onRefresh,
+        onRefresh: widget.onRefresh!,
         child: listView,
       );
     }
@@ -82,7 +79,7 @@ class AnimatedAsyncListViewState<T> extends State<AnimatedAsyncListView<T>> {
               if (scrollInfo.metrics.pixels >=
                   scrollInfo.metrics.maxScrollExtent - 22) {
                 if (widget.items.isNotEmpty) {
-                  widget.onLoadMore();
+                  widget.onLoadMore!();
                 }
               }
               return false;
@@ -109,9 +106,9 @@ class AnimatedAsyncListViewState<T> extends State<AnimatedAsyncListView<T>> {
         children: <Widget>[
           child,
           if (widget.exception != null)
-            ExceptionInfo(widget.exception)
+            ExceptionInfo(widget.exception!)
           else if (widget.emptyInfo != null)
-            widget.emptyInfo,
+            widget.emptyInfo!,
         ],
       );
     } else {

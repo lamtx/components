@@ -6,11 +6,11 @@ import '../../../components.dart';
 import '../../../dimens.dart';
 import '../template_messages.dart';
 
-Future<String> inputMessage(
+Future<String?> inputMessage(
   BuildContext context, {
-  String title,
-  String action,
-  String defaultValue,
+  required String title,
+  String? action,
+  String? defaultValue,
   TextInputType keyboardType = TextInputType.text,
   TextCapitalization textCapitalization = TextCapitalization.words,
 }) {
@@ -45,14 +45,14 @@ Future<String> inputMessage(
           if (Platform.isIOS)
             DialogButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context)?.pop();
               },
               isDefaultAction: true,
               child: Text(TemplateMessages.of(context).cancel),
             ),
           DialogButton(
             onPressed: () {
-              Navigator.of(context).pop(controller.text);
+              Navigator.of(context)?.pop(controller.text);
             },
             child: Text(action ?? "OK"),
           )

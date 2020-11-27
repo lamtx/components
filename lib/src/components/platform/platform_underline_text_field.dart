@@ -8,7 +8,7 @@ import '../styled_texts.dart';
 
 class PlatformUnderlineTextField extends StatelessWidget {
   const PlatformUnderlineTextField({
-    Key key,
+    Key? key,
     this.controller,
     this.hintText,
     this.labelText,
@@ -34,33 +34,33 @@ class PlatformUnderlineTextField extends StatelessWidget {
   }) : super(key: key);
 
   @required
-  final TextEditingController controller;
-  final String hintText;
-  final String labelText;
-  final String helperText;
-  final TextInputType keyboardType;
+  final TextEditingController? controller;
+  final String? hintText;
+  final String? labelText;
+  final String? helperText;
+  final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
   final bool autofocus;
   final TextAlignVertical textAlignVertical;
-  final ValueChanged<String> onSubmitted;
-  final FocusNode focusNode;
+  final ValueChanged<String>? onSubmitted;
+  final FocusNode? focusNode;
   final bool obscureText;
-  final TextStyle style;
-  final ValueChanged<String> onChanged;
-  final int maxLines;
-  final int minLines;
-  final bool enabled;
+  final TextStyle? style;
+  final ValueChanged<String>? onChanged;
+  final int? maxLines;
+  final int? minLines;
+  final bool? enabled;
   final bool showClearButtonOniOS;
-  final Widget prefixIcon;
-  final Widget suffixIcon;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final EdgeInsets contentPadding;
-  final TextInputAction textInputAction;
+  final TextInputAction? textInputAction;
   final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
     final color =
-        Theme.of(context).inputDecorationTheme.enabledBorder.borderSide.color;
+        Theme.of(context).inputDecorationTheme.enabledBorder!.borderSide.color;
 
     if (Platform.isIOS) {
       final textField = CupertinoTextField(
@@ -104,12 +104,12 @@ class PlatformUnderlineTextField extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            if (labelText != null) Caption(labelText),
+            if (labelText != null) Caption(labelText!),
             textField,
             if (helperText != null)
               Padding(
                 padding: textSpacingTop,
-                child: Caption(helperText),
+                child: Caption(helperText!),
               )
           ],
         );

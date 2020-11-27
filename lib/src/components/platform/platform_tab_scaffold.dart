@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 
 class PlatformTabScaffold extends StatelessWidget {
   const PlatformTabScaffold({
-    Key key,
-    @required this.tabBuilder,
-    @required this.tabController,
-    @required this.tabs,
+    Key? key,
+    required this.tabBuilder,
+    required this.tabController,
+    required this.tabs,
   }) : super(key: key);
 
   final CupertinoTabController tabController;
@@ -39,15 +39,15 @@ class PlatformTabScaffold extends StatelessWidget {
 
 class _BottomNavigationScaffold extends StatefulWidget {
   const _BottomNavigationScaffold({
-    Key key,
-    this.tabController,
-    this.tabBuilder,
+    Key? key,
+    required this.tabController,
+    required this.tabBuilder,
     this.appBar,
-    this.tabs,
+    required this.tabs,
   }) : super(key: key);
   final CupertinoTabController tabController;
   final IndexedWidgetBuilder tabBuilder;
-  final PreferredSizeWidget appBar;
+  final PreferredSizeWidget? appBar;
   final List<BottomNavigationBarItem> tabs;
 
   @override
@@ -57,7 +57,7 @@ class _BottomNavigationScaffold extends StatefulWidget {
 
 class _BottomNavigationScaffoldState extends State<_BottomNavigationScaffold> {
   final _bucket = PageStorageBucket();
-  var _cache = const <Widget>[];
+  var _cache = const <Widget?>[];
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class _BottomNavigationScaffoldState extends State<_BottomNavigationScaffold> {
   void initState() {
     super.initState();
     widget.tabController.addListener(_onTabChanged);
-    _cache = List<Widget>(widget.tabs.length);
+    _cache = List<Widget?>.filled(widget.tabs.length, null);
   }
 
   @override
@@ -93,7 +93,7 @@ class _BottomNavigationScaffoldState extends State<_BottomNavigationScaffold> {
     oldWidget.tabController.removeListener(_onTabChanged);
     widget.tabController.addListener(_onTabChanged);
     if (widget.tabs.length != oldWidget.tabs.length) {
-      _cache = List<Widget>(widget.tabs.length);
+      _cache = List<Widget?>.filled(widget.tabs.length, null);
     }
   }
 

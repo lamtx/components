@@ -15,8 +15,8 @@ class ListItemHeight {
 
 class ListItem extends StatelessWidget {
   const ListItem({
-    Key key,
-    this.title,
+    Key? key,
+    required this.title,
     this.subtitle,
     this.trailing,
     this.leading,
@@ -30,9 +30,9 @@ class ListItem extends StatelessWidget {
   }) : super(key: key);
 
   factory ListItem.dense({
-    Widget title,
-    Widget leading,
-    VoidCallback onTap,
+    required Widget title,
+    Widget? leading,
+    VoidCallback? onTap,
   }) =>
       ListItem(
         title: title,
@@ -41,13 +41,13 @@ class ListItem extends StatelessWidget {
         contentPadding: halfItemSpacingVertical,
       );
   final Widget title;
-  final Widget subtitle;
-  final Widget trailing;
-  final Widget leading;
-  final VoidCallback onTap;
-  final VoidCallback onLongPress;
+  final Widget? subtitle;
+  final Widget? trailing;
+  final Widget? leading;
+  final VoidCallback? onTap;
+  final VoidCallback? onLongPress;
   final EdgeInsets contentPadding;
-  final ListItemHeight itemHeight;
+  final ListItemHeight? itemHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +80,7 @@ class ListItem extends StatelessWidget {
               child: leading,
             ),
           Expanded(child: center),
-          if (trailing != null) trailing,
+          if (trailing != null) trailing!,
         ],
       );
     } else {

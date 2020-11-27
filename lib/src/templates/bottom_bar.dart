@@ -1,12 +1,12 @@
+import 'package:ext/ext.dart';
 import 'package:flutter/material.dart';
 
 import '../../dimens.dart';
-import '../../ext.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({
-    Key key,
-    this.children,
+    Key? key,
+    required this.children,
     this.avoidBottom = true,
   }) : super(key: key);
 

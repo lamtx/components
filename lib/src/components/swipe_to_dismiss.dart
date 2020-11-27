@@ -1,17 +1,17 @@
+import 'package:ext/ext.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 
 import '../../dimens.dart';
-import '../../ext.dart';
 import 'fade_slide_transition.dart';
 
 class SwipeToDismiss extends StatefulWidget {
   const SwipeToDismiss({
-    Key key,
-    @required this.dismissible,
-    @required this.child,
-    @required this.onDismissed,
+    Key? key,
+    required this.dismissible,
+    required this.child,
+    required this.onDismissed,
   }) : super(key: key);
 
   final bool dismissible;
@@ -24,11 +24,11 @@ class SwipeToDismiss extends StatefulWidget {
 
 class _SwipeToDismissState extends State<SwipeToDismiss>
     with TickerProviderStateMixin {
-  AnimationController _controller;
-  AnimationController _dismissAnimation;
-  Animation<Offset> _animation;
+  late AnimationController _controller;
+  late AnimationController _dismissAnimation;
+  late Animation<Offset> _animation;
   Offset _dragOffset = Offset.zero;
-  double _maxTranslate;
+  double _maxTranslate = 0;
   bool _dismissed = false;
   bool _onDismissedCalled = false;
 

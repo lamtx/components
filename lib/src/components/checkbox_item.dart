@@ -5,15 +5,15 @@ import 'platform.dart';
 
 class CheckboxItem extends StatelessWidget {
   const CheckboxItem({
-    Key key,
-    this.value,
-    this.onChanged,
-    this.title,
+    Key? key,
+    required this.value,
+    required this.onChanged,
+    required this.title,
     this.contentPadding = activityHorizontalMargin,
   }) : super(key: key);
 
   final bool value;
-  final ValueChanged<bool> onChanged;
+  final ValueChanged<bool?> onChanged;
   final Widget title;
   final EdgeInsets contentPadding;
 

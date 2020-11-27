@@ -7,18 +7,18 @@ import '../../../dimens.dart';
 
 abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
   factory PlatformAppBar({
-    Key key,
-    Widget title,
-    String previousPageTitle,
-    List<Widget> actions,
-    Color backgroundColor,
-    Brightness brightness,
-    Color actionsForegroundColor,
+    Key? key,
+    Widget? title,
+    String? previousPageTitle,
+    List<Widget>? actions,
+    Color? backgroundColor,
+    Brightness? brightness,
+    Color? actionsForegroundColor,
     bool automaticallyImplyLeading = true,
-    Widget leading,
+    Widget? leading,
   }) {
     if (Platform.isIOS) {
-      Widget trailing;
+      Widget? trailing;
       if (actions == null) {
         trailing = null;
       } else if (actions.length == 1) {
@@ -58,15 +58,15 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
 class _CupertinoNavigationBar extends CupertinoNavigationBar
     implements PlatformAppBar {
   const _CupertinoNavigationBar({
-    Key key,
-    Widget title,
-    String previousPageTitle,
-    Widget trailing,
-    Color backgroundColor,
-    Brightness brightness,
-    Color actionsForegroundColor,
+    Key? key,
+    Widget? title,
+    String? previousPageTitle,
+    Widget? trailing,
+    Color? backgroundColor,
+    Brightness? brightness,
+    Color? actionsForegroundColor,
     bool automaticallyImplyLeading = true,
-    Widget leading,
+    Widget? leading,
   }) : super(
           key: key,
           middle: title,
@@ -84,7 +84,7 @@ class _CupertinoNavigationBar extends CupertinoNavigationBar
   @override
   bool shouldFullyObstruct(BuildContext context) {
     final backgroundColor =
-        CupertinoDynamicColor.resolve(this.backgroundColor, context) ??
+        CupertinoDynamicColor.maybeResolve(this.backgroundColor, context) ??
             CupertinoTheme.of(context).barBackgroundColor;
     return backgroundColor.alpha == 0xFF || backgroundColor.alpha == 0;
   }
@@ -92,15 +92,15 @@ class _CupertinoNavigationBar extends CupertinoNavigationBar
 
 class _AppBar extends AppBar implements PlatformAppBar {
   _AppBar({
-    Key key,
-    Widget title,
-    PreferredSizeWidget bottom,
-    List<Widget> actions,
-    Color backgroundColor,
-    Brightness brightness,
-    Color actionsForegroundColor,
+    Key? key,
+    Widget? title,
+    PreferredSizeWidget? bottom,
+    List<Widget>? actions,
+    Color? backgroundColor,
+    Brightness? brightness,
+    Color? actionsForegroundColor,
     bool automaticallyImplyLeading = true,
-    Widget leading,
+    Widget? leading,
   }) : super(
           key: key,
           title: title,

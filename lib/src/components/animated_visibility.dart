@@ -5,8 +5,8 @@ import 'fade_slide_transition.dart';
 
 class AnimatedVisibility extends StatefulWidget {
   const AnimatedVisibility({
-    @required this.visible,
-    this.child,
+    required this.visible,
+    required this.child,
   });
 
   final bool visible;
@@ -18,15 +18,16 @@ class AnimatedVisibility extends StatefulWidget {
 
 class _AnimatedVisibilityState extends State<AnimatedVisibility>
     with TickerProviderStateMixin {
-  AnimationController _opacityAnimation;
+  late AnimationController _opacityAnimation;
 
   @override
   void initState() {
     super.initState();
     _opacityAnimation = AnimationController(
-        vsync: this,
-        duration: shortAnimationDuration,
-        value: widget.visible ? 1 : 0);
+      vsync: this,
+      duration: shortAnimationDuration,
+      value: widget.visible ? 1 : 0,
+    );
   }
 
   @override

@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 
 class CupertinoRadio<T> extends StatefulWidget {
   const CupertinoRadio({
-    Key key,
-    @required this.value,
-    @required this.groupValue,
-    @required this.onChanged,
+    Key? key,
+    required this.value,
+    required this.groupValue,
   }) : super(key: key);
 
   final T value;
-  final T groupValue;
-  final ValueChanged<T> onChanged;
+  final T? groupValue;
 
   @override
   _CupertinoRadioState<T> createState() => _CupertinoRadioState<T>();
@@ -19,7 +17,7 @@ class CupertinoRadio<T> extends StatefulWidget {
 
 class _CupertinoRadioState<T> extends State<CupertinoRadio<T>>
     with TickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
