@@ -1,5 +1,6 @@
 name: components
 description: Common widgets and templates
+publish_to: 'none'
 version: 0.0.1
 
 environment:
@@ -9,8 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   ext:
-    #    git: https://github.com/lamtx/ext.git
-    path: ../ext
+    git: https://github.com/lamtx/ext.git
+#    path: ../ext
 dev_dependencies:
   flutter_test:
     sdk: flutter
