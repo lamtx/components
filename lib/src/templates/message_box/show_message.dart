@@ -69,7 +69,7 @@ Future<ActionButton?> showMessage(
       actions: actions.map((e) {
         return DialogButton(
           onPressed: () {
-            Navigator.of(context)?.pop(e);
+            Navigator.of(context).pop(e);
           },
           isDefaultAction: e.style == ButtonStyle.cancellation,
           isDestructiveAction: e.style == ButtonStyle.destructive,

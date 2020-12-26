@@ -134,7 +134,7 @@ Future<T?> showBottomMenu<T>(
                   ),
                   leading: item.leading(theme),
                   onTap: () {
-                    Navigator.of(context)?.pop(item.value);
+                    Navigator.of(context).pop(item.value);
                   },
                 ),
             ...actions,

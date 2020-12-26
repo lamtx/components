@@ -45,14 +45,14 @@ Future<String?> inputMessage(
           if (Platform.isIOS)
             DialogButton(
               onPressed: () {
-                Navigator.of(context)?.pop();
+                Navigator.of(context).pop();
               },
               isDefaultAction: true,
               child: Text(TemplateMessages.of(context).cancel),
             ),
           DialogButton(
             onPressed: () {
-              Navigator.of(context)?.pop(controller.text);
+              Navigator.of(context).pop(controller.text);
             },
             child: Text(action ?? "OK"),
           )

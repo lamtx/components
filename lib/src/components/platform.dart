@@ -357,7 +357,7 @@ class PlatformCloseButton extends StatelessWidget {
       return CupertinoButton(
         padding: EdgeInsets.zero,
         onPressed: () {
-          Navigator.of(context)?.maybePop();
+          Navigator.of(context).maybePop();
         },
         child: const Text('Close'),
       );
