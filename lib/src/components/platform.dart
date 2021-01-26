@@ -155,6 +155,7 @@ Widget PlatformTextField({
   int? maxLines = 1,
   int? minLines,
   bool? enabled,
+  TextInputAction? textInputAction,
 }) {
   if (Platform.isIOS) {
     final textField = CupertinoTextField(
@@ -173,6 +174,7 @@ Widget PlatformTextField({
       minLines: minLines,
       enabled: enabled,
       clearButtonMode: OverlayVisibilityMode.editing,
+      textInputAction: textInputAction,
     );
     if (decoration != null) {
       final labelText = decoration.labelText;
@@ -214,6 +216,7 @@ Widget PlatformTextField({
       maxLines: maxLines,
       minLines: minLines,
       enabled: enabled,
+      textInputAction: textInputAction,
     );
   }
 }

@@ -18,7 +18,8 @@ class AsyncListView extends StatelessWidget {
     this.padding,
     this.onLoadMore,
     this.onRefresh,
-  })  : super(key: key);
+    this.controller,
+  }) : super(key: key);
 
   final bool isLoading;
   final int itemCount;
@@ -29,10 +30,12 @@ class AsyncListView extends StatelessWidget {
   final VoidCallback? onLoadMore;
   final bool reverse;
   final RefreshCallback? onRefresh;
+  final ScrollController? controller;
 
   @override
   Widget build(BuildContext context) {
     Widget listView = ListView.builder(
+      controller: controller,
       padding: padding ?? safePaddingVertical(context),
       itemBuilder: itemBuilder,
       itemCount: itemCount,
@@ -47,41 +50,43 @@ class AsyncListView extends StatelessWidget {
     final child = onLoadMore == null
         ? listView
         : NotificationListener<ScrollNotification>(
-            onNotification: (scrollInfo) {
-              if (scrollInfo.metrics.pixels >=
-                  scrollInfo.metrics.maxScrollExtent - 22) {
-                if (itemCount != 0) {
-                  onLoadMore!();
-                }
-              }
-              return false;
-            },
-            child: Column(
-              children: <Widget>[
-                if (reverse)
-                  FixedHeightProgressIndicator(
-                    isLoading: itemCount != 0 && isLoading,
-                  ),
-                Expanded(
-                  child: listView,
-                ),
-                if (!reverse)
-                  FixedHeightProgressIndicator(
-                    isLoading: itemCount != 0 && isLoading,
-                  )
-              ],
+      onNotification: (scrollInfo) {
+        if (scrollInfo.metrics.pixels >=
+            scrollInfo.metrics.maxScrollExtent - 22) {
+          if (itemCount != 0) {
+            onLoadMore!();
+          }
+        }
+        return false;
+      },
+      child: Column(
+        children: <Widget>[
+          if (reverse)
+            FixedHeightProgressIndicator(
+              isLoading: itemCount != 0 && isLoading,
             ),
-          );
+          Expanded(
+            child: listView,
+          ),
+          if (!reverse)
+            FixedHeightProgressIndicator(
+              isLoading: itemCount != 0 && isLoading,
+            )
+        ],
+      ),
+    );
     if (itemCount == 0) {
       return Stack(
         children: <Widget>[
           child,
           if (isLoading)
             const LoadingInfo()
-          else if (exception != null)
-            ExceptionInfo(exception!)
-          else if (emptyInfo != null)
-            emptyInfo!,
+          else
+            if (exception != null)
+              ExceptionInfo(exception!)
+            else
+              if (emptyInfo != null)
+                emptyInfo!,
         ],
       );
     } else {

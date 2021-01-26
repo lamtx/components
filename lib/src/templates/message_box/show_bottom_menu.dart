@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
@@ -142,5 +144,46 @@ Future<T?> showBottomMenu<T>(
         );
       },
     ),
+  );
+}
+
+Future<T?> showPlatformMenu<T>(
+  BuildContext context, {
+  String? title,
+  required List<MenuItemEntry<T>> items,
+  List<Widget> actions = const [],
+}) {
+  if (Platform.isIOS) {
+    return showBottomMenu(
+      context,
+      title: title,
+      items: items,
+      actions: actions,
+    );
+  }
+  final button = context.findRenderObject()! as RenderBox;
+  final overlay =
+      Navigator.of(context).overlay!.context.findRenderObject()! as RenderBox;
+
+  final position = RelativeRect.fromRect(
+    Rect.fromPoints(
+      button.localToGlobal(Offset.zero, ancestor: overlay),
+      button.localToGlobal(
+        button.size.bottomRight(Offset.zero) + Offset.zero,
+        ancestor: overlay,
+      ),
+    ),
+    Offset.zero & overlay.size,
+  );
+
+  return showMenu<T>(
+    context: context,
+    position: position,
+    items: items
+        .map((e) => PopupMenuItem<T>(
+              value: e.value,
+              child: e.title,
+            ))
+        .toList(),
   );
 }

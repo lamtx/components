@@ -3,44 +3,46 @@ import 'package:flutter/material.dart';
 import '../../../components.dart';
 import '../template_messages.dart';
 
-enum ButtonType { positive, negative, neutral }
-enum ButtonStyle { normal, cancellation, destructive }
+enum DialogButtonType { positive, negative, neutral }
+enum DialogButtonStyle { normal, cancellation, destructive }
 
 class ActionButton {
   const ActionButton({
     required this.text,
     required this.type,
-    this.style = ButtonStyle.normal,
+    this.style = DialogButtonStyle.normal,
   });
 
-  ActionButton.positive(String text, {ButtonStyle style = ButtonStyle.normal})
+  ActionButton.positive(String text,
+      {DialogButtonStyle style = DialogButtonStyle.normal})
       : this(
           text: (_) => text,
-          type: ButtonType.positive,
+          type: DialogButtonType.positive,
           style: style,
         );
 
   ActionButton.negative(String text,
-      {ButtonStyle style = ButtonStyle.cancellation})
+      {DialogButtonStyle style = DialogButtonStyle.cancellation})
       : this(
           text: (_) => text,
-          type: ButtonType.negative,
+          type: DialogButtonType.negative,
           style: style,
         );
 
-  ActionButton.neutral(String text, {ButtonStyle style = ButtonStyle.normal})
+  ActionButton.neutral(String text,
+      {DialogButtonStyle style = DialogButtonStyle.normal})
       : this(
           text: (_) => text,
-          type: ButtonType.neutral,
+          type: DialogButtonType.neutral,
           style: style,
         );
 
   final String Function(BuildContext) text;
-  final ButtonType type;
-  final ButtonStyle style;
+  final DialogButtonType type;
+  final DialogButtonStyle style;
 
   static const ActionButton ok = ActionButton(
-    type: ButtonType.positive,
+    type: DialogButtonType.positive,
     text: _okText,
   );
 
@@ -71,8 +73,8 @@ Future<ActionButton?> showMessage(
           onPressed: () {
             Navigator.of(context).pop(e);
           },
-          isDefaultAction: e.style == ButtonStyle.cancellation,
-          isDestructiveAction: e.style == ButtonStyle.destructive,
+          isDefaultAction: e.style == DialogButtonStyle.cancellation,
+          isDestructiveAction: e.style == DialogButtonStyle.destructive,
           child: Text(e.text(context)),
         );
       }).toList(),
@@ -98,9 +100,11 @@ Future<bool> askMessage(
           negativeAction ?? TemplateMessages.of(context).cancel),
       ActionButton.positive(
         action ?? TemplateMessages.of(context).yes,
-        style: isDeletion ? ButtonStyle.destructive : ButtonStyle.normal,
+        style: isDeletion
+            ? DialogButtonStyle.destructive
+            : DialogButtonStyle.normal,
       )
     ],
   );
-  return val?.type == ButtonType.positive;
+  return val?.type == DialogButtonType.positive;
 }
