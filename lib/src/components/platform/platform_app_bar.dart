@@ -73,7 +73,7 @@ class _CupertinoNavigationBar extends CupertinoNavigationBar
           previousPageTitle: previousPageTitle,
           trailing: trailing,
           backgroundColor: backgroundColor,
-          border: null,
+          border: const Border(), // TODO: set it back to null
           brightness: brightness,
           actionsForegroundColor: actionsForegroundColor,
           automaticallyImplyMiddle: false,

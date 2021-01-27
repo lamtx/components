@@ -23,6 +23,7 @@ class PlatformFilledTextField extends StatelessWidget {
     this.minLines,
     this.enabled,
     this.isDense = false,
+    this.autocorrect = true,
   }) : super(key: key);
 
   @required
@@ -41,6 +42,7 @@ class PlatformFilledTextField extends StatelessWidget {
   final int? minLines;
   final bool? enabled;
   final bool isDense;
+  final bool autocorrect;
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +69,8 @@ class PlatformFilledTextField extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(16)),
           border: const Border(),
         ),
+        autocorrect:
+            autocorrect && keyboardType != TextInputType.visiblePassword,
       );
     } else {
       const border = OutlineInputBorder(
@@ -91,6 +95,7 @@ class PlatformFilledTextField extends StatelessWidget {
         maxLines: 3,
         minLines: 1,
         enabled: enabled,
+        autocorrect: autocorrect,
       );
     }
   }

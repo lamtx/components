@@ -156,6 +156,7 @@ Widget PlatformTextField({
   int? minLines,
   bool? enabled,
   TextInputAction? textInputAction,
+  bool autocorrect = true,
 }) {
   if (Platform.isIOS) {
     final textField = CupertinoTextField(
@@ -175,6 +176,9 @@ Widget PlatformTextField({
       enabled: enabled,
       clearButtonMode: OverlayVisibilityMode.editing,
       textInputAction: textInputAction,
+      suffix: decoration?.suffixIcon,
+      prefix: decoration?.prefixIcon,
+      autocorrect: autocorrect && keyboardType != TextInputType.visiblePassword,
     );
     if (decoration != null) {
       final labelText = decoration.labelText;
@@ -217,6 +221,7 @@ Widget PlatformTextField({
       minLines: minLines,
       enabled: enabled,
       textInputAction: textInputAction,
+      autocorrect: autocorrect,
     );
   }
 }

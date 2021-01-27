@@ -9,7 +9,7 @@ import '../styled_texts.dart';
 class PlatformUnderlineTextField extends StatelessWidget {
   const PlatformUnderlineTextField({
     Key? key,
-    this.controller,
+    required this.controller,
     this.hintText,
     this.labelText,
     this.helperText,
@@ -31,9 +31,9 @@ class PlatformUnderlineTextField extends StatelessWidget {
     this.contentPadding = itemSpacingVertical,
     this.textInputAction,
     this.readOnly = false,
+    this.autocorrect = true,
   }) : super(key: key);
 
-  @required
   final TextEditingController? controller;
   final String? hintText;
   final String? labelText;
@@ -56,6 +56,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
   final EdgeInsets contentPadding;
   final TextInputAction? textInputAction;
   final bool readOnly;
+  final bool autocorrect;
 
   @override
   Widget build(BuildContext context) {
@@ -98,6 +99,8 @@ class PlatformUnderlineTextField extends StatelessWidget {
         textInputAction: textInputAction,
         suffix: suffixIcon,
         readOnly: readOnly,
+        autocorrect:
+            autocorrect && keyboardType != TextInputType.visiblePassword,
       );
       if (labelText != null || helperText != null) {
         return Column(
@@ -147,6 +150,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
         enabled: enabled,
         textInputAction: textInputAction,
         readOnly: readOnly,
+        autocorrect: autocorrect,
       );
     }
   }
