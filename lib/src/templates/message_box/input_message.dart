@@ -13,6 +13,7 @@ Future<String?> inputMessage(
   String? defaultValue,
   TextInputType keyboardType = TextInputType.text,
   TextCapitalization textCapitalization = TextCapitalization.words,
+  List<Widget> actions = const <Widget>[],
 }) {
   final controller = TextEditingController(text: defaultValue);
 
@@ -42,6 +43,7 @@ Future<String?> inputMessage(
           ),
         ),
         actions: [
+          ...actions,
           if (Platform.isIOS)
             DialogButton(
               onPressed: () {

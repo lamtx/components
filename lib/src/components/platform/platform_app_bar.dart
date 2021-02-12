@@ -13,7 +13,6 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
     List<Widget>? actions,
     Color? backgroundColor,
     Brightness? brightness,
-    Color? actionsForegroundColor,
     bool automaticallyImplyLeading = true,
     Widget? leading,
   }) {
@@ -36,7 +35,6 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
         trailing: trailing,
         backgroundColor: backgroundColor,
         brightness: brightness,
-        actionsForegroundColor: actionsForegroundColor,
         automaticallyImplyLeading: automaticallyImplyLeading,
         leading: leading,
       );
@@ -47,7 +45,6 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
         actions: actions,
         backgroundColor: backgroundColor,
         brightness: brightness,
-        actionsForegroundColor: actionsForegroundColor,
         automaticallyImplyLeading: automaticallyImplyLeading,
         leading: leading,
       );
@@ -64,7 +61,6 @@ class _CupertinoNavigationBar extends CupertinoNavigationBar
     Widget? trailing,
     Color? backgroundColor,
     Brightness? brightness,
-    Color? actionsForegroundColor,
     bool automaticallyImplyLeading = true,
     Widget? leading,
   }) : super(
@@ -73,9 +69,8 @@ class _CupertinoNavigationBar extends CupertinoNavigationBar
           previousPageTitle: previousPageTitle,
           trailing: trailing,
           backgroundColor: backgroundColor,
-          border: const Border(), // TODO: set it back to null
+          border: null,
           brightness: brightness,
-          actionsForegroundColor: actionsForegroundColor,
           automaticallyImplyMiddle: false,
           automaticallyImplyLeading: automaticallyImplyLeading,
           leading: leading,
@@ -98,7 +93,6 @@ class _AppBar extends AppBar implements PlatformAppBar {
     List<Widget>? actions,
     Color? backgroundColor,
     Brightness? brightness,
-    Color? actionsForegroundColor,
     bool automaticallyImplyLeading = true,
     Widget? leading,
   }) : super(
@@ -108,16 +102,6 @@ class _AppBar extends AppBar implements PlatformAppBar {
           actions: actions,
           backgroundColor: backgroundColor,
           brightness: brightness,
-          actionsIconTheme: actionsForegroundColor == null
-              ? null
-              : IconThemeData(
-                  color: actionsForegroundColor,
-                ),
-          iconTheme: actionsForegroundColor == null
-              ? null
-              : IconThemeData(
-                  color: actionsForegroundColor,
-                ),
           titleSpacing: activityHorizontalMargin.left,
           automaticallyImplyLeading: automaticallyImplyLeading,
           leading: leading,

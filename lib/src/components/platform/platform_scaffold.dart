@@ -9,17 +9,20 @@ class PlatformScaffold extends StatelessWidget {
     required this.body,
     this.appBar,
     this.extendBodyBehindAppBar = false,
+    this.resizeToAvoidBottomInset = true,
   }) : super(key: key);
 
   final Widget body;
   final ObstructingPreferredSizeWidget? appBar;
   final bool extendBodyBehindAppBar;
+  final bool resizeToAvoidBottomInset;
 
   @override
   Widget build(BuildContext context) {
     if (Platform.isIOS) {
       return CupertinoPageScaffold(
         navigationBar: appBar,
+        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
         child: body,
       );
     } else {
@@ -27,6 +30,7 @@ class PlatformScaffold extends StatelessWidget {
         body: body,
         appBar: appBar,
         extendBodyBehindAppBar: extendBodyBehindAppBar,
+        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       );
     }
   }

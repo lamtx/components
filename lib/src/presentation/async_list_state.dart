@@ -1,3 +1,4 @@
+import 'package:ext/ext.dart';
 import 'package:flutter/foundation.dart';
 
 import 'list_state.dart';
@@ -24,6 +25,7 @@ abstract class AsyncListState<T extends Object> extends ListState<T> {
       notifyListeners();
       exception = null;
     } on Exception catch (e) {
+      assert(log("AsyncList", "async fetch failed", e));
       exception = e;
     } finally {
       isLoading = false;

@@ -9,6 +9,7 @@ export 'src/components/fixed_height_progress_indicator.dart';
 export 'src/components/fixed_item_extent_grid_view.dart';
 export 'src/components/list_item.dart';
 export 'src/components/menu_button.dart';
+export 'src/components/no_colorized_image_icon.dart';
 export 'src/components/platform.dart';
 export 'src/components/radio_item.dart';
 export 'src/components/styled_texts.dart';
