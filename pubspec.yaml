@@ -11,6 +11,7 @@ dependencies:
     git: https://github.com/lamtx/ext.git
   flutter:
     sdk: flutter
+  meta:
 dev_dependencies:
   flutter_test:
     sdk: flutter
