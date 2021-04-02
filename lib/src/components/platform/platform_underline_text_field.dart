@@ -60,8 +60,9 @@ class PlatformUnderlineTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // TODO: check color null
     final color =
-        Theme.of(context).inputDecorationTheme.enabledBorder!.borderSide.color;
+        Theme.of(context).inputDecorationTheme.enabledBorder?.borderSide.color;
 
     if (Platform.isIOS) {
       final textField = CupertinoTextField(
@@ -83,13 +84,15 @@ class PlatformUnderlineTextField extends StatelessWidget {
             ? OverlayVisibilityMode.editing
             : OverlayVisibilityMode.never,
         padding: contentPadding,
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(
-              color: color,
-            ),
-          ),
-        ),
+        decoration: color == null
+            ? null
+            : BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: color,
+                  ),
+                ),
+              ),
         prefix: prefixIcon == null
             ? null
             : Padding(
@@ -125,20 +128,22 @@ class PlatformUnderlineTextField extends StatelessWidget {
         controller: controller,
         keyboardType: keyboardType,
         textCapitalization: textCapitalization,
-        decoration: InputDecoration(
-          border: const UnderlineInputBorder(),
-          enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
-              color: color,
-            ),
-          ),
-          contentPadding: textSpacingVertical,
-          hintText: hintText,
-          helperText: helperText,
-          labelText: labelText,
-          prefixIcon: prefixIcon,
-          suffixIcon: suffixIcon,
-        ),
+        decoration: color == null
+            ? const InputDecoration()
+            : InputDecoration(
+                border: const UnderlineInputBorder(),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: color,
+                  ),
+                ),
+                contentPadding: textSpacingVertical,
+                hintText: hintText,
+                helperText: helperText,
+                labelText: labelText,
+                prefixIcon: prefixIcon,
+                suffixIcon: suffixIcon,
+              ),
         autofocus: autofocus,
         textAlignVertical: textAlignVertical,
         onSubmitted: onSubmitted,

@@ -5,6 +5,7 @@ import "package:flutter/material.dart";
 /// Material design specs (released 2018)
 /// See <a href="https://api.flutter.dev/flutter/material/TextTheme-class.html">more</a>
 
+@Deprecated("Use default Text widget")
 class Body extends StatelessWidget {
   const Body(
     this.text, {
@@ -166,6 +167,7 @@ class Headline6 extends StatelessWidget {
   }
 }
 
+@Deprecated("Not work well on iOS")
 class Headline5 extends StatelessWidget {
   const Headline5(this.text, {this.maxLines, this.style});
 
@@ -183,6 +185,7 @@ class Headline5 extends StatelessWidget {
   }
 }
 
+@Deprecated("Not work well on iOS")
 class Headline4 extends StatelessWidget {
   const Headline4(this.text, {this.style, this.maxLines});
 
@@ -200,6 +203,7 @@ class Headline4 extends StatelessWidget {
   }
 }
 
+@Deprecated("Not work well on iOS")
 class Headline3 extends StatelessWidget {
   const Headline3(this.text);
 
@@ -214,6 +218,7 @@ class Headline3 extends StatelessWidget {
   }
 }
 
+@Deprecated("Not work well on iOS")
 class Headline2 extends StatelessWidget {
   const Headline2(this.text);
 
@@ -228,6 +233,7 @@ class Headline2 extends StatelessWidget {
   }
 }
 
+@Deprecated("Not work well on iOS")
 class Headline1 extends StatelessWidget {
   const Headline1(this.text);
 

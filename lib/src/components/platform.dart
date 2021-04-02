@@ -88,8 +88,7 @@ Widget Button({
       child: child,
     );
   } else {
-    return FlatButton(
-      padding: padding,
+    return TextButton(
       onPressed: onPressed,
       child: child,
     );
@@ -110,7 +109,7 @@ Widget DialogButton({
       child: child,
     );
   } else {
-    return FlatButton(
+    return TextButton(
       onPressed: onPressed,
       child: child,
     );
