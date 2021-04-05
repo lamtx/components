@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../dimens.dart';
+import '../misc.dart';
 
 class PlatformFilledTextField extends StatelessWidget {
   const PlatformFilledTextField({
@@ -46,7 +45,7 @@ class PlatformFilledTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
+    if (isCupertino) {
       return CupertinoTextField(
         placeholder: hintText,
         controller: controller,

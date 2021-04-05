@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../dimens.dart';
+import '../misc.dart';
 import '../styled_texts.dart';
 
 class PlatformUnderlineTextField extends StatelessWidget {
@@ -64,7 +63,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
     final color =
         Theme.of(context).inputDecorationTheme.enabledBorder?.borderSide.color;
 
-    if (Platform.isIOS) {
+    if (isCupertino) {
       final textField = CupertinoTextField(
         placeholder: hintText ?? labelText,
         controller: controller,
@@ -137,7 +136,7 @@ class PlatformUnderlineTextField extends StatelessWidget {
                     color: color,
                   ),
                 ),
-                contentPadding: textSpacingVertical,
+                contentPadding: itemSpacingVertical,
                 hintText: hintText,
                 helperText: helperText,
                 labelText: labelText,

@@ -1,10 +1,9 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'cupertino_highlight.dart';
 import 'cupertino_radio.dart';
+import 'misc.dart';
 import 'styled_texts.dart';
 
 export 'platform/platform_app.dart';
@@ -23,7 +22,7 @@ Widget PlatformAlertDialog({
   List<Widget> actions = const <Widget>[],
   ShapeBorder? shape,
 }) {
-  if (Platform.isIOS) {
+  if (isCupertino) {
     return CupertinoAlertDialog(
       title: title,
       content: content,
@@ -44,7 +43,7 @@ Widget PlatformInkWell({
   VoidCallback? onTap,
   VoidCallback? onLongPress,
 }) {
-  if (Platform.isIOS) {
+  if (isCupertino) {
     return CupertinoHighlight(
       onTap: onTap,
       onLongPress: onLongPress,
@@ -63,7 +62,7 @@ Widget FilledButton({
   VoidCallback? onPressed,
   required Widget child,
 }) {
-  if (Platform.isIOS) {
+  if (isCupertino) {
     return CupertinoButton.filled(
       onPressed: onPressed,
       child: child,
@@ -81,7 +80,7 @@ Widget Button({
   required Widget child,
   EdgeInsets? padding,
 }) {
-  if (Platform.isIOS) {
+  if (isCupertino) {
     return CupertinoButton(
       padding: padding,
       onPressed: onPressed,
@@ -101,7 +100,7 @@ Widget DialogButton({
   bool isDefaultAction = false,
   bool isDestructiveAction = false,
 }) {
-  if (Platform.isIOS) {
+  if (isCupertino) {
     return CupertinoDialogAction(
       onPressed: onPressed,
       isDefaultAction: isDefaultAction,
@@ -122,7 +121,7 @@ Future<T?> showPlatformDialog<T>({
   bool useRootNavigator = true,
   bool? barrierDismissible,
 }) {
-  if (Platform.isIOS) {
+  if (isCupertino) {
     return showCupertinoDialog(
       context: context,
       builder: builder,
@@ -157,7 +156,7 @@ Widget PlatformTextField({
   TextInputAction? textInputAction,
   bool autocorrect = true,
 }) {
-  if (Platform.isIOS) {
+  if (isCupertino) {
     final textField = CupertinoTextField(
       placeholder: decoration?.hintText,
       controller: controller,
@@ -231,7 +230,7 @@ PageRoute<T> PlatformPageRoute<T>({
   bool fullscreenDialog = false,
   RouteSettings? settings,
 }) {
-  if (Platform.isIOS) {
+  if (isCupertino) {
     return CupertinoPageRoute(
       builder: builder,
       fullscreenDialog: fullscreenDialog,
@@ -252,7 +251,7 @@ Widget PlatformRadio<T>({
   required T? groupValue,
   required ValueChanged<T?> onChanged,
 }) {
-  if (Platform.isIOS) {
+  if (isCupertino) {
     return CupertinoRadio<T>(
       value: value,
       groupValue: groupValue,
@@ -270,7 +269,7 @@ Widget PlatformSwitch({
   required bool value,
   required ValueChanged<bool>? onChanged,
 }) {
-  if (Platform.isIOS) {
+  if (isCupertino) {
     return CupertinoSwitch(
       value: value,
       onChanged: onChanged,
@@ -287,7 +286,7 @@ Widget PlatformCheckbox({
   required bool value,
   required ValueChanged<bool?> onChanged,
 }) {
-  if (Platform.isIOS) {
+  if (isCupertino) {
     return CupertinoRadio<bool>(
       value: value,
       groupValue: true,
@@ -312,7 +311,7 @@ Widget PlatformSlider({
 }) {
   assert(max >= min);
   assert(min <= value && value <= max);
-  if (Platform.isIOS) {
+  if (isCupertino) {
     final invalid = max != min;
     final child = CupertinoSlider(
       max: invalid ? max : 1,
@@ -344,7 +343,7 @@ Widget PlatformSlider({
 }
 
 Widget PlatformActivityIndicator() {
-  if (Platform.isIOS) {
+  if (isCupertino) {
     return const CupertinoActivityIndicator();
   } else {
     return const SizedBox(
@@ -360,7 +359,7 @@ Widget PlatformActivityIndicator() {
 class PlatformCloseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
+    if (isCupertino) {
       return CupertinoButton(
         padding: EdgeInsets.zero,
         onPressed: () {

@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../dimens.dart';
+import '../misc.dart';
 
 abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
   factory PlatformAppBar({
@@ -16,7 +15,7 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
     bool automaticallyImplyLeading = true,
     Widget? leading,
   }) {
-    if (Platform.isIOS) {
+    if (isCupertino) {
       Widget? trailing;
       if (actions == null) {
         trailing = null;

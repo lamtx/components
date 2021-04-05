@@ -57,7 +57,7 @@ class TitleMenuItem<T> implements MenuItemEntry<T> {
     return Center(
       child: Padding(
         padding: activityHorizontalMargin + itemSpacingVertical,
-        child: Body1(_text),
+        child: Text(_text),
       ),
     );
   }
@@ -122,7 +122,7 @@ Future<T?> showBottomMenu<T>(
               Center(
                 child: Padding(
                   padding: activityHorizontalMargin + itemSpacingVertical,
-                  child: Body1(title),
+                  child: Text(title),
                 ),
               ),
             for (final item in items)

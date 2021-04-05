@@ -1,7 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../misc.dart';
 
 class PlatformTabScaffold extends StatelessWidget {
   const PlatformTabScaffold({
@@ -17,7 +17,7 @@ class PlatformTabScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
+    if (isCupertino) {
       return CupertinoTabScaffold(
         tabBar: CupertinoTabBar(
           items: tabs,

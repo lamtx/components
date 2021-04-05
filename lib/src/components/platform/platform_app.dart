@@ -1,7 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../misc.dart';
 
 class PlatformApp extends StatelessWidget {
   const PlatformApp({
@@ -29,7 +29,7 @@ class PlatformApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
+    if (isCupertino) {
       final brightness = WidgetsBinding.instance!.window.platformBrightness;
       final isDark = themeMode == ThemeMode.dark ||
           (themeMode == ThemeMode.system && brightness == Brightness.dark);

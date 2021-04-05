@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 
+import 'misc.dart';
+
 /// Make Flutter text style (released 2014) is compatible with
 /// Material design specs (released 2018)
 /// See <a href="https://api.flutter.dev/flutter/material/TextTheme-class.html">more</a>
@@ -33,6 +35,7 @@ class Body extends StatelessWidget {
   }
 }
 
+@Deprecated("Not work well on iOS")
 class Body1 extends StatelessWidget {
   const Body1(
     this.text, {
@@ -79,14 +82,29 @@ class Subtitle1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.subtitle1!.merge(style),
-      maxLines: maxLines,
-      textAlign: textAlign,
-      overflow: overflow,
-      softWrap: softWrap,
-    );
+    if (isCupertino) {
+      return Text(
+        text,
+        style: CupertinoTheme.of(context)
+            .textTheme
+            .textStyle
+            .copyWith(fontSize: 18)
+            .merge(style),
+        maxLines: maxLines,
+        textAlign: textAlign,
+        overflow: overflow,
+        softWrap: softWrap,
+      );
+    } else {
+      return Text(
+        text,
+        style: Theme.of(context).textTheme.subtitle1!.merge(style),
+        maxLines: maxLines,
+        textAlign: textAlign,
+        overflow: overflow,
+        softWrap: softWrap,
+      );
+    }
   }
 }
 
@@ -126,6 +144,18 @@ class Caption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (isCupertino) {
+      return Text(
+        text,
+        style: TextStyle(
+          color: CupertinoColors.secondaryLabel.resolveFrom(context),
+          fontSize: 13,
+        ).merge(style),
+        maxLines: maxLines,
+        overflow: overflow,
+        textAlign: textAlign,
+      );
+    }
     return Text(
       text,
       style: Theme.of(context).textTheme.caption!.merge(style),
@@ -144,13 +174,24 @@ class Overline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text.toUpperCase(),
-      style: Theme.of(context).textTheme.overline!.merge(style),
-    );
+    if (isCupertino) {
+      return Text(
+        text.toUpperCase(),
+        style: TextStyle(
+          color: CupertinoColors.secondaryLabel.resolveFrom(context),
+          fontSize: 13,
+        ),
+      );
+    } else {
+      return Text(
+        text.toUpperCase(),
+        style: Theme.of(context).textTheme.overline!.merge(style),
+      );
+    }
   }
 }
 
+@Deprecated("Not work well on iOS")
 class Headline6 extends StatelessWidget {
   const Headline6(this.text, {this.maxLines});
 

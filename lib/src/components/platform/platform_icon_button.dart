@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../cupertino_highlight.dart';
+import '../misc.dart';
 
 class PlatformIconButton extends StatelessWidget {
   const PlatformIconButton({
@@ -23,7 +22,8 @@ class PlatformIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
+    // TODO: consider not to use cupertino
+    if (isCupertino) {
       return CupertinoHighlight(
         onTap: onPressed,
         tooltip: tooltip,
@@ -36,10 +36,7 @@ class PlatformIconButton extends StatelessWidget {
               width: iconSize,
               child: Center(
                 child: IconTheme.merge(
-                  data: IconThemeData(
-                    size: iconSize,
-                    color: color
-                  ),
+                  data: IconThemeData(size: iconSize, color: color),
                   child: icon,
                 ),
               ),
@@ -48,13 +45,32 @@ class PlatformIconButton extends StatelessWidget {
         ),
       );
     } else {
-      return IconButton(
-        icon: icon,
+      final button = TextButton(
         onPressed: onPressed,
-        iconSize: iconSize,
-        color: color,
-        tooltip: tooltip,
+        style: ButtonStyle(
+          minimumSize: MaterialStateProperty.all(const Size.square(48)),
+          shape: MaterialStateProperty.all(const CircleBorder()),
+        ),
+        child: SizedBox(
+          height: iconSize,
+          width: iconSize,
+          child: Center(
+            child: IconTheme.merge(
+              data: IconThemeData(
+                size: iconSize,
+                color: color ?? Theme.of(context).colorScheme.onSurface,
+              ),
+              child: icon,
+            ),
+          ),
+        ),
       );
+      return tooltip == null
+          ? button
+          : Tooltip(
+              message: tooltip!,
+              child: button,
+            );
     }
   }
 }
