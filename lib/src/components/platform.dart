@@ -10,6 +10,7 @@ export 'platform/platform_app.dart';
 export 'platform/platform_app_bar.dart';
 export 'platform/platform_expand_icon.dart';
 export 'platform/platform_filled_text_field.dart';
+export 'platform/platform_form_section.dart';
 export 'platform/platform_icon_button.dart';
 export 'platform/platform_scaffold.dart';
 export 'platform/platform_tab_scaffold.dart';

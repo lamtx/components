@@ -1,5 +1,6 @@
 export 'src/components/animated_visibility.dart';
 export 'src/components/checkbox_item.dart';
+export 'src/components/clear_input_button.dart';
 export 'src/components/cupertino_highlight.dart';
 export 'src/components/cupertino_radio.dart';
 export 'src/components/expander.dart';
