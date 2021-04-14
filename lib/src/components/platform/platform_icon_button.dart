@@ -10,6 +10,7 @@ class PlatformIconButton extends StatelessWidget {
     this.color,
     this.backgroundColor,
     this.tooltip,
+    this.minimumSize = 48,
   }) : super(key: key);
 
   final Widget icon;
@@ -18,13 +19,14 @@ class PlatformIconButton extends StatelessWidget {
   final Color? color;
   final Color? backgroundColor;
   final String? tooltip;
+  final double minimumSize;
 
   @override
   Widget build(BuildContext context) {
     final button = TextButton(
       onPressed: onPressed,
       style: ButtonStyle(
-        minimumSize: MaterialStateProperty.all(const Size.square(48)),
+        minimumSize: MaterialStateProperty.all(Size.square(minimumSize)),
         shape: MaterialStateProperty.all(const CircleBorder()),
         backgroundColor: backgroundColor == null
             ? null

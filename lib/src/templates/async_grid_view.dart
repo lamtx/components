@@ -17,6 +17,7 @@ class AsyncGridView extends StatelessWidget {
     this.isLoading = false,
     this.padding,
     this.onLoadMore,
+    this.physics,
   }) : super(key: key);
 
   final bool isLoading;
@@ -28,6 +29,7 @@ class AsyncGridView extends StatelessWidget {
   final double itemExtent;
   final int columnCount;
   final VoidCallback? onLoadMore;
+  final ScrollPhysics? physics;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,7 @@ class AsyncGridView extends StatelessWidget {
     final gridView = GridView.builder(
       padding: padding,
       itemCount: itemCount,
+      physics: physics,
       itemBuilder: itemBuilder,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: columnCount,

@@ -59,6 +59,7 @@ Widget PlatformInkWell({
   }
 }
 
+@Deprecated("Do not use CupertinoButton, it's impossible to customize.")
 Widget FilledButton({
   VoidCallback? onPressed,
   required Widget child,
@@ -76,6 +77,7 @@ Widget FilledButton({
   }
 }
 
+@Deprecated("Do not use CupertinoButton, it's impossible to customize.")
 Widget Button({
   required VoidCallback? onPressed,
   required Widget child,

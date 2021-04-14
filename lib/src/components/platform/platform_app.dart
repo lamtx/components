@@ -15,6 +15,7 @@ class PlatformApp extends StatelessWidget {
     this.navigatorKey,
     this.locale,
     this.supportedLocales = const <Locale>[Locale('en', 'US')],
+    this.onGenerateRoute,
   }) : super(key: key);
 
   final bool debugShowCheckedModeBanner;
@@ -26,6 +27,7 @@ class PlatformApp extends StatelessWidget {
   final Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates;
   final Locale? locale;
   final Iterable<Locale> supportedLocales;
+  final RouteFactory? onGenerateRoute;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,7 @@ class PlatformApp extends StatelessWidget {
           theme: MaterialBasedCupertinoThemeData(
             materialTheme: isDark ? darkTheme : theme,
           ),
+          onGenerateRoute: onGenerateRoute,
         ),
       );
     } else {
@@ -59,6 +62,7 @@ class PlatformApp extends StatelessWidget {
         darkTheme: darkTheme,
         supportedLocales: supportedLocales,
         locale: locale,
+        onGenerateRoute: onGenerateRoute,
       );
     }
   }
