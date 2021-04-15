@@ -178,9 +178,9 @@ class Overline extends StatelessWidget {
       return Text(
         text.toUpperCase(),
         style: TextStyle(
-          color: CupertinoColors.secondaryLabel.resolveFrom(context),
+         color: CupertinoColors.secondaryLabel.resolveFrom(context),
           fontSize: 13,
-        ),
+        ).merge(style),
       );
     } else {
       return Text(

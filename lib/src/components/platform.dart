@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'cupertino_highlight.dart';
 import 'cupertino_radio.dart';
 import 'misc.dart';
+import 'platform/tab_indexed_stack.dart';
 import 'styled_texts.dart';
 
 export 'platform/platform_app.dart';
@@ -15,6 +16,8 @@ export 'platform/platform_icon_button.dart';
 export 'platform/platform_scaffold.dart';
 export 'platform/platform_tab_scaffold.dart';
 export 'platform/platform_underline_text_field.dart';
+export 'platform/tab_indexed_stack.dart';
+export 'platform/tab_segmented_control.dart';
 // ignore_for_file: non_constant_identifier_names
 
 Widget PlatformAlertDialog({
@@ -374,4 +377,10 @@ class PlatformCloseButton extends StatelessWidget {
       return const CloseButton();
     }
   }
+}
+
+Widget PlatformTabBarView({required List<Widget> children}) {
+  return isCupertino
+      ? TabIndexedStack(children: children)
+      : TabBarView(children: children);
 }
