@@ -17,15 +17,17 @@ abstract class AsyncListState<T extends Object> extends ListState<T> {
       _pendingFetch = true;
       return;
     }
-    clearAllItems();
     isLoading = true;
     _pendingFetch = false;
     try {
-      addItems(await onFetch());
+      final newItems = await onFetch();
+      clearAllItems();
+      addItems(newItems);
       notifyListeners();
       exception = null;
     } on Exception catch (e) {
       assert(log("AsyncList", "async fetch failed", e));
+      clearAllItems();
       exception = e;
     } finally {
       isLoading = false;

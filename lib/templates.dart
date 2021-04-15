@@ -1,6 +1,7 @@
 export 'src/templates/animated_async_list_view.dart';
 export 'src/templates/async_grid_view.dart';
 export 'src/templates/async_list_view.dart';
+export 'src/templates/async_silver_grid_view.dart';
 export 'src/templates/bottom_bar.dart';
 export 'src/templates/broken_image.dart';
 export 'src/templates/empty_info.dart';
