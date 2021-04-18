@@ -91,6 +91,7 @@ class PlatformFilledTextField extends StatelessWidget {
       );
       return TextField(
         controller: controller,
+        focusNode: focusNode,
         decoration: InputDecoration(
           isDense: isDense,
           contentPadding:
