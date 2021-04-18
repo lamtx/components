@@ -23,6 +23,8 @@ class PlatformFilledTextField extends StatelessWidget {
     this.enabled,
     this.isDense = false,
     this.autocorrect = true,
+    this.prefixIcon,
+    this.suffixIcon,
   }) : super(key: key);
 
   @required
@@ -42,6 +44,8 @@ class PlatformFilledTextField extends StatelessWidget {
   final bool? enabled;
   final bool isDense;
   final bool autocorrect;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +65,9 @@ class PlatformFilledTextField extends StatelessWidget {
         maxLines: maxLines,
         minLines: minLines,
         enabled: enabled,
-        clearButtonMode: OverlayVisibilityMode.editing,
+        clearButtonMode: suffixIcon == null
+            ? OverlayVisibilityMode.editing
+            : OverlayVisibilityMode.never,
         padding: itemSpacing,
         decoration: BoxDecoration(
           color: Theme.of(context).canvasColor,
@@ -70,6 +76,13 @@ class PlatformFilledTextField extends StatelessWidget {
         ),
         autocorrect:
             autocorrect && keyboardType != TextInputType.visiblePassword,
+        prefix: prefixIcon == null
+            ? null
+            : Padding(
+                padding: const EdgeInsets.all(8),
+                child: prefixIcon,
+              ),
+        suffix: suffixIcon,
       );
     } else {
       const border = OutlineInputBorder(
@@ -88,6 +101,8 @@ class PlatformFilledTextField extends StatelessWidget {
           hintText: hintText,
           fillColor: Theme.of(context).canvasColor,
           hintMaxLines: 1,
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
         ),
         keyboardType: TextInputType.multiline,
         textCapitalization: TextCapitalization.sentences,
