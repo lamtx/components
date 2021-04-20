@@ -144,18 +144,6 @@ class Caption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (isCupertino) {
-      return Text(
-        text,
-        style: TextStyle(
-          color: CupertinoColors.secondaryLabel.resolveFrom(context),
-          fontSize: 13,
-        ).merge(style),
-        maxLines: maxLines,
-        overflow: overflow,
-        textAlign: textAlign,
-      );
-    }
     return Text(
       text,
       style: Theme.of(context).textTheme.caption!.merge(style),
@@ -174,20 +162,10 @@ class Overline extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (isCupertino) {
-      return Text(
-        text.toUpperCase(),
-        style: TextStyle(
-         color: CupertinoColors.secondaryLabel.resolveFrom(context),
-          fontSize: 13,
-        ).merge(style),
-      );
-    } else {
-      return Text(
-        text.toUpperCase(),
-        style: Theme.of(context).textTheme.overline!.merge(style),
-      );
-    }
+    return Text(
+      text.toUpperCase(),
+      style: Theme.of(context).textTheme.overline!.merge(style),
+    );
   }
 }
 
