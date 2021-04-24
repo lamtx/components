@@ -91,6 +91,7 @@ class PlatformFilledTextField extends StatelessWidget {
       );
       return TextField(
         controller: controller,
+        autofocus: autofocus,
         focusNode: focusNode,
         decoration: InputDecoration(
           isDense: isDense,
@@ -107,8 +108,8 @@ class PlatformFilledTextField extends StatelessWidget {
         ),
         keyboardType: TextInputType.multiline,
         textCapitalization: TextCapitalization.sentences,
-        maxLines: 3,
-        minLines: 1,
+        maxLines: maxLines,
+        minLines: minLines,
         enabled: enabled,
         autocorrect: autocorrect,
       );
