@@ -15,6 +15,7 @@ class AsyncSliverGridView extends StatelessWidget {
     this.emptyInfo = const EmptyInfo(),
     this.onLoadMore,
     required this.isLoading,
+    this.padding = EdgeInsets.zero,
   }) : super(key: key);
 
   final int itemCount;
@@ -25,6 +26,7 @@ class AsyncSliverGridView extends StatelessWidget {
   final int columnCount;
   final VoidCallback? onLoadMore;
   final bool isLoading;
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
@@ -42,25 +44,29 @@ class AsyncSliverGridView extends StatelessWidget {
   }
 
   Widget _buildList(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final itemWidth = size.width / columnCount;
-    return SliverGrid(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: columnCount,
-        childAspectRatio: itemWidth / itemExtent,
-      ),
-      delegate: SliverChildBuilderDelegate(
-        onLoadMore == null
-            ? itemBuilder
-            : (context, position) {
-                if (position == itemCount - 1) {
-                  WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-                    onLoadMore!.call();
-                  });
-                }
-                return itemBuilder(context, position);
-              },
-        childCount: itemCount,
+    final size =
+        MediaQuery.of(context).size.width - padding.left - padding.right;
+    final itemWidth = size / columnCount;
+    return SliverPadding(
+      padding: padding,
+      sliver: SliverGrid(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: columnCount,
+          childAspectRatio: itemWidth / itemExtent,
+        ),
+        delegate: SliverChildBuilderDelegate(
+          onLoadMore == null
+              ? itemBuilder
+              : (context, position) {
+                  if (position == itemCount - 1) {
+                    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+                      onLoadMore!.call();
+                    });
+                  }
+                  return itemBuilder(context, position);
+                },
+          childCount: itemCount,
+        ),
       ),
     );
   }
