@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../dimens.dart';
-import '../clear_input_button.dart';
 import '../misc.dart';
 
 class PlatformFormSection extends StatelessWidget {
@@ -71,17 +70,15 @@ class PlatformTextFormFieldRow extends StatelessWidget {
     this.textCapitalization = TextCapitalization.none,
     this.textInputAction,
     this.placeholder,
-    this.showClearButton = false,
-  })  : assert(!showClearButton || controller != null,
-            "If showClearButton is true, controller must be provided"),
-        super(key: key);
+    this.suffixIcon,
+  }) : super(key: key);
 
   final TextEditingController? controller;
   final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
   final TextInputAction? textInputAction;
   final String? placeholder;
-  final bool showClearButton;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -104,9 +101,7 @@ class PlatformTextFormFieldRow extends StatelessWidget {
           textInputAction: textInputAction,
           decoration: InputDecoration(
             labelText: placeholder,
-            suffixIcon: showClearButton
-                ? ClearInputButton(controller: controller!)
-                : null,
+            suffixIcon: suffixIcon,
           ),
         ),
       );
