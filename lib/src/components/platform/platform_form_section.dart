@@ -71,9 +71,11 @@ class PlatformTextFormFieldRow extends StatelessWidget {
     this.textInputAction,
     this.placeholder,
     this.suffixIcon,
+    this.focusNode,
   }) : super(key: key);
 
   final TextEditingController? controller;
+  final FocusNode? focusNode;
   final TextInputType? keyboardType;
   final TextCapitalization textCapitalization;
   final TextInputAction? textInputAction;
@@ -85,6 +87,7 @@ class PlatformTextFormFieldRow extends StatelessWidget {
     if (isCupertino) {
       return CupertinoTextFormFieldRow(
         controller: controller,
+        focusNode: focusNode,
         keyboardType: keyboardType,
         textCapitalization: textCapitalization,
         textInputAction: textInputAction,
@@ -96,6 +99,7 @@ class PlatformTextFormFieldRow extends StatelessWidget {
         padding: activityHorizontalMargin + itemSpacingTop,
         child: TextFormField(
           controller: controller,
+          focusNode: focusNode,
           keyboardType: keyboardType,
           textCapitalization: textCapitalization,
           textInputAction: textInputAction,
