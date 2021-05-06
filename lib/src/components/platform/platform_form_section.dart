@@ -85,7 +85,7 @@ class PlatformTextFormFieldRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isCupertino) {
-      return CupertinoTextFormFieldRow(
+      final textField = CupertinoTextFormFieldRow(
         controller: controller,
         focusNode: focusNode,
         keyboardType: keyboardType,
@@ -94,7 +94,17 @@ class PlatformTextFormFieldRow extends StatelessWidget {
         placeholder: placeholder,
         // TODO: where clear button
       );
-    } else {
+      if (suffixIcon == null ) {
+        return textField;
+      } else {
+        return Row(
+          children: [
+            Expanded(child: textField),
+            suffixIcon!,
+          ],
+        );
+      }
+     } else {
       return Padding(
         padding: activityHorizontalMargin + itemSpacingTop,
         child: TextFormField(
