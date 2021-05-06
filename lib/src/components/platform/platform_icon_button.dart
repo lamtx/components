@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import '../misc.dart';
+
 class PlatformIconButton extends StatelessWidget {
   const PlatformIconButton({
     Key? key,
@@ -31,6 +33,9 @@ class PlatformIconButton extends StatelessWidget {
         backgroundColor: backgroundColor == null
             ? null
             : MaterialStateProperty.all(backgroundColor!),
+        tapTargetSize: isCupertino
+            ? MaterialTapTargetSize.shrinkWrap
+            : MaterialTapTargetSize.padded,
       ),
       child: SizedBox(
         height: iconSize,

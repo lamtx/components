@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'misc.dart';
 import 'platform/platform_icon_button.dart';
 
 class ClearInputButton extends StatefulWidget {
@@ -41,6 +42,7 @@ class _ClearInputButtonState extends State<ClearInputButton> {
   Widget build(BuildContext context) {
     if (_inputNotEmpty) {
       return PlatformIconButton(
+        minimumSize: isCupertino ? 32 : 48,
         icon: const Icon(CupertinoIcons.clear_circled_solid),
         onPressed: () => widget.controller.clear(),
       );
