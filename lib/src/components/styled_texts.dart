@@ -1,41 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 
-import 'misc.dart';
-
 /// Make Flutter text style (released 2014) is compatible with
 /// Material design specs (released 2018)
 /// See <a href="https://api.flutter.dev/flutter/material/TextTheme-class.html">more</a>
 
-@Deprecated("Use default Text widget")
-class Body extends StatelessWidget {
-  const Body(
-    this.text, {
-    this.maxLines,
-    this.style,
-    this.textAlign,
-    this.overflow,
-  });
-
-  final String text;
-  final int? maxLines;
-  final TextAlign? textAlign;
-  final TextStyle? style;
-  final TextOverflow? overflow;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.bodyText2!.merge(style),
-      maxLines: maxLines,
-      textAlign: textAlign,
-      overflow: overflow,
-    );
-  }
-}
-
-@Deprecated("Not work well on iOS")
 class Body1 extends StatelessWidget {
   const Body1(
     this.text, {
@@ -82,29 +51,14 @@ class Subtitle1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (isCupertino) {
-      return Text(
-        text,
-        style: CupertinoTheme.of(context)
-            .textTheme
-            .textStyle
-            .copyWith(fontSize: 18)
-            .merge(style),
-        maxLines: maxLines,
-        textAlign: textAlign,
-        overflow: overflow,
-        softWrap: softWrap,
-      );
-    } else {
-      return Text(
-        text,
-        style: Theme.of(context).textTheme.subtitle1!.merge(style),
-        maxLines: maxLines,
-        textAlign: textAlign,
-        overflow: overflow,
-        softWrap: softWrap,
-      );
-    }
+    return Text(
+      text,
+      style: Theme.of(context).textTheme.subtitle1!.merge(style),
+      maxLines: maxLines,
+      textAlign: textAlign,
+      overflow: overflow,
+      softWrap: softWrap,
+    );
   }
 }
 
@@ -169,7 +123,6 @@ class Overline extends StatelessWidget {
   }
 }
 
-@Deprecated("Not work well on iOS")
 class Headline6 extends StatelessWidget {
   const Headline6(this.text, {this.maxLines});
 
@@ -186,7 +139,6 @@ class Headline6 extends StatelessWidget {
   }
 }
 
-@Deprecated("Not work well on iOS")
 class Headline5 extends StatelessWidget {
   const Headline5(this.text, {this.maxLines, this.style});
 
@@ -204,7 +156,6 @@ class Headline5 extends StatelessWidget {
   }
 }
 
-@Deprecated("Not work well on iOS")
 class Headline4 extends StatelessWidget {
   const Headline4(this.text, {this.style, this.maxLines});
 
@@ -222,7 +173,6 @@ class Headline4 extends StatelessWidget {
   }
 }
 
-@Deprecated("Not work well on iOS")
 class Headline3 extends StatelessWidget {
   const Headline3(this.text);
 
@@ -237,7 +187,6 @@ class Headline3 extends StatelessWidget {
   }
 }
 
-@Deprecated("Not work well on iOS")
 class Headline2 extends StatelessWidget {
   const Headline2(this.text);
 
@@ -252,7 +201,6 @@ class Headline2 extends StatelessWidget {
   }
 }
 
-@Deprecated("Not work well on iOS")
 class Headline1 extends StatelessWidget {
   const Headline1(this.text);
 
