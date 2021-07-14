@@ -5,10 +5,15 @@ import 'misc.dart';
 import 'platform/platform_icon_button.dart';
 
 class ClearInputButton extends StatefulWidget {
-  const ClearInputButton({Key? key, required this.controller})
-      : super(key: key);
+  const ClearInputButton({
+    Key? key,
+    required this.controller,
+    this.emptyIcon = const SizedBox.shrink(),
+  }) : super(key: key);
 
   final TextEditingController controller;
+
+  final Widget emptyIcon;
 
   @override
   _ClearInputButtonState createState() => _ClearInputButtonState();
@@ -21,6 +26,7 @@ class _ClearInputButtonState extends State<ClearInputButton> {
   void initState() {
     super.initState();
     widget.controller.addListener(_onChanged);
+    _inputNotEmpty = widget.controller.text.isNotEmpty;
   }
 
   @override
@@ -29,6 +35,7 @@ class _ClearInputButtonState extends State<ClearInputButton> {
     if (!identical(oldWidget.controller, widget.controller)) {
       oldWidget.controller.removeListener(_onChanged);
       widget.controller.addListener(_onChanged);
+      _inputNotEmpty = widget.controller.text.isNotEmpty;
     }
   }
 
@@ -47,7 +54,7 @@ class _ClearInputButtonState extends State<ClearInputButton> {
         onPressed: () => widget.controller.clear(),
       );
     } else {
-      return const SizedBox.shrink();
+      return widget.emptyIcon;
     }
   }
 
