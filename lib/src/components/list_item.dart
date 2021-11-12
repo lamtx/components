@@ -97,7 +97,7 @@ class ListItem extends StatelessWidget {
         child: child,
       ),
     );
-    if (onTap != null) {
+    if (onTap != null || onLongPress != null) {
       return PlatformInkWell(
         onTap: onTap,
         onLongPress: onLongPress,
