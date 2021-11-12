@@ -84,9 +84,7 @@ class ListItem extends StatelessWidget {
         ],
       );
     } else {
-      child = Center(
-        child: center,
-      );
+      child = center;
     }
     final container = ConstrainedBox(
       constraints: BoxConstraints(
