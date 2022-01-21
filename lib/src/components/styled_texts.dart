@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 
 /// Make Flutter text style (released 2014) is compatible with

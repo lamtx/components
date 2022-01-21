@@ -11,7 +11,6 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
     String? previousPageTitle,
     List<Widget>? actions,
     Color? backgroundColor,
-    Brightness? brightness,
     bool automaticallyImplyLeading = true,
     Widget? leading,
   }) {
@@ -33,7 +32,6 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
         previousPageTitle: previousPageTitle,
         trailing: trailing,
         backgroundColor: backgroundColor,
-        brightness: brightness,
         automaticallyImplyLeading: automaticallyImplyLeading,
         leading: leading,
       );
@@ -43,7 +41,6 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
         title: title,
         actions: actions,
         backgroundColor: backgroundColor,
-        brightness: brightness,
         automaticallyImplyLeading: automaticallyImplyLeading,
         leading: leading,
       );
@@ -59,7 +56,6 @@ class _CupertinoNavigationBar extends CupertinoNavigationBar
     String? previousPageTitle,
     Widget? trailing,
     Color? backgroundColor,
-    Brightness? brightness,
     bool automaticallyImplyLeading = true,
     Widget? leading,
   }) : super(
@@ -69,7 +65,6 @@ class _CupertinoNavigationBar extends CupertinoNavigationBar
           trailing: trailing,
           backgroundColor: backgroundColor,
           border: null,
-          brightness: brightness,
           automaticallyImplyMiddle: false,
           automaticallyImplyLeading: automaticallyImplyLeading,
           leading: leading,
@@ -91,7 +86,6 @@ class _AppBar extends AppBar implements PlatformAppBar {
     PreferredSizeWidget? bottom,
     List<Widget>? actions,
     Color? backgroundColor,
-    Brightness? brightness,
     bool automaticallyImplyLeading = true,
     Widget? leading,
   }) : super(
@@ -100,7 +94,6 @@ class _AppBar extends AppBar implements PlatformAppBar {
           bottom: bottom,
           actions: actions,
           backgroundColor: backgroundColor,
-          brightness: brightness,
           titleSpacing: activityHorizontalMargin.left,
           automaticallyImplyLeading: automaticallyImplyLeading,
           leading: leading,

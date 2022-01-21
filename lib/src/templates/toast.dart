@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'dart:collection';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 enum ToastLength { short, long }
@@ -17,24 +15,22 @@ class Toast {
   Toast._();
 
   static Toast? _instance;
-  final _queue = Queue<_ToastEntry>();
+  OverlayEntry? _entry;
   Timer? _timer;
 
-  void _showOverlay(OverlayState overlay) {
-    if (_queue.isEmpty) {
-      return;
-    }
-    final entry = _queue.removeFirst();
-    overlay.insert(entry.entry);
-    _timer = Timer(entry.duration + const Duration(milliseconds: 360), () {
-      _showNextEntry(overlay, entry.entry);
+  void _showOverlay(
+    OverlayState overlay,
+    OverlayEntry entry,
+    Duration duration,
+  ) {
+    _timer?.cancel();
+    _entry?.remove();
+    _entry = entry;
+    overlay.insert(entry);
+    _timer = Timer(duration + const Duration(milliseconds: 360), () {
+      entry.remove();
+      _entry = null;
     });
-  }
-
-  void _showNextEntry(OverlayState overlay, OverlayEntry entry) {
-    entry.remove();
-    _timer = null;
-    _showOverlay(overlay);
   }
 
   void showToast({
@@ -43,22 +39,16 @@ class Toast {
     PositionedToastBuilder? positionedToastBuilder,
     Duration toastDuration = const Duration(seconds: 2),
   }) {
-    final newChild = _ToastStateFul(
+    final newChild = _ToastWidget(
       child,
       toastDuration,
     );
-    final newEntry = OverlayEntry(
+    final entry = OverlayEntry(
       builder: (context) => positionedToastBuilder != null
           ? positionedToastBuilder(context, newChild)
           : _getPositionWidgetBasedOnGravity(newChild),
     );
-    _queue.add(_ToastEntry(
-      entry: newEntry,
-      duration: toastDuration,
-    ));
-    if (_timer == null) {
-      _showOverlay(Overlay.of(context)!);
-    }
+    _showOverlay(Overlay.of(context)!, entry, toastDuration);
   }
 
   Positioned _getPositionWidgetBasedOnGravity(Widget child) {
@@ -66,24 +56,17 @@ class Toast {
   }
 }
 
-class _ToastEntry {
-  const _ToastEntry({required this.entry, required this.duration});
-
-  final OverlayEntry entry;
-  final Duration duration;
-}
-
-class _ToastStateFul extends StatefulWidget {
-  const _ToastStateFul(this.child, this.duration, {Key? key}) : super(key: key);
+class _ToastWidget extends StatefulWidget {
+  const _ToastWidget(this.child, this.duration, {Key? key}) : super(key: key);
 
   final Widget child;
   final Duration duration;
 
   @override
-  ToastStateFulState createState() => ToastStateFulState();
+  _ToastWidgetState createState() => _ToastWidgetState();
 }
 
-class ToastStateFulState extends State<_ToastStateFul>
+class _ToastWidgetState extends State<_ToastWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;

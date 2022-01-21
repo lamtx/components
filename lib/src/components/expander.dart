@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../components.dart';
 import '../../dimens.dart';
-import 'platform.dart';
 
 typedef AnimationBuilder = Widget Function(
     BuildContext context, Animation<double> animation, Widget child);

@@ -11,8 +11,9 @@ class ExceptionInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: activityHorizontalMargin,
-      child: Center(
+      padding: activityHorizontalMargin + itemSpacingTop,
+      child: Align(
+        alignment: Alignment.topCenter,
         child: Text(
           getExceptionMessage(context, exception),
           textAlign: TextAlign.center,
