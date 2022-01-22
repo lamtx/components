@@ -1,3 +1,5 @@
+import 'package:components/components.dart';
+import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 
 /// Make Flutter text style (released 2014) is compatible with
@@ -97,13 +99,26 @@ class Caption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: Theme.of(context).textTheme.caption!.merge(style),
-      maxLines: maxLines,
-      overflow: overflow,
-      textAlign: textAlign,
-    );
+    if (isCupertino) {
+      return Text(
+        text,
+        style: TextStyle(
+          fontSize: 13,
+          color: CupertinoDynamicColor.resolve(CupertinoColors.secondaryLabel, context),
+        ),
+        maxLines: maxLines,
+        overflow: overflow,
+        textAlign: textAlign,
+      );
+    } else {
+      return Text(
+        text,
+        style: Theme.of(context).textTheme.caption!.merge(style),
+        maxLines: maxLines,
+        overflow: overflow,
+        textAlign: textAlign,
+      );
+    }
   }
 }
 
