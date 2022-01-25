@@ -35,6 +35,7 @@ class PlatformIconButton extends StatelessWidget {
         tapTargetSize: isCupertino
             ? MaterialTapTargetSize.shrinkWrap
             : MaterialTapTargetSize.padded,
+        splashFactory: InkSplash.splashFactory,
       ),
       child: SizedBox(
         height: iconSize,

@@ -14,6 +14,9 @@ class Toast {
 
   Toast._();
 
+  static const short = Duration(seconds: 2);
+  static const long = Duration(seconds: 6);
+
   static Toast? _instance;
   OverlayEntry? _entry;
   Timer? _timer;
@@ -36,24 +39,36 @@ class Toast {
   void showToast({
     required BuildContext context,
     required Widget child,
-    PositionedToastBuilder? positionedToastBuilder,
-    Duration toastDuration = const Duration(seconds: 2),
+    PositionedToastBuilder positionedToastBuilder = _bottomPositionedBuilder,
+    Duration duration = short,
+  }) {
+    showToastByOverlay(
+      overlay: Overlay.of(context)!,
+      child: child,
+      positionedBuilder: positionedToastBuilder,
+      duration: duration,
+    );
+  }
+
+  void showToastByOverlay({
+    required OverlayState overlay,
+    required Widget child,
+    PositionedToastBuilder positionedBuilder = _bottomPositionedBuilder,
+    Duration duration = short,
   }) {
     final newChild = _ToastWidget(
       child,
-      toastDuration,
+      duration,
     );
     final entry = OverlayEntry(
-      builder: (context) => positionedToastBuilder != null
-          ? positionedToastBuilder(context, newChild)
-          : _getPositionWidgetBasedOnGravity(newChild),
+      builder: (context) => positionedBuilder(context, newChild),
     );
-    _showOverlay(Overlay.of(context)!, entry, toastDuration);
+    _showOverlay(overlay, entry, duration);
   }
+}
 
-  Positioned _getPositionWidgetBasedOnGravity(Widget child) {
-    return Positioned(bottom: 50, left: 24, right: 24, child: child);
-  }
+Positioned _bottomPositionedBuilder(BuildContext context, Widget child) {
+  return Positioned(bottom: 50, left: 24, right: 24, child: child);
 }
 
 class _ToastWidget extends StatefulWidget {
