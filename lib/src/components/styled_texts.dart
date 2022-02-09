@@ -105,7 +105,7 @@ class Caption extends StatelessWidget {
         style: TextStyle(
           fontSize: 13,
           color: CupertinoDynamicColor.resolve(CupertinoColors.secondaryLabel, context),
-        ),
+        ).merge(style),
         maxLines: maxLines,
         overflow: overflow,
         textAlign: textAlign,
