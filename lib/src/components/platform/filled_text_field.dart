@@ -1,7 +1,90 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class FilledTextField extends StatelessWidget {
-  const FilledTextField({
+import '../../../components.dart';
+
+abstract class FilledTextField extends StatelessWidget {
+  factory FilledTextField({
+    Key? key,
+    required TextEditingController? controller,
+    String? hintText,
+    String? labelText,
+    TextInputType? keyboardType,
+    TextCapitalization textCapitalization = TextCapitalization.none,
+    bool autofocus = false,
+    TextAlignVertical textAlignVertical = TextAlignVertical.center,
+    ValueChanged<String>? onSubmitted,
+    FocusNode? focusNode,
+    bool obscureText = false,
+    TextStyle? style,
+    ValueChanged<String>? onChanged,
+    int? maxLines = 1,
+    int? minLines,
+    bool? enabled,
+    bool showClearButtonOniOS = true,
+    Widget? prefixIcon,
+    Widget? suffixIcon,
+    TextInputAction? textInputAction,
+    bool readOnly = false,
+    bool autocorrect = true,
+    VoidCallback? onTap,
+  }) {
+    if (isCupertino) {
+      return _IOSFilledTextField(
+        key: key,
+        controller: controller,
+        hintText: hintText,
+        labelText: labelText,
+        keyboardType: keyboardType,
+        textCapitalization: textCapitalization,
+        autofocus: autofocus,
+        textAlignVertical: textAlignVertical,
+        onSubmitted: onSubmitted,
+        focusNode: focusNode,
+        obscureText: obscureText,
+        style: style,
+        onChanged: onChanged,
+        maxLines: maxLines,
+        minLines: minLines,
+        enabled: enabled,
+        showClearButtonOniOS: showClearButtonOniOS,
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+        textInputAction: textInputAction,
+        readOnly: readOnly,
+        autocorrect: autocorrect,
+        onTap: onTap,
+      );
+    } else {
+      return _AndroidFieldTextField(
+        key: key,
+        controller: controller,
+        hintText: hintText,
+        labelText: labelText,
+        keyboardType: keyboardType,
+        textCapitalization: textCapitalization,
+        autofocus: autofocus,
+        textAlignVertical: textAlignVertical,
+        onSubmitted: onSubmitted,
+        focusNode: focusNode,
+        obscureText: obscureText,
+        style: style,
+        onChanged: onChanged,
+        maxLines: maxLines,
+        minLines: minLines,
+        enabled: enabled,
+        showClearButtonOniOS: showClearButtonOniOS,
+        prefixIcon: prefixIcon,
+        suffixIcon: suffixIcon,
+        textInputAction: textInputAction,
+        readOnly: readOnly,
+        autocorrect: autocorrect,
+        onTap: onTap,
+      );
+    }
+  }
+
+  const FilledTextField._({
     Key? key,
     required this.controller,
     this.hintText,
@@ -49,6 +132,58 @@ class FilledTextField extends StatelessWidget {
   final bool readOnly;
   final bool autocorrect;
   final VoidCallback? onTap;
+}
+
+class _AndroidFieldTextField extends FilledTextField {
+  const _AndroidFieldTextField({
+    Key? key,
+    required TextEditingController? controller,
+    String? hintText,
+    String? labelText,
+    TextInputType? keyboardType,
+    TextCapitalization textCapitalization = TextCapitalization.none,
+    bool autofocus = false,
+    TextAlignVertical textAlignVertical = TextAlignVertical.center,
+    ValueChanged<String>? onSubmitted,
+    FocusNode? focusNode,
+    bool obscureText = false,
+    TextStyle? style,
+    ValueChanged<String>? onChanged,
+    int? maxLines,
+    int? minLines,
+    bool? enabled,
+    bool showClearButtonOniOS = true,
+    Widget? prefixIcon,
+    Widget? suffixIcon,
+    TextInputAction? textInputAction,
+    bool readOnly = false,
+    bool autocorrect = true,
+    VoidCallback? onTap,
+  }) : super._(
+          key: key,
+          controller: controller,
+          hintText: hintText,
+          labelText: labelText,
+          keyboardType: keyboardType,
+          textCapitalization: textCapitalization,
+          autofocus: autofocus,
+          textAlignVertical: textAlignVertical,
+          onSubmitted: onSubmitted,
+          focusNode: focusNode,
+          obscureText: obscureText,
+          style: style,
+          onChanged: onChanged,
+          maxLines: maxLines,
+          minLines: minLines,
+          enabled: enabled,
+          showClearButtonOniOS: showClearButtonOniOS,
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
+          textInputAction: textInputAction,
+          readOnly: readOnly,
+          autocorrect: autocorrect,
+          onTap: onTap,
+        );
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +213,85 @@ class FilledTextField extends StatelessWidget {
       readOnly: readOnly,
       autocorrect: autocorrect,
       onTap: onTap,
+    );
+  }
+}
+
+class _IOSFilledTextField extends FilledTextField {
+  const _IOSFilledTextField({
+    Key? key,
+    required TextEditingController? controller,
+    String? hintText,
+    String? labelText,
+    TextInputType? keyboardType,
+    TextCapitalization textCapitalization = TextCapitalization.none,
+    bool autofocus = false,
+    TextAlignVertical textAlignVertical = TextAlignVertical.center,
+    ValueChanged<String>? onSubmitted,
+    FocusNode? focusNode,
+    bool obscureText = false,
+    TextStyle? style,
+    ValueChanged<String>? onChanged,
+    int? maxLines,
+    int? minLines,
+    bool? enabled,
+    bool showClearButtonOniOS = true,
+    Widget? prefixIcon,
+    Widget? suffixIcon,
+    TextInputAction? textInputAction,
+    bool readOnly = false,
+    bool autocorrect = true,
+    VoidCallback? onTap,
+  })  : assert(suffixIcon == null || labelText == null),
+        super._(
+          key: key,
+          controller: controller,
+          hintText: hintText,
+          labelText: labelText,
+          keyboardType: keyboardType,
+          textCapitalization: textCapitalization,
+          autofocus: autofocus,
+          textAlignVertical: textAlignVertical,
+          onSubmitted: onSubmitted,
+          focusNode: focusNode,
+          obscureText: obscureText,
+          style: style,
+          onChanged: onChanged,
+          maxLines: maxLines,
+          minLines: minLines,
+          enabled: enabled,
+          showClearButtonOniOS: showClearButtonOniOS,
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
+          textInputAction: textInputAction,
+          readOnly: readOnly,
+          autocorrect: autocorrect,
+          onTap: onTap,
+        );
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoTextField(
+      placeholder: hintText,
+      controller: controller,
+      keyboardType: keyboardType,
+      textCapitalization: textCapitalization,
+      autofocus: autofocus,
+      textAlignVertical: textAlignVertical,
+      onSubmitted: onSubmitted,
+      focusNode: focusNode,
+      obscureText: obscureText,
+      style: style,
+      onChanged: onChanged,
+      maxLines: maxLines,
+      minLines: minLines,
+      enabled: enabled,
+      clearButtonMode: suffixIcon == null
+          ? OverlayVisibilityMode.editing
+          : OverlayVisibilityMode.never,
+      autocorrect: autocorrect && keyboardType != TextInputType.visiblePassword,
+      prefix: prefixIcon ?? (labelText == null ? null : Text(labelText!)),
+      suffix: suffixIcon,
     );
   }
 }

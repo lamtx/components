@@ -82,15 +82,13 @@ Widget FilledButton({
   }
 }
 
-@Deprecated("Do not use CupertinoButton, it's impossible to customize.")
-Widget Button({
+Widget ActionBarButton({
   required VoidCallback? onPressed,
   required Widget child,
-  EdgeInsets? padding,
 }) {
   if (isCupertino) {
     return CupertinoButton(
-      padding: padding,
+      padding: EdgeInsets.zero,
       onPressed: onPressed,
       child: child,
     );

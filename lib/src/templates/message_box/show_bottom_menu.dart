@@ -153,7 +153,7 @@ Future<T?> showPlatformMenu<T>(
   required List<MenuItemEntry<T>> items,
   List<Widget> actions = const [],
 }) {
-  if (Platform.isIOS) {
+  if (isCupertino) {
     return showBottomMenu(
       context,
       title: title,
