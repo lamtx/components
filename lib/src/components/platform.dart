@@ -7,6 +7,8 @@ import 'misc.dart';
 import 'platform/tab_indexed_stack.dart';
 import 'styled_texts.dart';
 
+export 'platform/filled_text_field.dart';
+export 'platform/outlined_text_field.dart';
 export 'platform/platform_app.dart';
 export 'platform/platform_app_bar.dart';
 export 'platform/platform_expand_icon.dart';
@@ -144,6 +146,7 @@ Future<T?> showPlatformDialog<T>({
   }
 }
 
+@Deprecated("Use `OutlinedTextField`")
 Widget PlatformTextField({
   required TextEditingController? controller,
   TextInputType? keyboardType,

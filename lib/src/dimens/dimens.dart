@@ -51,6 +51,7 @@ const textSpacingStart = EdgeInsets.only(left: _horizontalTextSpacing);
 const textSpacingEnd = EdgeInsets.only(right: _horizontalTextSpacing);
 
 const wideSpacingTop = EdgeInsets.only(top: 24);
+const wideSpacingVertical = EdgeInsets.symmetric(vertical: 24);
 
 const minTapSize = 42.0;
 

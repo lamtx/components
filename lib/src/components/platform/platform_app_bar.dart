@@ -1,3 +1,4 @@
+import 'package:ext/ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,14 +10,14 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
     Key? key,
     Widget? title,
     String? previousPageTitle,
-    List<Widget>? actions,
+    List<Widget> actions = const [],
     Color? backgroundColor,
     bool automaticallyImplyLeading = true,
     Widget? leading,
   }) {
     if (isCupertino) {
       Widget? trailing;
-      if (actions == null) {
+      if (actions.isEmpty) {
         trailing = null;
       } else if (actions.length == 1) {
         trailing = actions.first;
@@ -39,7 +40,7 @@ abstract class PlatformAppBar implements ObstructingPreferredSizeWidget {
       return _AppBar(
         key: key,
         title: title,
-        actions: actions,
+        actions: actions.takeIf((element) => element.isNotEmpty),
         backgroundColor: backgroundColor,
         automaticallyImplyLeading: automaticallyImplyLeading,
         leading: leading,

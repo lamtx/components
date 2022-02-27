@@ -54,7 +54,7 @@ class Subtitle1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: Theme.of(context).textTheme.subtitle1!.merge(style),
+      style: Theme.of(context).textTheme.bodyLarge!.merge(style),
       maxLines: maxLines,
       textAlign: textAlign,
       overflow: overflow,
@@ -113,7 +113,7 @@ class Caption extends StatelessWidget {
     } else {
       return Text(
         text,
-        style: Theme.of(context).textTheme.caption!.merge(style),
+        style: Theme.of(context).textTheme.bodySmall!.merge(style),
         maxLines: maxLines,
         overflow: overflow,
         textAlign: textAlign,

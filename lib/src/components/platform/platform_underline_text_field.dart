@@ -5,6 +5,7 @@ import '../../../dimens.dart';
 import '../misc.dart';
 import '../styled_texts.dart';
 
+@Deprecated("Material Design removed UnderlineTextField style")
 class PlatformUnderlineTextField extends StatelessWidget {
   const PlatformUnderlineTextField({
     Key? key,

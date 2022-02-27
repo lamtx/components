@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import 'misc.dart';
 import 'platform/platform_icon_button.dart';
@@ -7,11 +8,12 @@ class ClearInputButton extends StatefulWidget {
   const ClearInputButton({
     Key? key,
     required this.controller,
+    this.icon,
     this.emptyIcon = const SizedBox.shrink(),
   }) : super(key: key);
 
   final TextEditingController controller;
-
+  final Widget? icon;
   final Widget emptyIcon;
 
   @override
@@ -47,9 +49,11 @@ class _ClearInputButtonState extends State<ClearInputButton> {
   @override
   Widget build(BuildContext context) {
     if (_inputNotEmpty) {
-      return PlatformIconButton(
+      return widget.icon ?? PlatformIconButton(
         minimumSize: isCupertino ? 32 : 48,
-        icon: const Icon(CupertinoIcons.clear_circled_solid),
+        icon: isCupertino
+            ? const Icon(CupertinoIcons.clear_circled_solid)
+            : const Icon(Icons.clear),
         onPressed: () => widget.controller.clear(),
       );
     } else {
@@ -58,8 +62,11 @@ class _ClearInputButtonState extends State<ClearInputButton> {
   }
 
   void _onChanged() {
-    setState(() {
-      _inputNotEmpty = widget.controller.text.isNotEmpty;
-    });
+    final isNotEmpty = widget.controller.text.isNotEmpty;
+    if (isNotEmpty != _inputNotEmpty) {
+      setState(() {
+        _inputNotEmpty = isNotEmpty;
+      });
+    }
   }
 }
