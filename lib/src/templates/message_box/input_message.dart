@@ -6,6 +6,7 @@ import '../../../components.dart';
 import '../../../dimens.dart';
 import '../template_messages.dart';
 
+@Deprecated("InputMessage should be shown as FullScreen Dialog")
 Future<String?> inputMessage(
   BuildContext context, {
   required String title,

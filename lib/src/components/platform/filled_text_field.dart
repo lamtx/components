@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components.dart';
+import '../../../dimens.dart';
 
 abstract class FilledTextField extends StatelessWidget {
   factory FilledTextField({
@@ -28,6 +29,7 @@ abstract class FilledTextField extends StatelessWidget {
     bool readOnly = false,
     bool autocorrect = true,
     VoidCallback? onTap,
+    bool optimizePrefixIconOnIOS = true,
   }) {
     if (isCupertino) {
       return _IOSFilledTextField(
@@ -54,6 +56,7 @@ abstract class FilledTextField extends StatelessWidget {
         readOnly: readOnly,
         autocorrect: autocorrect,
         onTap: onTap,
+        optimizePrefixIconOnIOS: optimizePrefixIconOnIOS,
       );
     } else {
       return _AndroidFieldTextField(
@@ -108,6 +111,7 @@ abstract class FilledTextField extends StatelessWidget {
     this.readOnly = false,
     this.autocorrect = true,
     this.onTap,
+    this.optimizePrefixIconOnIOS = true,
   }) : super(key: key);
 
   final TextEditingController? controller;
@@ -132,6 +136,7 @@ abstract class FilledTextField extends StatelessWidget {
   final bool readOnly;
   final bool autocorrect;
   final VoidCallback? onTap;
+  final bool optimizePrefixIconOnIOS;
 }
 
 class _AndroidFieldTextField extends FilledTextField {
@@ -242,8 +247,8 @@ class _IOSFilledTextField extends FilledTextField {
     bool readOnly = false,
     bool autocorrect = true,
     VoidCallback? onTap,
-  })  : assert(suffixIcon == null || labelText == null),
-        super._(
+    bool optimizePrefixIconOnIOS = true,
+  }) : super._(
           key: key,
           controller: controller,
           hintText: hintText,
@@ -267,11 +272,21 @@ class _IOSFilledTextField extends FilledTextField {
           readOnly: readOnly,
           autocorrect: autocorrect,
           onTap: onTap,
+          optimizePrefixIconOnIOS: optimizePrefixIconOnIOS,
         );
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoTextField(
+    final effectivePrefix = (prefixIcon == null || !optimizePrefixIconOnIOS)
+        ? prefixIcon
+        : ConstrainedBox(
+            constraints: const BoxConstraints(
+              minHeight: 44,
+              minWidth: 44,
+            ),
+            child: prefixIcon,
+          );
+    final textField = CupertinoTextField(
       placeholder: hintText,
       controller: controller,
       keyboardType: keyboardType,
@@ -290,8 +305,29 @@ class _IOSFilledTextField extends FilledTextField {
           ? OverlayVisibilityMode.editing
           : OverlayVisibilityMode.never,
       autocorrect: autocorrect && keyboardType != TextInputType.visiblePassword,
-      prefix: prefixIcon ?? (labelText == null ? null : Text(labelText!)),
-      suffix: suffixIcon,
+      prefix: effectivePrefix,
+      suffix: suffixIcon ?? SizedBox.fromSize(size: const Size.square(44)),
+      decoration: const BoxDecoration(
+        color: CupertinoColors.tertiarySystemFill,
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+      ),
     );
+    if (labelText == null) {
+      return textField;
+    } else {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Caption(labelText!),
+          ),
+          Padding(
+            padding: textSpacingTop,
+            child: textField,
+          ),
+        ],
+      );
+    }
   }
 }
