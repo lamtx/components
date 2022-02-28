@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
-
-import 'misc.dart';
 
 /// Make Flutter text style (released 2014) is compatible with
 /// Material design specs (released 2018)
@@ -100,27 +97,13 @@ class Caption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (isCupertino) {
-      return Text(
-        text,
-        style: TextStyle(
-          fontSize: 13,
-          color: CupertinoDynamicColor.resolve(
-              CupertinoColors.secondaryLabel, context),
-        ).merge(style),
-        maxLines: maxLines,
-        overflow: overflow,
-        textAlign: textAlign,
-      );
-    } else {
-      return Text(
-        text,
-        style: Theme.of(context).textTheme.bodySmall!.merge(style),
-        maxLines: maxLines,
-        overflow: overflow,
-        textAlign: textAlign,
-      );
-    }
+    return Text(
+      text,
+      style: Theme.of(context).textTheme.bodySmall!.merge(style),
+      maxLines: maxLines,
+      overflow: overflow,
+      textAlign: textAlign,
+    );
   }
 }
 
