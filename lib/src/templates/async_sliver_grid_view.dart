@@ -59,7 +59,7 @@ class AsyncSliverGridView extends StatelessWidget {
               ? itemBuilder
               : (context, position) {
                   if (position == itemCount - 1) {
-                    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+                    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                       onLoadMore!.call();
                     });
                   }

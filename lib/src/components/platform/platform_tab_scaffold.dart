@@ -42,12 +42,10 @@ class _BottomNavigationScaffold extends StatefulWidget {
     Key? key,
     required this.tabController,
     required this.tabBuilder,
-    this.appBar,
     required this.tabs,
   }) : super(key: key);
   final CupertinoTabController tabController;
   final IndexedWidgetBuilder tabBuilder;
-  final PreferredSizeWidget? appBar;
   final List<BottomNavigationBarItem> tabs;
 
   @override

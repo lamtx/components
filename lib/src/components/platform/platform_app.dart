@@ -58,7 +58,7 @@ class PlatformApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isCupertino) {
-      final brightness = WidgetsBinding.instance!.window.platformBrightness;
+      final brightness = WidgetsBinding.instance.window.platformBrightness;
       final isDark = themeMode == ThemeMode.dark ||
           (themeMode == ThemeMode.system && brightness == Brightness.dark);
 
