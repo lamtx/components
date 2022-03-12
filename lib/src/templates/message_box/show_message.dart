@@ -4,6 +4,7 @@ import '../../../components.dart';
 import '../template_messages.dart';
 
 enum DialogButtonType { positive, negative, neutral }
+
 enum DialogButtonStyle { normal, cancellation, destructive }
 
 class ActionButton {
@@ -63,11 +64,6 @@ Future<ActionButton?> showMessage(
     builder: (context) => PlatformAlertDialog(
       title: titleUI,
       content: contentUI,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(6),
-        ),
-      ),
       actions: actions.map((e) {
         return DialogButton(
           onPressed: () {
