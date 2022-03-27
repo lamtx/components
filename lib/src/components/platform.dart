@@ -291,7 +291,7 @@ Widget PlatformSwitch({
 
 Widget PlatformCheckbox({
   required bool value,
-  required ValueChanged<bool?> onChanged,
+  required ValueChanged<bool?>? onChanged,
 }) {
   if (isCupertino) {
     return CupertinoRadio<bool>(

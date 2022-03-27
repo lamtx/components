@@ -13,15 +13,15 @@ class CheckboxItem extends StatelessWidget {
   }) : super(key: key);
 
   final bool value;
-  final ValueChanged<bool?> onChanged;
+  final ValueChanged<bool?>? onChanged;
   final Widget title;
   final EdgeInsets contentPadding;
 
   @override
   Widget build(BuildContext context) {
     return PlatformInkWell(
-      onTap: () {
-        onChanged(!value);
+      onTap: onChanged == null ? null : () {
+        onChanged!(!value);
       },
       child: Padding(
         padding: contentPadding,

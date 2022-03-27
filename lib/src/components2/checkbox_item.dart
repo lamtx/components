@@ -10,28 +10,38 @@ class CheckboxItem extends StatelessWidget {
     required this.onChanged,
     required this.title,
     this.contentPadding = activityHorizontalMargin,
+    this.mainAxisSize = MainAxisSize.max,
+    this.isLoading = false,
   }) : super(key: key);
 
   final bool value;
-  final ValueChanged<bool?> onChanged;
+  final ValueChanged<bool?>? onChanged;
   final Widget title;
   final EdgeInsets contentPadding;
+  final MainAxisSize mainAxisSize;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        onChanged(!value);
-      },
+      onTap: onChanged == null || isLoading ? null : () => onChanged!(!value),
       child: Padding(
         padding: contentPadding,
         child: Row(
+          mainAxisSize: mainAxisSize,
           children: <Widget>[
-            PlatformCheckbox(
-              value: value,
-              onChanged: onChanged,
-            ),
-            Expanded(child: title)
+            if (isLoading)
+              SizedBox(
+                width: 32,
+                height: 32,
+                child: Center(child: PlatformActivityIndicator()),
+              )
+            else
+              PlatformCheckbox(
+                value: value,
+                onChanged: onChanged,
+              ),
+            Flexible(child: title)
           ],
         ),
       ),

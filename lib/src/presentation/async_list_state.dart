@@ -26,7 +26,6 @@ abstract class AsyncListState<T extends Object> extends ListState<T> {
       notifyListeners();
       exception = null;
     } on Exception catch (e) {
-      assert(log("AsyncList", "async fetch failed", e));
       clearAllItems();
       exception = e;
     } finally {
