@@ -1,16 +1,21 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../dimens.dart';
+import 'expander.dart';
 import 'fade_slide_transition.dart';
 
 class AnimatedVisibility extends StatefulWidget {
   const AnimatedVisibility({
     required this.visible,
     required this.child,
+    this.duration = shortAnimationDuration,
+    this.animationBuilder,
   });
 
   final bool visible;
   final Widget child;
+  final Duration duration;
+  final AnimationBuilder? animationBuilder;
 
   @override
   State<StatefulWidget> createState() => _AnimatedVisibilityState();
@@ -25,7 +30,7 @@ class _AnimatedVisibilityState extends State<AnimatedVisibility>
     super.initState();
     _opacityAnimation = AnimationController(
       vsync: this,
-      duration: shortAnimationDuration,
+      duration: widget.duration,
       value: widget.visible ? 1 : 0,
     );
   }
@@ -35,6 +40,9 @@ class _AnimatedVisibilityState extends State<AnimatedVisibility>
     super.didUpdateWidget(oldWidget);
     if (widget.visible != oldWidget.visible) {
       _animate(widget.visible);
+    }
+    if (widget.duration != oldWidget.duration) {
+      throw StateError("Duration of `AnimatedVisibility` cannot be changed.");
     }
   }
 
@@ -48,9 +56,11 @@ class _AnimatedVisibilityState extends State<AnimatedVisibility>
 
   @override
   Widget build(BuildContext context) {
-    return FadeSlideTransition(
-      sizeFactor: _opacityAnimation,
-      child: widget.child,
-    );
+    return widget.animationBuilder
+            ?.call(context, _opacityAnimation, widget.child) ??
+        FadeSlideTransition(
+          sizeFactor: _opacityAnimation,
+          child: widget.child,
+        );
   }
 }

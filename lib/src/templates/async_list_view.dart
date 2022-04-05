@@ -11,6 +11,7 @@ class AsyncListView extends StatelessWidget {
     Key? key,
     required this.itemCount,
     required this.itemBuilder,
+    this.separatorBuilder,
     this.reverse = false,
     this.isLoading = false,
     this.emptyInfo = const EmptyInfo(),
@@ -24,6 +25,7 @@ class AsyncListView extends StatelessWidget {
   final bool isLoading;
   final int itemCount;
   final IndexedWidgetBuilder itemBuilder;
+  final IndexedWidgetBuilder? separatorBuilder;
   final Exception? exception;
   final Widget? emptyInfo;
   final EdgeInsets? padding;
@@ -34,13 +36,21 @@ class AsyncListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget listView = ListView.builder(
-      controller: controller,
-      padding: padding ?? safePaddingVertical(context),
-      itemBuilder: itemBuilder,
-      itemCount: itemCount,
-      reverse: reverse,
-    );
+    Widget listView = separatorBuilder == null
+        ? ListView.builder(
+            controller: controller,
+            padding: padding ?? safePaddingVertical(context),
+            itemBuilder: itemBuilder,
+            itemCount: itemCount,
+            reverse: reverse,
+          )
+        : ListView.separated(
+            controller: controller,
+            itemBuilder: itemBuilder,
+            padding: padding ?? safePaddingVertical(context),
+            separatorBuilder: separatorBuilder!,
+            itemCount: itemCount,
+          );
     if (onRefresh != null) {
       listView = RefreshIndicator(
         onRefresh: onRefresh!,
@@ -50,43 +60,41 @@ class AsyncListView extends StatelessWidget {
     final child = onLoadMore == null
         ? listView
         : NotificationListener<ScrollNotification>(
-      onNotification: (scrollInfo) {
-        if (scrollInfo.metrics.pixels >=
-            scrollInfo.metrics.maxScrollExtent - 22) {
-          if (itemCount != 0) {
-            onLoadMore!();
-          }
-        }
-        return false;
-      },
-      child: Column(
-        children: <Widget>[
-          if (reverse)
-            FixedHeightProgressIndicator(
-              isLoading: itemCount != 0 && isLoading,
+            onNotification: (scrollInfo) {
+              if (scrollInfo.metrics.pixels >=
+                  scrollInfo.metrics.maxScrollExtent - 22) {
+                if (itemCount != 0) {
+                  onLoadMore!();
+                }
+              }
+              return false;
+            },
+            child: Column(
+              children: <Widget>[
+                if (reverse)
+                  FixedHeightProgressIndicator(
+                    isLoading: itemCount != 0 && isLoading,
+                  ),
+                Expanded(
+                  child: listView,
+                ),
+                if (!reverse)
+                  FixedHeightProgressIndicator(
+                    isLoading: itemCount != 0 && isLoading,
+                  )
+              ],
             ),
-          Expanded(
-            child: listView,
-          ),
-          if (!reverse)
-            FixedHeightProgressIndicator(
-              isLoading: itemCount != 0 && isLoading,
-            )
-        ],
-      ),
-    );
+          );
     if (itemCount == 0) {
       return Stack(
         children: <Widget>[
           child,
           if (isLoading)
             const LoadingInfo()
-          else
-            if (exception != null)
-              ExceptionInfo(exception!)
-            else
-              if (emptyInfo != null)
-                emptyInfo!,
+          else if (exception != null)
+            ExceptionInfo(exception!)
+          else if (emptyInfo != null)
+            emptyInfo!,
         ],
       );
     } else {

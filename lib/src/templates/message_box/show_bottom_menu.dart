@@ -15,8 +15,8 @@ abstract class MenuItemEntry<T> {
   T? get groupValue;
 }
 
-class MenuItem<T> implements MenuItemEntry<T> {
-  const MenuItem({
+class MenuListItem<T> implements MenuItemEntry<T> {
+  const MenuListItem({
     required this.value,
     required this.title,
     this.groupValue,
@@ -71,7 +71,7 @@ extension<T> on MenuItemEntry<T> {
   Widget? leading(ThemeData theme) {
     final item = this;
     Widget? child;
-    if (item is MenuItem<T>) {
+    if (item is MenuListItem<T>) {
       child = item.icon ?? (item.iconData != null ? Icon(item.iconData) : null);
     } else if (item is CheckboxMenuItem<T>) {
       child = item.value == item.groupValue
@@ -177,6 +177,7 @@ Future<T?> showPlatformMenu<T>(
   return showMenu<T>(
     context: context,
     position: position,
+    elevation: 4,
     items: items
         .map((e) => PopupMenuItem<T>(
               value: e.value,
