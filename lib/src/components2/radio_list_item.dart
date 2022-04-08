@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../components.dart';
 import '../../dimens.dart';
 
-class RadioItem<T> extends StatelessWidget {
-  const RadioItem({
+class RadioListItem<T> extends StatelessWidget {
+  const RadioListItem({
     Key? key,
     required this.value,
     this.groupValue,
@@ -15,7 +15,7 @@ class RadioItem<T> extends StatelessWidget {
   })  : _isDense = false,
         super(key: key);
 
-  const RadioItem.dense({
+  const RadioListItem.dense({
     Key? key,
     required this.value,
     this.groupValue,
@@ -48,18 +48,23 @@ class RadioItem<T> extends StatelessWidget {
           onChanged(value);
         }
       },
-      child: Padding(
-        padding: contentPadding,
-        child: Row(
-          mainAxisSize: _isDense ? MainAxisSize.min : MainAxisSize.max,
-          children: <Widget>[
-            PlatformRadio<T>(
-              value: value,
-              groupValue: groupValue,
-              onChanged: onChanged,
-            ),
-            if (_isDense) title else Expanded(child: title)
-          ],
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          minHeight: _isDense ? 0 : listPreferredItemHeightSmall,
+        ),
+        child: Padding(
+          padding: contentPadding,
+          child: Row(
+            mainAxisSize: _isDense ? MainAxisSize.min : MainAxisSize.max,
+            children: <Widget>[
+              PlatformRadio<T>(
+                value: value,
+                groupValue: groupValue,
+                onChanged: onChanged,
+              ),
+              if (_isDense) title else Expanded(child: title)
+            ],
+          ),
         ),
       ),
     );

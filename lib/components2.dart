@@ -15,6 +15,6 @@ export 'src/components/platform.dart'
 export 'src/components/vector_icon.dart';
 export 'src/components2/checkbox_item.dart';
 export 'src/components2/list_item.dart';
-export 'src/components2/radio_item.dart';
+export 'src/components2/radio_list_item.dart';
 export 'src/components2/styled_texts.dart';
 export 'src/components2/switch_item.dart';
