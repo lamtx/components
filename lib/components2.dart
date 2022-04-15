@@ -13,6 +13,7 @@ export 'src/components/platform.dart'
         PlatformAlertDialog,
         DialogButton;
 export 'src/components/vector_icon.dart';
+export 'src/components2/breakpoint.dart';
 export 'src/components2/checkbox_item.dart';
 export 'src/components2/list_item.dart';
 export 'src/components2/radio_list_item.dart';
