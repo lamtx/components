@@ -10,8 +10,9 @@ class SwitchItem extends StatelessWidget {
     required this.value,
     required this.onChanged,
     required this.title,
+    // ignore: deprecated_member_use_from_same_package
     this.contentPadding = activityHorizontalMargin,
-  })  : super(key: key);
+  }) : super(key: key);
 
   final bool value;
   final ValueChanged<bool> onChanged;

@@ -2,20 +2,25 @@
 
 import 'package:flutter/widgets.dart';
 
+@Deprecated("Activity Margin should be replaced by breakpoint")
 const double kActivityHorizontalMargin = 22;
+@Deprecated("Activity Margin should be replaced by breakpoint")
 const double kActivityVerticalMargin = 16;
 const double kItemSpacing = 12;
 const double _verticalTextSpacing = 4;
 const double _horizontalTextSpacing = 3;
 
+@Deprecated("Activity Margin should be replaced by breakpoint")
 const activityMargin = EdgeInsets.only(
   left: kActivityHorizontalMargin,
   right: kActivityHorizontalMargin,
   bottom: kActivityVerticalMargin,
 );
+@Deprecated("Activity Margin should be replaced by breakpoint")
 const activityHorizontalMargin = EdgeInsets.symmetric(
   horizontal: kActivityHorizontalMargin,
 );
+@Deprecated("Activity Margin should be replaced by breakpoint")
 const activityMarginBottom = EdgeInsets.only(bottom: kActivityVerticalMargin);
 
 const itemSpacing = EdgeInsets.all(kItemSpacing);
@@ -61,4 +66,3 @@ const mediumAnimationDuration = Duration(milliseconds: 600);
 const listPreferredItemHeight = 64.0;
 const listPreferredItemHeightSmall = 48.0;
 const listPreferredItemHeightLarge = 80.0;
-

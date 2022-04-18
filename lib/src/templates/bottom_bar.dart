@@ -20,6 +20,7 @@ class BottomBar extends StatelessWidget {
       left: false,
       right: false,
       bottom: avoidBottom,
+      // ignore: deprecated_member_use_from_same_package
       minimum: activityHorizontalMargin + activityMarginBottom + itemSpacingTop,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,

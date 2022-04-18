@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../components.dart';
 import '../../dimens.dart';
+import 'misc.dart';
 
 class RadioListItem<T> extends StatelessWidget {
   const RadioListItem({
@@ -10,7 +11,7 @@ class RadioListItem<T> extends StatelessWidget {
     this.groupValue,
     required this.onChanged,
     required this.title,
-    this.contentPadding = activityHorizontalMargin,
+    this.contentPadding,
     this.toggleable = false,
   })  : _isDense = false,
         super(key: key);
@@ -30,7 +31,7 @@ class RadioListItem<T> extends StatelessWidget {
   final T? groupValue;
   final ValueChanged<T?> onChanged;
   final Widget title;
-  final EdgeInsets contentPadding;
+  final EdgeInsets? contentPadding;
   final bool _isDense;
   final bool toggleable;
 
@@ -52,7 +53,7 @@ class RadioListItem<T> extends StatelessWidget {
         constraints: BoxConstraints(
           minHeight: _isDense ? 0 : listPreferredItemHeightSmall,
         ),
-        child: Padding(
+        child: decidePadding(
           padding: contentPadding,
           child: Row(
             mainAxisSize: _isDense ? MainAxisSize.min : MainAxisSize.max,

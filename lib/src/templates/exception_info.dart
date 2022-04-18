@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../dimens.dart';
+import '../components2/breakpoint.dart';
 import 'get_exception_message.dart';
 
 class ExceptionInfo extends StatelessWidget {
@@ -10,8 +11,8 @@ class ExceptionInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: activityHorizontalMargin + itemSpacingTop,
+    return BreakpointPadding(
+      padding: itemSpacingTop,
       child: Align(
         alignment: Alignment.topCenter,
         child: Text(

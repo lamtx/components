@@ -31,6 +31,7 @@ class PlatformFormSection extends StatelessWidget {
       children: [
         if (header != null)
           Padding(
+            // ignore: deprecated_member_use_from_same_package
             padding: activityHorizontalMargin + itemSpacingTop,
             child: DefaultTextStyle(
               style: Theme.of(context).textTheme.overline!,
@@ -40,6 +41,7 @@ class PlatformFormSection extends StatelessWidget {
         ...children,
         if (footer != null)
           Padding(
+            // ignore: deprecated_member_use_from_same_package
             padding: activityHorizontalMargin,
             child: DefaultTextStyle(
               style: Theme.of(context).textTheme.caption!,
@@ -94,7 +96,7 @@ class PlatformTextFormFieldRow extends StatelessWidget {
         placeholder: placeholder,
         // TODO: where clear button
       );
-      if (suffixIcon == null ) {
+      if (suffixIcon == null) {
         return textField;
       } else {
         return Row(
@@ -104,8 +106,9 @@ class PlatformTextFormFieldRow extends StatelessWidget {
           ],
         );
       }
-     } else {
+    } else {
       return Padding(
+        // ignore: deprecated_member_use_from_same_package
         padding: activityHorizontalMargin + itemSpacingTop,
         child: TextFormField(
           controller: controller,

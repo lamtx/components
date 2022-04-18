@@ -10,6 +10,7 @@ class RadioItem<T> extends StatelessWidget {
     this.groupValue,
     required this.onChanged,
     required this.title,
+    // ignore: deprecated_member_use_from_same_package
     this.contentPadding = activityHorizontalMargin,
     this.toggleable = false,
   })  : _isDense = false,

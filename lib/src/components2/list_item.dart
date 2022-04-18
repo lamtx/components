@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../components2.dart';
 import '../../dimens.dart';
 
 class ListItemHeight {
@@ -20,10 +21,7 @@ class ListItem extends StatelessWidget {
     this.trailing,
     this.leading,
     this.onTap,
-    this.contentPadding = const EdgeInsets.symmetric(
-      vertical: kItemSpacing / 2,
-      horizontal: kActivityHorizontalMargin,
-    ),
+    this.contentPadding,
     this.itemHeight,
     this.onLongPress,
   }) : super(key: key);
@@ -45,7 +43,7 @@ class ListItem extends StatelessWidget {
   final Widget? leading;
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
-  final EdgeInsets contentPadding;
+  final EdgeInsets? contentPadding;
   final ListItemHeight? itemHeight;
 
   @override
@@ -85,14 +83,20 @@ class ListItem extends StatelessWidget {
     } else {
       child = center;
     }
+
     final container = ConstrainedBox(
       constraints: BoxConstraints(
         minHeight: itemHeight._height,
       ),
-      child: Padding(
-        padding: contentPadding,
-        child: child,
-      ),
+      child: contentPadding == null
+          ? BreakpointPadding(
+              padding: halfItemSpacingVertical,
+              child: child,
+            )
+          : Padding(
+              padding: contentPadding!,
+              child: child,
+            ),
     );
     if (onTap != null || onLongPress != null) {
       return InkWell(

@@ -95,6 +95,7 @@ class _AppBar extends AppBar implements PlatformAppBar {
           bottom: bottom,
           actions: actions,
           backgroundColor: backgroundColor,
+          // ignore: deprecated_member_use_from_same_package
           titleSpacing: activityHorizontalMargin.left,
           automaticallyImplyLeading: automaticallyImplyLeading,
           leading: leading,

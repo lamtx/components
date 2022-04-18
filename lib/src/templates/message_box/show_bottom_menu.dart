@@ -54,6 +54,7 @@ class TitleMenuItem<T> implements MenuItemEntry<T> {
   Widget get title {
     return Center(
       child: Padding(
+        // ignore: deprecated_member_use_from_same_package
         padding: activityHorizontalMargin + itemSpacingVertical,
         child: Text(_text),
       ),
@@ -119,6 +120,7 @@ Future<T?> showBottomMenu<T>(
             if (title != null)
               Center(
                 child: Padding(
+                  // ignore: deprecated_member_use_from_same_package
                   padding: activityHorizontalMargin + itemSpacingVertical,
                   child: Text(title),
                 ),

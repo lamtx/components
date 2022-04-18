@@ -23,6 +23,7 @@ class ListItem extends StatelessWidget {
     this.onTap,
     this.contentPadding = const EdgeInsets.symmetric(
       vertical: kItemSpacing / 2,
+      // ignore: deprecated_member_use_from_same_package
       horizontal: kActivityHorizontalMargin,
     ),
     this.itemHeight,

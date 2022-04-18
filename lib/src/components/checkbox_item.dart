@@ -9,6 +9,7 @@ class CheckboxItem extends StatelessWidget {
     required this.value,
     required this.onChanged,
     required this.title,
+    // ignore: deprecated_member_use_from_same_package
     this.contentPadding = activityHorizontalMargin,
   }) : super(key: key);
 
@@ -20,9 +21,11 @@ class CheckboxItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PlatformInkWell(
-      onTap: onChanged == null ? null : () {
-        onChanged!(!value);
-      },
+      onTap: onChanged == null
+          ? null
+          : () {
+              onChanged!(!value);
+            },
       child: Padding(
         padding: contentPadding,
         child: Row(

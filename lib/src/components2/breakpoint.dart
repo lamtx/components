@@ -193,9 +193,32 @@ class BreakpointBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (context, constraints) {
-        return builder(context, Breakpoint.fromConstraints(constraints));
-      },
+      builder: (context, constraints) => builder(
+        context,
+        Breakpoint.fromConstraints(constraints),
+      ),
+    );
+  }
+}
+
+class BreakpointPadding extends StatelessWidget {
+  const BreakpointPadding({
+    Key? key,
+    this.padding = EdgeInsets.zero,
+    required this.child,
+  }) : super(key: key);
+
+  final Widget child;
+  final EdgeInsets padding;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) => Padding(
+        padding:
+            Breakpoint.fromConstraints(constraints).horizontalPadding + padding,
+        child: child,
+      ),
     );
   }
 }
@@ -249,19 +272,20 @@ extension LayoutClassOperators on LayoutClass {
   bool operator <=(LayoutClass other) => value <= other.value;
 }
 
-extension BreakpointPadding on Breakpoint {
-  EdgeInsets get activityHorizontalMargin =>
-      EdgeInsets.symmetric(horizontal: gutters);
+extension BreakpointPaddingExt on Breakpoint {
+  EdgeInsets get horizontalPadding => EdgeInsets.symmetric(horizontal: gutters);
 
-  EdgeInsets get activityMargin => EdgeInsets.only(
+  EdgeInsets get padding => EdgeInsets.only(
         bottom: gutters,
         left: gutters,
         right: gutters,
       );
 
-  EdgeInsets get activityBottomMargin => EdgeInsets.only(
+  EdgeInsets get bottomPadding => EdgeInsets.only(
         bottom: gutters,
       );
+
+  double get maxWidth => isBodyScaling ? double.infinity : body;
 
   bool get isBodyScaling => body == 0.0;
 
