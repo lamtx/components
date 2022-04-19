@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../components.dart';
@@ -23,6 +24,7 @@ class CheckboxItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = _getCheckBoxSize();
     return InkWell(
       onTap: onChanged == null || isLoading ? null : () => onChanged!(!value),
       child: decidePadding(
@@ -32,8 +34,8 @@ class CheckboxItem extends StatelessWidget {
           children: <Widget>[
             if (isLoading)
               SizedBox(
-                width: 32,
-                height: 32,
+                width: size,
+                height: size,
                 child: Center(child: PlatformActivityIndicator()),
               )
             else
@@ -46,5 +48,15 @@ class CheckboxItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  static double _getCheckBoxSize() {
+    switch (defaultTargetPlatform) {
+      case TargetPlatform.android:
+      case TargetPlatform.iOS:
+        return 48;
+      default:
+        return 32;
+    }
   }
 }
