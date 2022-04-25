@@ -20,6 +20,7 @@ class AsyncListView extends StatelessWidget {
     this.onLoadMore,
     this.onRefresh,
     this.controller,
+    this.physics,
   }) : super(key: key);
 
   final bool isLoading;
@@ -33,6 +34,7 @@ class AsyncListView extends StatelessWidget {
   final bool reverse;
   final RefreshCallback? onRefresh;
   final ScrollController? controller;
+  final ScrollPhysics? physics;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,7 @@ class AsyncListView extends StatelessWidget {
             itemBuilder: itemBuilder,
             itemCount: itemCount,
             reverse: reverse,
+            physics: physics,
           )
         : ListView.separated(
             controller: controller,
@@ -50,6 +53,7 @@ class AsyncListView extends StatelessWidget {
             padding: padding ?? safePaddingVertical(context),
             separatorBuilder: separatorBuilder!,
             itemCount: itemCount,
+            physics: physics,
           );
     if (onRefresh != null) {
       listView = RefreshIndicator(
