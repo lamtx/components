@@ -189,7 +189,7 @@ Future<T?> showPlatformMenu<T>(
   );
 }
 
-void showPopupMenu<T>({
+Future<T?> showPopupMenu<T>({
   required BuildContext context,
   required List<PopupMenuEntry<T>> items,
   T? initialValue,
@@ -202,7 +202,7 @@ void showPopupMenu<T>({
 }) {
   final button = context.findRenderObject()! as RenderBox;
   final overlay =
-  Navigator.of(context).overlay!.context.findRenderObject()! as RenderBox;
+      Navigator.of(context).overlay!.context.findRenderObject()! as RenderBox;
 
   final position = RelativeRect.fromRect(
     Rect.fromPoints(
@@ -214,7 +214,7 @@ void showPopupMenu<T>({
     ),
     Offset.zero & overlay.size,
   );
-  showMenu(
+  return showMenu(
     context: context,
     position: position,
     items: items,
