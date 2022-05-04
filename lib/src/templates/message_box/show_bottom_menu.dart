@@ -188,3 +188,42 @@ Future<T?> showPlatformMenu<T>(
         .toList(),
   );
 }
+
+void showPopupMenu<T>({
+  required BuildContext context,
+  required List<PopupMenuEntry<T>> items,
+  T? initialValue,
+  double? elevation,
+  String? semanticLabel,
+  ShapeBorder? shape,
+  Color? color,
+  bool useRootNavigator = false,
+  BoxConstraints? constraints,
+}) {
+  final button = context.findRenderObject()! as RenderBox;
+  final overlay =
+  Navigator.of(context).overlay!.context.findRenderObject()! as RenderBox;
+
+  final position = RelativeRect.fromRect(
+    Rect.fromPoints(
+      button.localToGlobal(Offset.zero, ancestor: overlay),
+      button.localToGlobal(
+        button.size.bottomRight(Offset.zero) + Offset.zero,
+        ancestor: overlay,
+      ),
+    ),
+    Offset.zero & overlay.size,
+  );
+  showMenu(
+    context: context,
+    position: position,
+    items: items,
+    initialValue: initialValue,
+    elevation: elevation,
+    semanticLabel: semanticLabel,
+    shape: shape,
+    color: color,
+    useRootNavigator: useRootNavigator,
+    constraints: constraints,
+  );
+}
