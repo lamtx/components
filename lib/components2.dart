@@ -12,6 +12,7 @@ export 'src/components/platform.dart'
         showPlatformDialog,
         PlatformAlertDialog,
         DialogButton;
+export 'src/components/swipe_to_dismiss.dart';
 export 'src/components/vector_icon.dart';
 export 'src/components2/breakpoint.dart';
 export 'src/components2/checkbox_item.dart';

@@ -58,7 +58,7 @@ class RadioListItem<T> extends StatelessWidget {
           child: Row(
             mainAxisSize: _isDense ? MainAxisSize.min : MainAxisSize.max,
             children: <Widget>[
-              PlatformRadio<T>(
+              Radio<T>(
                 value: value,
                 groupValue: groupValue,
                 onChanged: onChanged,

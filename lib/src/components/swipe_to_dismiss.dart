@@ -73,7 +73,7 @@ class _SwipeToDismissState extends State<SwipeToDismiss>
         behavior: HitTestBehavior.opaque,
         onHorizontalDragStart: (_) {
           assert(!_dismissed,
-              "Dismssed SwipeToDismiss widget should be removed from tree and do not use");
+              "Dismissed SwipeToDismiss widget should be removed from tree and do not use");
           final renderBox = context.findRenderObject() as RenderBox;
           _maxTranslate = renderBox.size.width;
           _controller.stop();
