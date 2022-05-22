@@ -18,6 +18,7 @@ class AnimatedAsyncListView<T extends Object> extends StatefulWidget {
     this.onLoadMore,
     this.reverse = false,
     this.onRefresh,
+    this.controller,
   }) : super(key: key);
 
   final bool isLoading;
@@ -30,6 +31,7 @@ class AnimatedAsyncListView<T extends Object> extends StatefulWidget {
   final VoidCallback? onLoadMore;
   final bool reverse;
   final RefreshCallback? onRefresh;
+  final ScrollController? controller;
 
   @override
   AnimatedAsyncListViewState<T> createState() =>
@@ -51,6 +53,7 @@ class AnimatedAsyncListViewState<T extends Object>
       key: _listKey,
       initialItemCount: widget.items.length,
       reverse: widget.reverse,
+      controller: widget.controller,
       itemBuilder: (context, index, animation) {
         final item = widget.items[index];
         if (_disableAnimation) {
