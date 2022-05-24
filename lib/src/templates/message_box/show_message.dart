@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../../../components.dart';
@@ -14,25 +16,28 @@ class ActionButton {
     this.style = DialogButtonStyle.normal,
   });
 
-  ActionButton.positive(String text,
-      {DialogButtonStyle style = DialogButtonStyle.normal})
-      : this(
+  ActionButton.positive(
+    String text, {
+    DialogButtonStyle style = DialogButtonStyle.normal,
+  }) : this(
           text: (_) => text,
           type: DialogButtonType.positive,
           style: style,
         );
 
-  ActionButton.negative(String text,
-      {DialogButtonStyle style = DialogButtonStyle.cancellation})
-      : this(
+  ActionButton.negative(
+    String text, {
+    DialogButtonStyle style = DialogButtonStyle.cancellation,
+  }) : this(
           text: (_) => text,
           type: DialogButtonType.negative,
           style: style,
         );
 
-  ActionButton.neutral(String text,
-      {DialogButtonStyle style = DialogButtonStyle.normal})
-      : this(
+  ActionButton.neutral(
+    String text, {
+    DialogButtonStyle style = DialogButtonStyle.normal,
+  }) : this(
           text: (_) => text,
           type: DialogButtonType.neutral,
           style: style,
@@ -50,7 +55,9 @@ class ActionButton {
   static String _okText(BuildContext context) => "OK";
 }
 
-Future<ActionButton?> showMessage(
+/// Uses FutureOr to allow the caller to ignore the result.
+/// The return value is always Future<ActionButton?>
+FutureOr<ActionButton?> showMessage(
   BuildContext context, {
   String? message,
   Widget? content,
@@ -79,7 +86,9 @@ Future<ActionButton?> showMessage(
   );
 }
 
-Future<bool> askMessage(
+/// Uses FutureOr to allow the caller to ignore the result.
+/// The return value is always Future<bool>
+FutureOr<bool> askMessage(
   BuildContext context, {
   required String message,
   String? title,
