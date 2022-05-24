@@ -86,9 +86,7 @@ FutureOr<ActionButton?> showMessage(
   );
 }
 
-/// Uses FutureOr to allow the caller to ignore the result.
-/// The return value is always Future<bool>
-FutureOr<bool> askMessage(
+Future<bool> askMessage(
   BuildContext context, {
   required String message,
   String? title,
