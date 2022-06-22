@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../../components.dart';
+import '../../../components2.dart';
 import '../template_messages.dart';
 
 enum DialogButtonType { positive, negative, neutral }

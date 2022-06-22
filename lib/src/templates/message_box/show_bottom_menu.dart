@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-import '../../../components.dart';
+import '../../../components2.dart';
 import '../../../dimens.dart';
 import '../safe_padding.dart';
 

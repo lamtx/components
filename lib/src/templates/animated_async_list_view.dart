@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../components.dart';
+import '../../components2.dart';
 import 'empty_info.dart';
 import 'exception_info.dart';
 import 'loading_info.dart';

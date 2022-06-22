@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../components.dart';
 import '../../dimens.dart';
 
 class LoadingText extends StatelessWidget {
@@ -18,8 +17,8 @@ class LoadingText extends StatelessWidget {
           padding: itemSpacing,
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              PlatformActivityIndicator(),
+            children: [
+              const CircularProgressIndicator.adaptive(),
               Padding(
                 padding: textSpacingStart,
                 child: Text(text),

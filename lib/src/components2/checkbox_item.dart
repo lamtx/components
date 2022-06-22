@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../components.dart';
 import 'misc.dart';
 
 class CheckboxItem extends StatelessWidget {
@@ -36,10 +35,12 @@ class CheckboxItem extends StatelessWidget {
               SizedBox(
                 width: size,
                 height: size,
-                child: Center(child: PlatformActivityIndicator()),
+                child: const Center(
+                  child: CircularProgressIndicator.adaptive(),
+                ),
               )
             else
-              PlatformCheckbox(
+              Checkbox(
                 value: value,
                 onChanged: onChanged,
               ),

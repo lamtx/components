@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../components.dart';
+import '../../components2.dart';
 import '../../dimens.dart';
+import 'platform/platform_expand_icon.dart';
 
 typedef AnimationBuilder = Widget Function(
     BuildContext context, Animation<double> animation, Widget child);
@@ -81,7 +82,7 @@ class _ExpanderState extends State<Expander> with TickerProviderStateMixin {
         : widget.animationBuilder!(context, _controller, widget.child);
     return Column(
       children: <Widget>[
-        PlatformInkWell(
+        InkWell(
           onTap: () => widget.onTitlePressed(!widget.expanded),
           onLongPress: widget.onTitleLongPressed,
           child: title,
