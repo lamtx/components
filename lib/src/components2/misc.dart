@@ -61,5 +61,7 @@ extension ThemeExt on ThemeData {
 EdgeInsets avoidFloatingActionButtonPadding(BuildContext context) =>
     EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom + 56);
 
+// specs: https://m3.material.io/components/extended-fab/specs
+// height 56, spacing 16
 EdgeInsets avoidExtendedFloatingActionButtonPadding(BuildContext context) =>
-    EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom + 82);
+    EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom + 56 + 16);
