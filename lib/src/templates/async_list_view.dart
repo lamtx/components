@@ -15,6 +15,7 @@ class AsyncListView extends StatelessWidget {
     this.reverse = false,
     this.isLoading = false,
     this.emptyInfo = const EmptyInfo(),
+    this.loadingInfo = const LoadingInfo(),
     this.exception,
     this.padding,
     this.onLoadMore,
@@ -29,6 +30,7 @@ class AsyncListView extends StatelessWidget {
   final IndexedWidgetBuilder? separatorBuilder;
   final Exception? exception;
   final Widget? emptyInfo;
+  final Widget loadingInfo;
   final EdgeInsets? padding;
   final VoidCallback? onLoadMore;
   final bool reverse;
@@ -94,7 +96,7 @@ class AsyncListView extends StatelessWidget {
         children: <Widget>[
           child,
           if (isLoading)
-            const LoadingInfo()
+            loadingInfo
           else if (exception != null)
             ExceptionInfo(exception!)
           else if (emptyInfo != null)
