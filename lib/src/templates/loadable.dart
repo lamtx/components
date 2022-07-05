@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'exception_info.dart';
-import 'loading_info.dart';
 import 'utilities.dart';
 
 class Loadable extends StatelessWidget {
@@ -24,9 +22,9 @@ class Loadable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return isLoading
-        ? const LoadingInfo()
+        ? loadingBuilder(context)
         : exception != null
-            ? ExceptionInfo(exception!)
+            ? exceptionBuilder(context, exception!)
             : builder(context);
   }
 }
