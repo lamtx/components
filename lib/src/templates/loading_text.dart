@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../dimens.dart';
 
 class LoadingText extends StatelessWidget {
-  const LoadingText(this.text);
+  const LoadingText(this.text, {super.key});
 
   final String text;
 

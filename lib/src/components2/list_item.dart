@@ -15,7 +15,6 @@ class ListItemHeight {
 
 class ListItem extends StatelessWidget {
   const ListItem({
-    Key? key,
     required this.title,
     this.subtitle,
     this.trailing,
@@ -24,7 +23,8 @@ class ListItem extends StatelessWidget {
     this.contentPadding,
     this.itemHeight,
     this.onLongPress,
-  }) : super(key: key);
+    super.key,
+  });
 
   factory ListItem.dense({
     required Widget title,

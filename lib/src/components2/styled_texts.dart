@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class BodyLarge extends StatelessWidget {
   const BodyLarge(
     this.text, {
+    super.key,
     this.style,
     this.textAlign,
     this.maxLines,
@@ -33,6 +34,7 @@ class BodyLarge extends StatelessWidget {
 class BodySmall extends StatelessWidget {
   const BodySmall(
     this.text, {
+    super.key,
     this.style,
     this.textAlign,
     this.maxLines,
@@ -63,6 +65,7 @@ class BodySmall extends StatelessWidget {
 class LabelSmall extends StatelessWidget {
   const LabelSmall(
     this.text, {
+    super.key,
     this.style,
     this.textAlign,
     this.maxLines,

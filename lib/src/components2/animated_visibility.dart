@@ -10,6 +10,7 @@ class AnimatedVisibility extends StatefulWidget {
     required this.child,
     this.duration = shortAnimationDuration,
     this.animationBuilder,
+    super.key,
   });
 
   final bool visible;

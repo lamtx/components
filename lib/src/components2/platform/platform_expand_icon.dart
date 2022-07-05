@@ -4,18 +4,18 @@ import 'package:flutter/material.dart';
 
 class PlatformExpandIcon extends StatefulWidget {
   const PlatformExpandIcon({
-    Key? key,
+    super.key,
     this.isExpanded = false,
     this.size = 24.0,
     this.padding = const EdgeInsets.all(8),
-  }) : super(key: key);
+  });
 
   final bool isExpanded;
   final double size;
   final EdgeInsetsGeometry padding;
 
   @override
-  _PlatformExpandIconState createState() => _PlatformExpandIconState();
+  State<PlatformExpandIcon> createState() => _PlatformExpandIconState();
 }
 
 class _PlatformExpandIconState extends State<PlatformExpandIcon>

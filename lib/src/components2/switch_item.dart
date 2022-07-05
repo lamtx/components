@@ -5,12 +5,12 @@ import 'misc.dart';
 
 class SwitchItem extends StatelessWidget {
   const SwitchItem({
-    Key? key,
     required this.value,
     required this.onChanged,
     required this.title,
     this.contentPadding,
-  }) : super(key: key);
+    super.key,
+  });
 
   final bool value;
   final ValueChanged<bool> onChanged;

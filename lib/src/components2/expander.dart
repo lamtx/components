@@ -9,7 +9,6 @@ typedef AnimationBuilder = Widget Function(
 
 class Expander extends StatefulWidget {
   const Expander({
-    Key? key,
     required this.onTitlePressed,
     required this.title,
     required this.child,
@@ -18,7 +17,8 @@ class Expander extends StatefulWidget {
     this.onTitleLongPressed,
     this.animationDuration = shortAnimationDuration,
     this.animationBuilder,
-  }) : super(key: key);
+    super.key,
+  });
 
   final Widget title;
   final Widget child;

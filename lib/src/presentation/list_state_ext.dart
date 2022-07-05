@@ -59,6 +59,7 @@ extension ListStateExt<T extends Object> on ListState<T> {
     var changed = 0;
     if (what == DetectChanges.onlyDeleteNoMove) {
       assert(newItems.length < oldItems.length);
+      // ignore: avoid_multiple_declarations_per_line
       for (var i = 0, newIndex = 0; i < oldItems.length; i++) {
         if (oldItems[i] == newItems[newIndex]) {
           newIndex += 1;
@@ -69,6 +70,7 @@ extension ListStateExt<T extends Object> on ListState<T> {
       }
     } else if (what == DetectChanges.onlyInsertNoMove) {
       assert(newItems.length > oldItems.length);
+      // ignore: avoid_multiple_declarations_per_line
       for (var i = 0, newIndex = 0; newIndex < newItems.length; newIndex++) {
         if (oldItems[i] == newItems[newIndex]) {
           i++;

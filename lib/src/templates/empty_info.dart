@@ -5,7 +5,10 @@ import '../components2/breakpoint.dart';
 import 'template_messages.dart';
 
 class EmptyInfo extends StatelessWidget {
-  const EmptyInfo({Key? key, this.child}) : super(key: key);
+  const EmptyInfo({
+    super.key,
+    this.child,
+  });
 
   final Widget? child;
 

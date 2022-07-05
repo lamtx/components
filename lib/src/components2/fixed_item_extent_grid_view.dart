@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 class FixedItemExtentGridView extends StatelessWidget {
   const FixedItemExtentGridView.builder({
-    Key? key,
-    this.padding,
     required this.itemExtent,
     required this.columnCount,
     required this.itemCount,
     required this.itemBuilder,
+    this.padding,
     this.physics,
     this.shrinkWrap = false,
-  })  : super(key: key);
+    super.key,
+  });
 
   final EdgeInsets? padding;
   final double itemExtent;

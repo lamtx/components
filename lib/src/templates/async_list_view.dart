@@ -1,36 +1,36 @@
 import 'package:flutter/material.dart';
 
 import '../../components2.dart';
-import 'empty_info.dart';
-import 'exception_info.dart';
-import 'loading_info.dart';
 import 'safe_padding.dart';
+import 'utilities.dart';
 
 class AsyncListView extends StatelessWidget {
   const AsyncListView({
-    Key? key,
     required this.itemCount,
     required this.itemBuilder,
     this.separatorBuilder,
     this.reverse = false,
     this.isLoading = false,
-    this.emptyInfo = const EmptyInfo(),
-    this.loadingInfo = const LoadingInfo(),
     this.exception,
+    this.emptyInfoBuilder = defaultEmptyBuilder,
+    this.loadingInfoBuilder = defaultLoadingBuilder,
+    this.exceptionBuilder = defaultExceptionBuilder,
     this.padding,
     this.onLoadMore,
     this.onRefresh,
     this.controller,
     this.physics,
-  }) : super(key: key);
+    super.key,
+  });
 
   final bool isLoading;
   final int itemCount;
   final IndexedWidgetBuilder itemBuilder;
   final IndexedWidgetBuilder? separatorBuilder;
   final Exception? exception;
-  final Widget? emptyInfo;
-  final Widget loadingInfo;
+  final ExceptionWidgetBuilder exceptionBuilder;
+  final WidgetBuilder emptyInfoBuilder;
+  final WidgetBuilder loadingInfoBuilder;
   final EdgeInsets? padding;
   final VoidCallback? onLoadMore;
   final bool reverse;
@@ -96,11 +96,11 @@ class AsyncListView extends StatelessWidget {
         children: <Widget>[
           child,
           if (isLoading)
-            loadingInfo
+            loadingInfoBuilder(context)
           else if (exception != null)
-            ExceptionInfo(exception!)
-          else if (emptyInfo != null)
-            emptyInfo!,
+            exceptionBuilder(context, exception!)
+          else
+            emptyInfoBuilder(context),
         ],
       );
     } else {

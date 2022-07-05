@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
-
 class BrokenImage extends StatelessWidget {
-  const BrokenImage({Key? key, this.width, this.height}) : super(key: key);
+  const BrokenImage({
+    super.key,
+    this.width,
+    this.height,
+  });
 
   final double? width;
   final double? height;

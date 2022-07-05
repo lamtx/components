@@ -99,8 +99,8 @@ extension<T> on MenuItemEntry<T> {
 
 Future<T?> showBottomMenu<T>(
   BuildContext context, {
-  String? title,
   required List<MenuItemEntry<T>> items,
+  String? title,
   List<Widget> actions = const [],
 }) {
   return showModalBottomSheet<T>(
@@ -149,8 +149,8 @@ Future<T?> showBottomMenu<T>(
 
 Future<T?> showPlatformMenu<T>(
   BuildContext context, {
-  String? title,
   required List<MenuItemEntry<T>> items,
+  String? title,
   List<Widget> actions = const [],
 }) {
   if (isCupertino) {

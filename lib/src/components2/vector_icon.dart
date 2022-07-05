@@ -5,10 +5,10 @@ typedef PathPainter = void Function(Canvas canvas, Size size, {Color? fill});
 class VectorIcon extends StatelessWidget {
   const VectorIcon(
     this.painter, {
-    Key? key,
+    super.key,
     this.size,
     this.color,
-  })  : super(key: key);
+  });
 
   final double? size;
   final Color? color;
@@ -32,7 +32,10 @@ class VectorIcon extends StatelessWidget {
 }
 
 class _Painter extends CustomPainter {
-  _Painter({this.color, required this.painter});
+  _Painter({
+    required this.painter,
+    this.color,
+  });
 
   final Color? color;
   final PathPainter painter;

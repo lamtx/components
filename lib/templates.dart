@@ -14,4 +14,3 @@ export 'src/templates/loading_text.dart';
 export 'src/templates/message_box.dart';
 export 'src/templates/safe_padding.dart';
 export 'src/templates/template_messages.dart';
-export 'src/templates/toast.dart';

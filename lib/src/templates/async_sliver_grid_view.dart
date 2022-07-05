@@ -6,17 +6,17 @@ import 'loading_info.dart';
 
 class AsyncSliverGridView extends StatelessWidget {
   const AsyncSliverGridView({
-    Key? key,
     required this.itemCount,
     required this.itemExtent,
     required this.columnCount,
     required this.itemBuilder,
+    required this.isLoading,
     this.exception,
     this.emptyInfo = const EmptyInfo(),
     this.onLoadMore,
-    required this.isLoading,
     this.padding = EdgeInsets.zero,
-  }) : super(key: key);
+    super.key,
+  });
 
   final int itemCount;
   final IndexedWidgetBuilder itemBuilder;

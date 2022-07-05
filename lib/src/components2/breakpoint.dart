@@ -63,6 +63,7 @@ class Breakpoint {
   /// Max width of body or scaling, if it's specified, gutters should scaling
   final double body;
 
+  // ignore: prefer_constructors_over_static_methods
   static Breakpoint _calcBreakpoint(Orientation orientation, double _width) {
     if (orientation == Orientation.landscape) {
       // ignore: parameter_assignments
@@ -186,6 +187,7 @@ class BreakpointBuilder extends StatelessWidget {
   /// Wraps layout builder and returns a breakpoint
   const BreakpointBuilder({
     required this.builder,
+    super.key,
   });
 
   final Widget Function(BuildContext, Breakpoint) builder;
@@ -203,10 +205,10 @@ class BreakpointBuilder extends StatelessWidget {
 
 class BreakpointPadding extends StatelessWidget {
   const BreakpointPadding({
-    Key? key,
-    this.padding = EdgeInsets.zero,
     required this.child,
-  }) : super(key: key);
+    this.padding = EdgeInsets.zero,
+    super.key,
+  });
 
   final Widget child;
   final EdgeInsets padding;

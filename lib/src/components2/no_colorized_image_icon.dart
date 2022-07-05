@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class NoColorizedImageIcon extends StatelessWidget {
   const NoColorizedImageIcon(
     this.image, {
-    Key? key,
+    super.key,
     this.size,
-  }) : super(key: key);
+  });
 
   final double? size;
   final ImageProvider<Object> image;

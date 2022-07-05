@@ -6,10 +6,10 @@ import '../components2/breakpoint.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({
-    Key? key,
     required this.children,
     this.avoidBottom = true,
-  }) : super(key: key);
+    super.key,
+  });
 
   final List<Widget> children;
   final bool avoidBottom;

@@ -27,8 +27,8 @@ Widget PlatformAlertDialog({
 }
 
 Widget DialogButton({
-  VoidCallback? onPressed,
   required Widget child,
+  VoidCallback? onPressed,
   bool isDefaultAction = false,
   bool isDestructiveAction = false,
 }) {

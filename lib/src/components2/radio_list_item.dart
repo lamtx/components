@@ -5,26 +5,24 @@ import 'misc.dart';
 
 class RadioListItem<T> extends StatelessWidget {
   const RadioListItem({
-    Key? key,
     required this.value,
-    this.groupValue,
     required this.onChanged,
     required this.title,
+    this.groupValue,
     this.contentPadding,
     this.toggleable = false,
-  })  : _isDense = false,
-        super(key: key);
+    super.key,
+  }) : _isDense = false;
 
   const RadioListItem.dense({
-    Key? key,
     required this.value,
-    this.groupValue,
     required this.onChanged,
     required this.title,
+    this.groupValue,
     this.contentPadding = EdgeInsets.zero,
     this.toggleable = false,
-  })  : _isDense = true,
-        super(key: key);
+    super.key,
+  }) : _isDense = true;
 
   final T value;
   final T? groupValue;

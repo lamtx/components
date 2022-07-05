@@ -7,7 +7,6 @@ import 'loading_info.dart';
 
 class AsyncSliverListView extends StatelessWidget {
   const AsyncSliverListView({
-    Key? key,
     required this.itemCount,
     required this.itemBuilder,
     this.isLoading = false,
@@ -16,7 +15,8 @@ class AsyncSliverListView extends StatelessWidget {
     this.onLoadMore,
     this.onRefresh,
     this.controller,
-  }) : super(key: key);
+    super.key,
+  });
 
   final bool isLoading;
   final int itemCount;

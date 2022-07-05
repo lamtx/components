@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
 
 import '../../components2.dart';
-import 'empty_info.dart';
-import 'exception_info.dart';
-import 'loading_info.dart';
+import 'utilities.dart';
 
 class AsyncGridView extends StatelessWidget {
   const AsyncGridView({
-    Key? key,
     required this.itemCount,
     required this.itemExtent,
     required this.columnCount,
     required this.itemBuilder,
     this.exception,
-    this.emptyInfo = const EmptyInfo(),
+    this.emptyInfoBuilder = defaultEmptyBuilder,
+    this.loadingInfoBuilder = defaultLoadingBuilder,
+    this.exceptionBuilder = defaultExceptionBuilder,
     this.isLoading = false,
     this.padding,
     this.onLoadMore,
     this.physics,
-  }) : super(key: key);
+    super.key,
+  });
 
   final bool isLoading;
   final int itemCount;
   final IndexedWidgetBuilder itemBuilder;
   final Exception? exception;
-  final Widget? emptyInfo;
+  final WidgetBuilder emptyInfoBuilder;
+  final WidgetBuilder loadingInfoBuilder;
+  final ExceptionWidgetBuilder exceptionBuilder;
   final EdgeInsets? padding;
   final double itemExtent;
   final int columnCount;
@@ -34,7 +36,7 @@ class AsyncGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isLoading && itemCount == 0) {
-      return const LoadingInfo();
+      return loadingInfoBuilder(context);
     }
     final padding = this.padding ?? EdgeInsets.zero;
     final size = MediaQuery.of(context).size;
@@ -78,9 +80,9 @@ class AsyncGridView extends StatelessWidget {
         children: <Widget>[
           child,
           if (exception != null)
-            ExceptionInfo(exception!)
-          else if (emptyInfo != null)
-            emptyInfo!,
+            exceptionBuilder(context, exception!)
+          else
+            emptyInfoBuilder(context),
         ],
       );
     } else {

@@ -7,18 +7,18 @@ import 'fade_slide_transition.dart';
 
 class SwipeToDismiss extends StatefulWidget {
   const SwipeToDismiss({
-    Key? key,
     required this.dismissible,
     required this.child,
     required this.onDismissed,
-  }) : super(key: key);
+    super.key,
+  });
 
   final bool dismissible;
   final Widget child;
   final VoidCallback onDismissed;
 
   @override
-  _SwipeToDismissState createState() => _SwipeToDismissState();
+  State<SwipeToDismiss> createState() => _SwipeToDismissState();
 }
 
 class _SwipeToDismissState extends State<SwipeToDismiss>
@@ -74,7 +74,7 @@ class _SwipeToDismissState extends State<SwipeToDismiss>
         onHorizontalDragStart: (_) {
           assert(!_dismissed,
               "Dismissed SwipeToDismiss widget should be removed from tree and do not use");
-          final renderBox = context.findRenderObject() as RenderBox;
+          final renderBox = context.findRenderObject()! as RenderBox;
           _maxTranslate = renderBox.size.width;
           _controller.stop();
         },

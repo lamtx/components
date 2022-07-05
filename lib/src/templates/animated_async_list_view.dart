@@ -9,7 +9,6 @@ import 'safe_padding.dart';
 class AnimatedAsyncListView<T extends Object> extends StatefulWidget {
   const AnimatedAsyncListView({
     required this.items,
-    Key? key,
     required this.itemBuilder,
     this.exception,
     this.emptyInfo = const EmptyInfo(),
@@ -19,7 +18,8 @@ class AnimatedAsyncListView<T extends Object> extends StatefulWidget {
     this.reverse = false,
     this.onRefresh,
     this.controller,
-  }) : super(key: key);
+    super.key,
+  });
 
   final bool isLoading;
   final List<T> items;

@@ -5,14 +5,14 @@ import 'misc.dart';
 
 class CheckboxItem extends StatelessWidget {
   const CheckboxItem({
-    Key? key,
     required this.value,
     required this.onChanged,
     required this.title,
     this.contentPadding,
     this.mainAxisSize = MainAxisSize.max,
     this.isLoading = false,
-  }) : super(key: key);
+    super.key,
+  });
 
   final bool value;
   final ValueChanged<bool?>? onChanged;
@@ -56,7 +56,10 @@ class CheckboxItem extends StatelessWidget {
       case TargetPlatform.android:
       case TargetPlatform.iOS:
         return 48;
-      default:
+      case TargetPlatform.fuchsia:
+      case TargetPlatform.linux:
+      case TargetPlatform.macOS:
+      case TargetPlatform.windows:
         return 32;
     }
   }

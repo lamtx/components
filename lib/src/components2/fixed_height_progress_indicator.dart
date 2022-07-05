@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 
 class FixedHeightProgressIndicator extends StatelessWidget
     implements PreferredSizeWidget {
-  const FixedHeightProgressIndicator({Key? key, required this.isLoading})
-      : super(key: key);
+  const FixedHeightProgressIndicator({
+    required this.isLoading,
+    super.key,
+  });
 
   final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 1,
       child: isLoading ? const LinearProgressIndicator() : null,
     );

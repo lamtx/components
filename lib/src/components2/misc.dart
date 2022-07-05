@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'breakpoint.dart';
 
 Widget decidePadding({
-  EdgeInsets? padding,
   required Widget child,
+  EdgeInsets? padding,
 }) =>
     padding == null
         ? BreakpointPadding(child: child)
