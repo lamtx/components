@@ -1,6 +1,7 @@
 export 'src/components2/animated_visibility.dart';
 export 'src/components2/breakpoint.dart';
 export 'src/components2/checkbox_item.dart';
+export 'src/components2/clear_input_button.dart';
 export 'src/components2/expander.dart';
 export 'src/components2/fade_size_transition.dart';
 export 'src/components2/fade_slide_transition.dart';
