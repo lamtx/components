@@ -5,16 +5,12 @@ import 'package:flutter/material.dart';
 
 import '../../dimens.dart';
 
-@Deprecated("`activityMargin` is deprecated")
-EdgeInsets safePadding(BuildContext context) {
-  final padding = MediaQuery.of(context).padding;
-  return _max(padding, activityMargin);
-}
-
 EdgeInsets safePaddingTop(BuildContext context) {
   final padding = MediaQuery.of(context).padding;
   return EdgeInsets.only(
     top: padding.top,
+    right: padding.right,
+    left: padding.left,
   );
 }
 
@@ -23,6 +19,8 @@ EdgeInsets safePaddingVertical(BuildContext context) {
   return EdgeInsets.only(
     top: padding.top,
     bottom: max(padding.bottom, kItemSpacing),
+    right: padding.right,
+    left: padding.left,
   );
 }
 
@@ -30,6 +28,8 @@ EdgeInsets safePaddingBottom(BuildContext context) {
   final padding = MediaQuery.of(context).padding;
   return EdgeInsets.only(
     bottom: max(padding.bottom, kItemSpacing),
+    right: padding.right,
+    left: padding.left,
   );
 }
 
