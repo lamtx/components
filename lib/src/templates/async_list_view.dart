@@ -48,6 +48,7 @@ class AsyncListView extends StatelessWidget {
             itemCount: itemCount,
             reverse: reverse,
             physics: physics,
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           )
         : ListView.separated(
             controller: controller,
@@ -56,6 +57,7 @@ class AsyncListView extends StatelessWidget {
             separatorBuilder: separatorBuilder!,
             itemCount: itemCount,
             physics: physics,
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
           );
     if (onRefresh != null) {
       listView = RefreshIndicator(
