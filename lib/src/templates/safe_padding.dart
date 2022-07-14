@@ -32,12 +32,3 @@ EdgeInsets safePaddingBottom(BuildContext context) {
     left: padding.left,
   );
 }
-
-EdgeInsets _max(EdgeInsets a, EdgeInsets b) {
-  return EdgeInsets.only(
-    left: max(a.left, b.left),
-    right: max(a.right, b.right),
-    top: max(a.top, b.top),
-    bottom: max(a.bottom, b.bottom),
-  );
-}

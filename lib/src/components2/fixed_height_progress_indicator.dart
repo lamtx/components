@@ -4,19 +4,23 @@ class FixedHeightProgressIndicator extends StatelessWidget
     implements PreferredSizeWidget {
   const FixedHeightProgressIndicator({
     required this.isLoading,
+    this.value,
+    this.height = 1,
     super.key,
   });
 
   final bool isLoading;
+  final double? value;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 1,
-      child: isLoading ? const LinearProgressIndicator() : null,
+      height: height,
+      child: isLoading ? LinearProgressIndicator(value: value) : null,
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(1);
+  Size get preferredSize => Size.fromHeight(height);
 }
