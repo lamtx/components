@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../../components2.dart';
-import 'empty_info.dart';
-import 'exception_info.dart';
-import 'loading_info.dart';
 import 'safe_padding.dart';
+import 'utilities.dart';
 
 class AnimatedAsyncListView<T extends Object> extends StatefulWidget {
   const AnimatedAsyncListView({
     required this.items,
     required this.itemBuilder,
     this.exception,
-    this.emptyInfo = const EmptyInfo(),
+    this.emptyInfoBuilder = defaultEmptyBuilder,
+    this.loadingInfoBuilder = defaultLoadingBuilder,
+    this.exceptionBuilder = defaultExceptionBuilder,
     this.isLoading = false,
     this.padding,
     this.onLoadMore,
@@ -25,7 +25,9 @@ class AnimatedAsyncListView<T extends Object> extends StatefulWidget {
   final List<T> items;
   final Widget Function(BuildContext context, T item) itemBuilder;
   final Exception? exception;
-  final Widget? emptyInfo;
+  final ExceptionWidgetBuilder exceptionBuilder;
+  final WidgetBuilder emptyInfoBuilder;
+  final WidgetBuilder loadingInfoBuilder;
   final EdgeInsets? padding;
 
   final VoidCallback? onLoadMore;
@@ -46,7 +48,7 @@ class AnimatedAsyncListViewState<T extends Object>
   @override
   Widget build(BuildContext context) {
     if (widget.isLoading && widget.items.isEmpty) {
-      return const LoadingInfo();
+      return widget.loadingInfoBuilder(context);
     }
     Widget listView = AnimatedList(
       padding: widget.padding ?? safePaddingVertical(context),
@@ -109,9 +111,9 @@ class AnimatedAsyncListViewState<T extends Object>
         children: <Widget>[
           child,
           if (widget.exception != null)
-            ExceptionInfo(widget.exception!)
-          else if (widget.emptyInfo != null)
-            widget.emptyInfo!,
+            widget.exceptionBuilder(context, widget.exception!)
+          else
+            widget.emptyInfoBuilder(context),
         ],
       );
     } else {
