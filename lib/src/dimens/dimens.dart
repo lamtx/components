@@ -1,9 +1,8 @@
-// ignore_for_file:  lines_longer_than_80_chars
-
 import 'package:flutter/widgets.dart';
 
 @Deprecated("Activity Margin should be replaced by breakpoint")
 const double kActivityHorizontalMargin = 22;
+
 @Deprecated("Activity Margin should be replaced by breakpoint")
 const double kActivityVerticalMargin = 16;
 const double kItemSpacing = 12;
@@ -16,10 +15,12 @@ const activityMargin = EdgeInsets.only(
   right: kActivityHorizontalMargin,
   bottom: kActivityVerticalMargin,
 );
+
 @Deprecated("Activity Margin should be replaced by breakpoint")
 const activityHorizontalMargin = EdgeInsets.symmetric(
   horizontal: kActivityHorizontalMargin,
 );
+
 @Deprecated("Activity Margin should be replaced by breakpoint")
 const activityMarginBottom = EdgeInsets.only(bottom: kActivityVerticalMargin);
 
