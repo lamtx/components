@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ClearInputButton extends StatefulWidget {
   const ClearInputButton({
     required this.controller,
+    required this.onCleared,
     this.icon,
     this.emptyIcon = const SizedBox.shrink(),
     super.key,
@@ -11,6 +12,7 @@ class ClearInputButton extends StatefulWidget {
   final TextEditingController controller;
   final Widget? icon;
   final Widget emptyIcon;
+  final VoidCallback? onCleared;
 
   @override
   State<ClearInputButton> createState() => _ClearInputButtonState();
@@ -48,7 +50,10 @@ class _ClearInputButtonState extends State<ClearInputButton> {
         ? widget.icon ??
             IconButton(
               icon: const Icon(Icons.clear),
-              onPressed: () => widget.controller.clear(),
+              onPressed: () {
+                widget.controller.clear();
+                widget.onCleared?.call();
+              },
             )
         : widget.emptyIcon;
   }
