@@ -7,6 +7,8 @@ environment:
   sdk: ^2.17.0
 
 dependencies:
+  cancellation:
+    git: https://github.com/lamtx/cancellation.git
   ext:
     git: https://github.com/lamtx/ext.git
   flutter:
