@@ -27,7 +27,6 @@ class _SubscriptionCleaner implements Disposable {
   @override
   void dispose() {
     for (final value in _values) {
-      print("XXXX: cancel ${value.runtimeType}");
       value.cancel();
     }
   }
