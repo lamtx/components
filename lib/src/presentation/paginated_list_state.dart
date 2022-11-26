@@ -1,3 +1,4 @@
+import 'package:ext/ext.dart';
 import 'package:flutter/material.dart';
 
 import 'async_list_state.dart';
@@ -48,6 +49,7 @@ abstract class PaginatedListState<T extends Object> extends AsyncListState<T> {
       exception = null;
       _canNext = elements.isNotEmpty;
     } on Exception catch (e) {
+      assert(log("AsyncList", "fetch failed", e));
       exception = e;
     } finally {
       isLoading = false;
