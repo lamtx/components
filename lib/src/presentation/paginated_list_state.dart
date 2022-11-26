@@ -4,7 +4,7 @@ import 'async_list_state.dart';
 import 'list_state_ext.dart';
 
 abstract class PaginatedListState<T extends Object> extends AsyncListState<T> {
-  PaginatedListState() {
+  PaginatedListState({super.fetchNow = true}) {
     keywordController.addListener(_onKeywordChanged);
   }
 
