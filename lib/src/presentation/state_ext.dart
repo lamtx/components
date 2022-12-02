@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:cancellation/cancellation.dart';
-import 'package:ext/ext.dart';
 
 import 'base_state.dart';
 
@@ -17,7 +16,7 @@ extension StateExt on BaseState {
   }
 }
 
-class _SubscriptionCleaner implements Disposable {
+class _SubscriptionCleaner implements Cancellable {
   final _values = <StreamSubscription<void>>[];
 
   void add(StreamSubscription<void> subscription) {
@@ -25,7 +24,7 @@ class _SubscriptionCleaner implements Disposable {
   }
 
   @override
-  void dispose() {
+  void cancel() {
     for (final value in _values) {
       value.cancel();
     }

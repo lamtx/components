@@ -21,7 +21,7 @@ class EmptyInfo extends StatelessWidget {
         child: BreakpointPadding(
           padding: itemSpacingTop,
           child: DefaultTextStyle(
-            style: Theme.of(context).textTheme.bodyText2!,
+            style: Theme.of(context).textTheme.bodyMedium!,
             textAlign: TextAlign.center,
             child: child ?? Text(TemplateMessages.of(context).noItems),
           ),

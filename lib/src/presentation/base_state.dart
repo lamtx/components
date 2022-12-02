@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:cancellation/cancellation.dart';
-import 'package:ext/ext.dart';
 import 'package:flutter/foundation.dart';
 
 class BaseState with ChangeNotifier {
@@ -59,9 +58,7 @@ class BaseState with ChangeNotifier {
   }
 
   static void _closeObject(Object object) {
-    if (object is Disposable) {
-      object.dispose();
-    } else if (object is Cancellable) {
+    if (object is Cancellable) {
       object.cancel();
     } else if (object is StreamSubscription<void>) {
       object.cancel();

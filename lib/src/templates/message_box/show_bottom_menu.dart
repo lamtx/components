@@ -109,7 +109,7 @@ Future<T?> showBottomMenu<T>(
       onClosing: () {},
       builder: (context) {
         final theme = Theme.of(context);
-        final subtitle1 = theme.textTheme.subtitle1!;
+        final subtitle1 = theme.textTheme.titleMedium!;
         final selectedSubtitle1 = subtitle1.copyWith(
           color: theme.colorScheme.primary,
         );
