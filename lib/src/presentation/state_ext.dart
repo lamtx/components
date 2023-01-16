@@ -39,5 +39,6 @@ class _SubscriptionCleaner implements Cancellable {
         value.cancel();
       }
     }
+    _values.clear();
   }
 }

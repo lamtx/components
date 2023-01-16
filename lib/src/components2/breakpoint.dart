@@ -195,10 +195,15 @@ class BreakpointBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (context, constraints) => builder(
-        context,
-        Breakpoint.fromConstraints(constraints),
-      ),
+      builder: (context, constraints) {
+        final breakpoint = Breakpoint.fromConstraints(constraints);
+        return ListTileTheme(
+          data: ListTileTheme.of(context).copyWith(
+            contentPadding: breakpoint.horizontalPadding,
+          ),
+          child: builder(context, breakpoint),
+        );
+      },
     );
   }
 }
