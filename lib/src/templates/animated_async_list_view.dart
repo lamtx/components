@@ -92,9 +92,9 @@ class AnimatedAsyncListViewState<T extends Object>
             child: Column(
               children: <Widget>[
                 if (widget.reverse)
-                  FixedHeightProgressIndicator(
-                    isLoading: widget.items.isNotEmpty && widget.isLoading,
-                  ),
+                  // Do not show, it breaks appbar
+                  if (widget.items.isNotEmpty && widget.isLoading)
+                    const LinearProgressIndicator(),
                 Expanded(
                   child: listView,
                 ),
