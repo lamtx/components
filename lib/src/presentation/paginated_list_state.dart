@@ -5,37 +5,15 @@ import 'async_list_state.dart';
 import 'list_state_ext.dart';
 
 abstract class PaginatedListState<T extends Object> extends AsyncListState<T> {
-  PaginatedListState({super.fetchNow = true}) {
-    keywordController.addListener(_onKeywordChanged);
-  }
+  PaginatedListState({super.fetchNow = true});
 
   final keywordController = TextEditingController();
-  var _isEmptyKeyword = true;
   var _canNext = true;
   var _pageIndex = 0;
-
-  bool get isEmptyKeyword => _isEmptyKeyword;
 
   String get keyword => keywordController.text;
 
   int get pageIndex => _pageIndex;
-
-  set isEmptyKeyword(bool newValue) {
-    if (_isEmptyKeyword != newValue) {
-      _isEmptyKeyword = newValue;
-      notifyListeners();
-    }
-  }
-
-  void _onKeywordChanged() {
-    isEmptyKeyword = keywordController.text.isEmpty;
-  }
-
-  @override
-  void dispose() {
-    keywordController.removeListener(_onKeywordChanged);
-    super.dispose();
-  }
 
   void fetchMore() async {
     if (isLoading || !_canNext) {
