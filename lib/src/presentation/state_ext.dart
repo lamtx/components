@@ -19,6 +19,10 @@ extension StateExt on BaseState {
     const key = "presentation:addSubscription";
     setTagIfAbsent(key, _SubscriptionCleaner.new).add(cancellable);
   }
+
+  void listen<T>(Stream<T> stream, void Function(T event) onEvent) {
+    addSubscription(stream.listen(onEvent));
+  }
 }
 
 class _SubscriptionCleaner implements Cancellable {
