@@ -28,11 +28,11 @@ class BottomBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: children
               .withIndex()
-              .map((e) => e.$1 == 0
-                  ? e.$2
+              .map((e) => e.index == 0
+                  ? e.value
                   : Padding(
                       padding: itemSpacingStart,
-                      child: e.$2,
+                      child: e.value,
                     ))
               .toList(),
         ),
