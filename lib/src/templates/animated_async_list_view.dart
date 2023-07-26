@@ -136,7 +136,7 @@ class AnimatedAsyncListViewState<T extends Object>
         ?.removeItem(index, _childBuilder(widget.items[index]));
   }
 
-  AnimatedListRemovedItemBuilder _childBuilder(T item) {
+  AnimatedRemovedItemBuilder _childBuilder(T item) {
     return (context, animation) => FadeSlideTransition(
           sizeFactor: animation,
           child: widget.itemBuilder(context, item),

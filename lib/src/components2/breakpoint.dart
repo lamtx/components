@@ -1,7 +1,10 @@
+// ignore_for_file: deprecated_consistency
+
 library breakpoint;
 
 import 'package:flutter/material.dart';
 
+@Deprecated("Material 2 deprecated")
 class Breakpoint {
   /// Following Material Design Guidlines [https://material.io/design/layout/responsive-layout-grid.html#grid-behavior]
   const Breakpoint({
@@ -183,6 +186,7 @@ class Breakpoint {
   }
 }
 
+@Deprecated("Material 2 deprecated")
 class BreakpointBuilder extends StatelessWidget {
   /// Wraps layout builder and returns a breakpoint
   const BreakpointBuilder({
@@ -208,6 +212,7 @@ class BreakpointBuilder extends StatelessWidget {
   }
 }
 
+@Deprecated("Material 2 deprecated")
 class BreakpointPadding extends StatelessWidget {
   const BreakpointPadding({
     required this.child,

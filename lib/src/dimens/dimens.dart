@@ -5,9 +5,6 @@ const double kActivityHorizontalMargin = 22;
 
 @Deprecated("Activity Margin should be replaced by breakpoint")
 const double kActivityVerticalMargin = 16;
-const double kItemSpacing = 12;
-const double _verticalTextSpacing = 4;
-const double _horizontalTextSpacing = 3;
 
 @Deprecated("Activity Margin should be replaced by breakpoint")
 const activityMargin = EdgeInsets.only(
@@ -24,6 +21,13 @@ const activityHorizontalMargin = EdgeInsets.symmetric(
 @Deprecated("Activity Margin should be replaced by breakpoint")
 const activityMarginBottom = EdgeInsets.only(bottom: kActivityVerticalMargin);
 
+/// https://m3.material.io/foundations/layout/applying-layout/compact#4b2b6814-c64a-4bc0-a07d-6652a91737e6
+const double kCompatMargin = 16;
+const double kItemSpacing = 12;
+const double _verticalTextSpacing = 4;
+const double _horizontalTextSpacing = 3;
+
+const spacingHorizontal = EdgeInsets.symmetric(horizontal: kCompatMargin);
 const itemSpacing = EdgeInsets.all(kItemSpacing);
 const itemSpacingTop = EdgeInsets.only(top: kItemSpacing);
 const itemSpacingBottom = EdgeInsets.only(bottom: kItemSpacing);
@@ -67,3 +71,6 @@ const mediumAnimationDuration = Duration(milliseconds: 600);
 const listPreferredItemHeight = 64.0;
 const listPreferredItemHeightSmall = 48.0;
 const listPreferredItemHeightLarge = 80.0;
+
+/// https://m3.material.io/foundations/layout/understanding-layout/parts-of-layout#31a74707-af70-4d25-88f9-2fa51b091bea
+const paneFixedWidth = 360.0;

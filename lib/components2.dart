@@ -1,5 +1,5 @@
 export 'src/components2/animated_visibility.dart';
-export 'src/components2/breakpoint.dart';
+export 'src/components2/breakpoint.dart' hide WindowSize, WindowSizeOperators;
 export 'src/components2/checkbox_item.dart';
 export 'src/components2/clear_input_button.dart';
 export 'src/components2/expander.dart';
@@ -16,3 +16,4 @@ export 'src/components2/styled_texts.dart';
 export 'src/components2/swipe_to_dismiss.dart';
 export 'src/components2/switch_item.dart';
 export 'src/components2/vector_icon.dart';
+export 'src/components2/window_size.dart';
