@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'list_state.dart';
 import 'list_state_ext.dart';
 
-abstract class AsyncListState<T extends Object> extends ListState<T> {
+abstract base class AsyncListState<T extends Object> extends ListState<T> {
   AsyncListState({bool fetchNow = true}) {
     if (fetchNow) {
       fetch();

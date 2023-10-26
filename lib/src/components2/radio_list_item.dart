@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../dimens.dart';
 import 'misc.dart';
 
-class RadioListItem<T> extends StatelessWidget {
+final class RadioListItem<T> extends StatelessWidget {
   const RadioListItem({
     required this.value,
     required this.onChanged,

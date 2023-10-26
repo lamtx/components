@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../components2.dart';
 import '../../dimens.dart';
 
-class ListItemHeight {
+final class ListItemHeight {
   const ListItemHeight(this._height);
 
   final double _height;
@@ -13,7 +13,7 @@ class ListItemHeight {
   static const large = ListItemHeight(listPreferredItemHeightLarge);
 }
 
-class ListItem extends StatelessWidget {
+final class ListItem extends StatelessWidget {
   const ListItem({
     required this.title,
     this.subtitle,

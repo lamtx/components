@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LoadingInfo extends StatelessWidget {
+final class LoadingInfo extends StatelessWidget {
   const LoadingInfo({super.key});
 
   @override

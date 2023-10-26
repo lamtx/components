@@ -9,7 +9,7 @@ enum DialogButtonType { positive, negative, neutral }
 
 enum DialogButtonStyle { normal, cancellation, destructive }
 
-class ActionButton {
+final class ActionButton {
   const ActionButton({
     required this.text,
     required this.type,

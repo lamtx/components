@@ -4,7 +4,7 @@ import '../../dimens.dart';
 import '../components2/breakpoint.dart';
 import 'template_messages.dart';
 
-class EmptyInfo extends StatelessWidget {
+final class EmptyInfo extends StatelessWidget {
   const EmptyInfo({
     super.key,
     this.child,

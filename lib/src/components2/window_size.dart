@@ -49,7 +49,7 @@ extension WindowSizeOperators on WindowSize {
   bool operator <=(WindowSize other) => index <= other.index;
 }
 
-class WindowSizeBuilder extends StatelessWidget {
+final class WindowSizeBuilder extends StatelessWidget {
   const WindowSizeBuilder({
     required this.builder,
     super.key,
@@ -66,7 +66,7 @@ class WindowSizeBuilder extends StatelessWidget {
       );
 }
 
-class WindowSizeProvider extends StatelessWidget {
+final class WindowSizeProvider extends StatelessWidget {
   const WindowSizeProvider({
     required this.child,
     super.key,

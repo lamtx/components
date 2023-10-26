@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class NoColorizedImageIcon extends StatelessWidget {
+final class NoColorizedImageIcon extends StatelessWidget {
   const NoColorizedImageIcon(
     this.image, {
     super.key,

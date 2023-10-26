@@ -4,7 +4,7 @@ import '../../components2.dart';
 import 'safe_padding.dart';
 import 'utilities.dart';
 
-class AsyncListView extends StatelessWidget {
+final class AsyncListView extends StatelessWidget {
   const AsyncListView({
     required this.itemCount,
     required this.itemBuilder,

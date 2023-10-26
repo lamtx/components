@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'misc.dart';
 
-class CheckboxItem extends StatelessWidget {
+final class CheckboxItem extends StatelessWidget {
   const CheckboxItem({
     required this.value,
     required this.onChanged,

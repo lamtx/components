@@ -4,7 +4,7 @@ import '../../dimens.dart';
 import 'expander.dart';
 import 'fade_slide_transition.dart';
 
-class AnimatedVisibility extends StatefulWidget {
+final class AnimatedVisibility extends StatefulWidget {
   const AnimatedVisibility({
     required this.visible,
     required this.child,

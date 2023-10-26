@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:cancellation/cancellation.dart';
 import 'package:flutter/foundation.dart';
 
-class BaseState with ChangeNotifier {
+base class BaseState extends ChangeNotifier {
   bool _isDisposed = false;
   bool _isLoading = false;
   Exception? _exception;

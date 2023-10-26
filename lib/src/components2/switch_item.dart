@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../dimens.dart';
 import 'misc.dart';
 
-class SwitchItem extends StatelessWidget {
+final class SwitchItem extends StatelessWidget {
   const SwitchItem({
     required this.value,
     required this.onChanged,

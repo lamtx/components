@@ -5,7 +5,7 @@ library breakpoint;
 import 'package:flutter/material.dart';
 
 @Deprecated("Material 2 deprecated")
-class Breakpoint {
+final class Breakpoint {
   /// Following Material Design Guidlines [https://material.io/design/layout/responsive-layout-grid.html#grid-behavior]
   const Breakpoint({
     required this.columns,
@@ -187,7 +187,7 @@ class Breakpoint {
 }
 
 @Deprecated("Material 2 deprecated")
-class BreakpointBuilder extends StatelessWidget {
+final class BreakpointBuilder extends StatelessWidget {
   /// Wraps layout builder and returns a breakpoint
   const BreakpointBuilder({
     required this.builder,
@@ -213,7 +213,7 @@ class BreakpointBuilder extends StatelessWidget {
 }
 
 @Deprecated("Material 2 deprecated")
-class BreakpointPadding extends StatelessWidget {
+final class BreakpointPadding extends StatelessWidget {
   const BreakpointPadding({
     required this.child,
     this.padding = EdgeInsets.zero,

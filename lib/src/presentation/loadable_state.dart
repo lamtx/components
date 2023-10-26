@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 import 'base_state.dart';
 
-abstract class LoadableState extends BaseState {
+abstract base class LoadableState extends BaseState {
   LoadableState() {
     fetch();
   }

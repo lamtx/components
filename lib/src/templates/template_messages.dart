@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TemplateMessages {
+final class TemplateMessages {
   const TemplateMessages();
 
   static const LocalizationsDelegate<TemplateMessages> delegate =
@@ -22,7 +22,7 @@ class TemplateMessages {
   }
 }
 
-class _ViTemplateMessages implements TemplateMessages {
+final class _ViTemplateMessages implements TemplateMessages {
   const _ViTemplateMessages();
 
   @override
@@ -35,7 +35,7 @@ class _ViTemplateMessages implements TemplateMessages {
   String get yes => "Có";
 }
 
-class _MessagesDelegate extends LocalizationsDelegate<TemplateMessages> {
+final class _MessagesDelegate extends LocalizationsDelegate<TemplateMessages> {
   const _MessagesDelegate();
 
   @override

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../dimens.dart';
 import '../components2/breakpoint.dart';
 
-class BottomBar extends StatelessWidget {
+final class BottomBar extends StatelessWidget {
   const BottomBar({
     required this.children,
     this.avoidBottom = true,

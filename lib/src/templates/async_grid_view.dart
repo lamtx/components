@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../components2.dart';
 import 'utilities.dart';
 
-class AsyncGridView extends StatelessWidget {
+final class AsyncGridView extends StatelessWidget {
   const AsyncGridView({
     required this.itemCount,
     required this.itemExtent,

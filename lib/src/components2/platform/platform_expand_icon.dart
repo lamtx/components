@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-class PlatformExpandIcon extends StatefulWidget {
+final class PlatformExpandIcon extends StatefulWidget {
   const PlatformExpandIcon({
     super.key,
     this.isExpanded = false,

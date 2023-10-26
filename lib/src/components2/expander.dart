@@ -7,7 +7,8 @@ import 'platform/platform_expand_icon.dart';
 typedef AnimationBuilder = Widget Function(
     BuildContext context, Animation<double> animation, Widget child);
 
-class Expander extends StatefulWidget {
+final class Expander extends StatefulWidget {
+  @Deprecated("Use the material 3 version.")
   const Expander({
     required this.onTitlePressed,
     required this.title,

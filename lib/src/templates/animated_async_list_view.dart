@@ -4,7 +4,7 @@ import '../../components2.dart';
 import 'safe_padding.dart';
 import 'utilities.dart';
 
-class AnimatedAsyncListView<T extends Object> extends StatefulWidget {
+final class AnimatedAsyncListView<T extends Object> extends StatefulWidget {
   const AnimatedAsyncListView({
     required this.items,
     required this.itemBuilder,
@@ -40,7 +40,7 @@ class AnimatedAsyncListView<T extends Object> extends StatefulWidget {
       AnimatedAsyncListViewState<T>();
 }
 
-class AnimatedAsyncListViewState<T extends Object>
+final class AnimatedAsyncListViewState<T extends Object>
     extends State<AnimatedAsyncListView<T>> {
   final _listKey = GlobalKey<AnimatedListState>();
   bool _disableAnimation = false;

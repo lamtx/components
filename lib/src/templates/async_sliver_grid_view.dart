@@ -4,7 +4,7 @@ import 'empty_info.dart';
 import 'exception_info.dart';
 import 'loading_info.dart';
 
-class AsyncSliverGridView extends StatelessWidget {
+final class AsyncSliverGridView extends StatelessWidget {
   const AsyncSliverGridView({
     required this.itemCount,
     required this.itemExtent,

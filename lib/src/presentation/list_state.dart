@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../templates.dart';
 import 'base_state.dart';
 
-class ListState<T extends Object> extends BaseState {
+base class ListState<T extends Object> extends BaseState {
   final GlobalKey<AnimatedAsyncListViewState<T>> listKey = GlobalKey();
   List<T> _items = [];
 

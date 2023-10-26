@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class BodyLarge extends StatelessWidget {
+final class BodyLarge extends StatelessWidget {
   const BodyLarge(
     this.text, {
     super.key,
@@ -31,7 +31,7 @@ class BodyLarge extends StatelessWidget {
   }
 }
 
-class BodySmall extends StatelessWidget {
+final class BodySmall extends StatelessWidget {
   const BodySmall(
     this.text, {
     super.key,
@@ -62,7 +62,7 @@ class BodySmall extends StatelessWidget {
   }
 }
 
-class LabelSmall extends StatelessWidget {
+final class LabelSmall extends StatelessWidget {
   const LabelSmall(
     this.text, {
     super.key,

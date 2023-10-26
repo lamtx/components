@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FixedItemExtentGridView extends StatelessWidget {
+final class FixedItemExtentGridView extends StatelessWidget {
+  @Deprecated("Material GridView supports fixed height currently")
   const FixedItemExtentGridView.builder({
     required this.itemExtent,
     required this.columnCount,

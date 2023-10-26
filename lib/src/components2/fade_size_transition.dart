@@ -2,7 +2,7 @@ import "dart:math" as math;
 
 import "package:flutter/material.dart";
 
-class FadeSizeTransition extends AnimatedWidget {
+final class FadeSizeTransition extends AnimatedWidget {
   const FadeSizeTransition({
     required Animation<double> sizeFactor,
     required this.child,

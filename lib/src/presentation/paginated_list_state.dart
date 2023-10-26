@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'async_list_state.dart';
 import 'list_state_ext.dart';
 
-abstract class PaginatedListState<T extends Object> extends AsyncListState<T> {
+abstract base class PaginatedListState<T extends Object>
+    extends AsyncListState<T> {
   PaginatedListState({super.fetchNow = true});
 
   final keywordController = TextEditingController();

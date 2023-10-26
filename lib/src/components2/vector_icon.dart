@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 typedef PathPainter = void Function(Canvas canvas, Size size, {Color? fill});
 
-class VectorIcon extends StatelessWidget {
+final class VectorIcon extends StatelessWidget {
   const VectorIcon(
     this.painter, {
     super.key,

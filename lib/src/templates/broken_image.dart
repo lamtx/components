@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class BrokenImage extends StatelessWidget {
+final class BrokenImage extends StatelessWidget {
   const BrokenImage({
     super.key,
     this.width,

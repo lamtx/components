@@ -7,7 +7,7 @@ import '../../../dimens.dart';
 import '../safe_padding.dart';
 
 @sealed
-abstract class MenuItemEntry<T> {
+abstract interface class MenuItemEntry<T> {
   Widget get title;
 
   T? get value;
@@ -15,7 +15,7 @@ abstract class MenuItemEntry<T> {
   T? get groupValue;
 }
 
-class MenuListItem<T> implements MenuItemEntry<T> {
+final class MenuListItem<T> implements MenuItemEntry<T> {
   const MenuListItem({
     required this.value,
     required this.title,
@@ -34,7 +34,7 @@ class MenuListItem<T> implements MenuItemEntry<T> {
   final Widget? icon;
 }
 
-class CheckboxMenuItem<T> implements MenuItemEntry<T> {
+final class CheckboxMenuItem<T> implements MenuItemEntry<T> {
   CheckboxMenuItem({required this.title, required this.value, this.groupValue});
 
   @override
@@ -45,7 +45,7 @@ class CheckboxMenuItem<T> implements MenuItemEntry<T> {
   final T? groupValue;
 }
 
-class TitleMenuItem<T> implements MenuItemEntry<T> {
+final class TitleMenuItem<T> implements MenuItemEntry<T> {
   TitleMenuItem(String title) : _text = title;
 
   final String _text;

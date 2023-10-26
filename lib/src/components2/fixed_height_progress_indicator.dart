@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class FixedHeightProgressIndicator extends StatelessWidget
+final class FixedHeightProgressIndicator extends StatelessWidget
     implements PreferredSizeWidget {
   const FixedHeightProgressIndicator({
     required this.isLoading,

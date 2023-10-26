@@ -5,7 +5,7 @@ import 'package:flutter/physics.dart';
 import '../../dimens.dart';
 import 'fade_slide_transition.dart';
 
-class SwipeToDismiss extends StatefulWidget {
+final class SwipeToDismiss extends StatefulWidget {
   const SwipeToDismiss({
     required this.dismissible,
     required this.child,

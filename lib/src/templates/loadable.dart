@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'utilities.dart';
 
-class Loadable extends StatelessWidget {
+final class Loadable extends StatelessWidget {
   const Loadable({
     required this.isLoading,
     required this.builder,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ClearInputButton extends StatefulWidget {
+final class ClearInputButton extends StatefulWidget {
   const ClearInputButton({
     required this.controller,
     required this.onCleared,

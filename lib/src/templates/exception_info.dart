@@ -4,7 +4,7 @@ import '../../dimens.dart';
 import '../components2/breakpoint.dart';
 import 'get_exception_message.dart';
 
-class ExceptionInfo extends StatelessWidget {
+final class ExceptionInfo extends StatelessWidget {
   const ExceptionInfo(this.exception, {super.key});
 
   final Exception exception;
