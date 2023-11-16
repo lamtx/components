@@ -20,8 +20,19 @@ extension StateExt on BaseState {
     setTagIfAbsent(key, _SubscriptionCleaner.new).add(cancellable);
   }
 
-  void listen<T>(Stream<T> stream, void Function(T event) onEvent) {
-    addSubscription(stream.listen(onEvent));
+  void listen<T>(
+    Stream<T> stream,
+    void Function(T event) onEvent, {
+    Function? onError,
+    void Function()? onDone,
+    bool? cancelOnError,
+  }) {
+    addSubscription(stream.listen(
+      onEvent,
+      onError: onError,
+      onDone: onDone,
+      cancelOnError: cancelOnError,
+    ));
   }
 }
 
