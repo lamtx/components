@@ -1,4 +1,3 @@
-import 'package:ext/ext.dart';
 import 'package:flutter/material.dart';
 
 import '../../dimens.dart';
@@ -26,13 +25,12 @@ final class BottomBar extends StatelessWidget {
             breakpoint.horizontalPadding + itemSpacingBottom + itemSpacingTop,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
-          children: children
-              .withIndex()
-              .map((e) => e.index == 0
-                  ? e.value
+          children: children.indexed
+              .map((e) => e.$1 == 0
+                  ? e.$2
                   : Padding(
                       padding: itemSpacingStart,
-                      child: e.value,
+                      child: e.$2,
                     ))
               .toList(),
         ),
