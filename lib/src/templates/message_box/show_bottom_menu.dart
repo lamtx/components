@@ -109,8 +109,8 @@ Future<T?> showBottomMenu<T>(
       onClosing: () {},
       builder: (context) {
         final theme = Theme.of(context);
-        final subtitle1 = theme.textTheme.titleMedium!;
-        final selectedSubtitle1 = subtitle1.copyWith(
+        final titleMedium = theme.textTheme.titleMedium!;
+        final selectedSubtitle1 = titleMedium.copyWith(
           color: theme.colorScheme.primary,
         );
         return ListView(
@@ -129,9 +129,9 @@ Future<T?> showBottomMenu<T>(
               if (item is TitleMenuItem)
                 item.title
               else
-                ListItem(
+                ListTile(
                   title: DefaultTextStyle(
-                    style: item.checked ? selectedSubtitle1 : subtitle1,
+                    style: item.checked ? selectedSubtitle1 : titleMedium,
                     child: item.title,
                   ),
                   leading: item.leading(theme),

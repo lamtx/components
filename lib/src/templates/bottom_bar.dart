@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../dimens.dart';
-import '../components2/breakpoint.dart';
 
 final class BottomBar extends StatelessWidget {
   const BottomBar({
@@ -15,25 +14,22 @@ final class BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BreakpointBuilder(
-      builder: (_, breakpoint) => SafeArea(
-        top: false,
-        left: false,
-        right: false,
-        bottom: avoidBottom,
-        minimum:
-            breakpoint.horizontalPadding + itemSpacingBottom + itemSpacingTop,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: children.indexed
-              .map((e) => e.$1 == 0
-                  ? e.$2
-                  : Padding(
-                      padding: itemSpacingStart,
-                      child: e.$2,
-                    ))
-              .toList(),
-        ),
+    return SafeArea(
+      top: false,
+      left: false,
+      right: false,
+      bottom: avoidBottom,
+      minimum: spacingHorizontal + itemSpacingBottom + itemSpacingTop,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: children.indexed
+            .map((e) => e.$1 == 0
+                ? e.$2
+                : Padding(
+                    padding: itemSpacingStart,
+                    child: e.$2,
+                  ))
+            .toList(),
       ),
     );
   }

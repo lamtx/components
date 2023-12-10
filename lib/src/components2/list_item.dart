@@ -13,7 +13,9 @@ final class ListItemHeight {
   static const large = ListItemHeight(listPreferredItemHeightLarge);
 }
 
+@Deprecated("Use [ListTile]")
 final class ListItem extends StatelessWidget {
+  @Deprecated("Use [ListTile]")
   const ListItem({
     required this.title,
     this.subtitle,
@@ -26,6 +28,7 @@ final class ListItem extends StatelessWidget {
     super.key,
   });
 
+  @Deprecated("Use [ListTile]")
   factory ListItem.dense({
     required Widget title,
     Widget? leading,

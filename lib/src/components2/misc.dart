@@ -4,18 +4,16 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'breakpoint.dart';
+import '../../dimens.dart';
 
 Widget decidePadding({
   required Widget child,
   EdgeInsets? padding,
 }) =>
-    padding == null
-        ? BreakpointPadding(child: child)
-        : Padding(
-            padding: padding,
-            child: child,
-          );
+    Padding(
+      padding: padding ?? spacingHorizontal,
+      child: child,
+    );
 
 bool get isCupertino {
   if (debugDefaultTargetPlatformOverride != null) {

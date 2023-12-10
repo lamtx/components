@@ -20,7 +20,7 @@ final class FadeSlideTransition extends AnimatedWidget {
   @override
   Widget build(BuildContext context) {
     if (sizeFactor.isDismissed) {
-      return Container();
+      return const SizedBox.shrink();
     }
     if (sizeFactor.isCompleted) {
       return child;

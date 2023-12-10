@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../dimens.dart';
-import '../components2/breakpoint.dart';
 import 'template_messages.dart';
 
 final class EmptyInfo extends StatelessWidget {
@@ -18,8 +17,8 @@ final class EmptyInfo extends StatelessWidget {
       bottom: false,
       child: Align(
         alignment: Alignment.topCenter,
-        child: BreakpointPadding(
-          padding: itemSpacingTop,
+        child: Padding(
+          padding: itemSpacingTop + spacingHorizontal,
           child: DefaultTextStyle(
             style: Theme.of(context).textTheme.bodyMedium!,
             textAlign: TextAlign.center,

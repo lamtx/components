@@ -284,6 +284,7 @@ extension LayoutClassOperators on LayoutClass {
   bool operator <=(LayoutClass other) => value <= other.value;
 }
 
+@Deprecated("Material 2 deprecated")
 extension BreakpointPaddingExt on Breakpoint {
   EdgeInsets get horizontalPadding => EdgeInsets.symmetric(horizontal: gutters);
 
