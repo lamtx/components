@@ -82,7 +82,6 @@ FutureOr<ActionButton?> showMessage(
         );
       }).toList(),
     ),
-    useRootNavigator: true,
   );
 }
 

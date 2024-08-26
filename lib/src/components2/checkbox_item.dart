@@ -32,11 +32,13 @@ final class CheckboxItem extends StatelessWidget {
           mainAxisSize: mainAxisSize,
           children: <Widget>[
             if (isLoading)
-              SizedBox(
-                width: size,
-                height: size,
-                child: const Center(
-                  child: CircularProgressIndicator.adaptive(),
+              SizedBox.square(
+                dimension: size,
+                child: const Padding(
+                  padding: EdgeInsets.all(6),
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                  ),
                 ),
               )
             else

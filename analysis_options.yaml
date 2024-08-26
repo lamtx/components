@@ -18,14 +18,12 @@ analyzer:
     invalid_use_of_protected_member: error
     missing_required_param: error
     override_on_non_overriding_member: error
-    can_be_null_after_null_aware: ignore # do not work with extension method
     prefer_single_quotes: ignore
 linter:
   rules:
     - always_declare_return_types
     - always_put_control_body_on_new_line
     - always_put_required_named_parameters_first
-    - always_require_non_null_named_parameters
     #    - always_specify_types #incorrect
     #    - always_use_package_imports #incorrect
     - annotate_overrides
@@ -54,8 +52,6 @@ linter:
     - avoid_relative_lib_imports
     - avoid_renaming_method_parameters
     - avoid_return_types_on_setters
-    - avoid_returning_null
-    - avoid_returning_null_for_future
     - avoid_returning_null_for_void
     - avoid_returning_this
     - avoid_setters_without_getters
