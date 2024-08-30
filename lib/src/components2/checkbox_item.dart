@@ -34,9 +34,9 @@ final class CheckboxItem extends StatelessWidget {
             if (isLoading)
               SizedBox.square(
                 dimension: size,
-                child: const Padding(
-                  padding: EdgeInsets.all(6),
-                  child: CircularProgressIndicator(
+                child: Padding(
+                  padding: EdgeInsets.all(size / 4),
+                  child: const CircularProgressIndicator(
                     strokeWidth: 2,
                   ),
                 ),
