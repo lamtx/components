@@ -1,23 +1,30 @@
 import 'dart:async';
 
 import 'package:cancellation/cancellation.dart';
+import 'package:flutter/foundation.dart';
 
 import 'base_state.dart';
 
 extension StateExt on BaseState {
+  static const _tag = "presentation:addSubscription";
+
   CancellationTokenSource get cancellationTokenSource {
     const key = "presentation:cancellationTokenSource";
     return setTagIfAbsent(key, CancellationTokenSource.new);
   }
 
   void addSubscription(StreamSubscription<void> subscription) {
-    const key = "presentation:addSubscription";
-    setTagIfAbsent(key, _SubscriptionCleaner.new).add(subscription);
+    setTagIfAbsent(_tag, _SubscriptionCleaner.new).add(subscription);
   }
 
   void addCancellable(Cancellable cancellable) {
-    const key = "presentation:addSubscription";
-    setTagIfAbsent(key, _SubscriptionCleaner.new).add(cancellable);
+    setTagIfAbsent(_tag, _SubscriptionCleaner.new).add(cancellable);
+  }
+
+  void addListener(Listenable listenable, VoidCallback listener) {
+    listenable.addListener(listener);
+    setTagIfAbsent(_tag, _SubscriptionCleaner.new)
+        .add(_ListenableUnregister(listenable, listener));
   }
 
   void listen<T>(
@@ -55,5 +62,17 @@ class _SubscriptionCleaner implements Cancellable {
       }
     }
     _values.clear();
+  }
+}
+
+class _ListenableUnregister implements Cancellable {
+  _ListenableUnregister(this.listenable, this.listener);
+
+  final Listenable listenable;
+  final VoidCallback listener;
+
+  @override
+  void cancel() {
+    listenable.removeListener(listener);
   }
 }
