@@ -6,7 +6,7 @@ export 'src/components2/expander.dart';
 export 'src/components2/fade_size_transition.dart';
 export 'src/components2/fade_slide_transition.dart';
 export 'src/components2/fixed_height_progress_indicator.dart';
-export 'src/components2/fixed_item_extent_grid_view.dart';
+export 'src/components2/label_button.dart';
 export 'src/components2/list_item.dart';
 export 'src/components2/misc.dart' hide decidePadding;
 export 'src/components2/no_colorized_image_icon.dart';

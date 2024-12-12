@@ -7,6 +7,7 @@ import 'platform/platform_expand_icon.dart';
 typedef AnimationBuilder = Widget Function(
     BuildContext context, Animation<double> animation, Widget child);
 
+@Deprecated("Use material 3 ExpanderListTile")
 final class Expander extends StatefulWidget {
   @Deprecated("Use the material 3 version.")
   const Expander({
@@ -34,6 +35,7 @@ final class Expander extends StatefulWidget {
   State<StatefulWidget> createState() => _ExpanderState();
 }
 
+@Deprecated("Use material 3 ExpanderListTile")
 class _ExpanderState extends State<Expander> with TickerProviderStateMixin {
   late AnimationController _controller;
 

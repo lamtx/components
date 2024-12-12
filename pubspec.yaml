@@ -13,7 +13,9 @@ dependencies:
     git: https://github.com/lamtx/ext.git
   flutter:
     sdk: flutter
+  get_it: ^8.0.0
   meta:
+  provider: ^6.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../dimens.dart';
 import 'misc.dart';
 
+@Deprecated("Use material 3 SwitchListTile.adaptive")
 final class SwitchItem extends StatelessWidget {
+  @Deprecated("Use material 3 SwitchListTile.adaptive")
   const SwitchItem({
     required this.value,
     required this.onChanged,

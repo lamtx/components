@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../dimens.dart';
 import 'misc.dart';
 
+@Deprecated("Use material 3 RadioListTile.adaptive")
 final class RadioListItem<T> extends StatelessWidget {
+  @Deprecated("Use material 3 RadioListTile.adaptive")
   const RadioListItem({
     required this.value,
     required this.onChanged,
@@ -14,6 +16,7 @@ final class RadioListItem<T> extends StatelessWidget {
     super.key,
   }) : _isDense = false;
 
+  @Deprecated("Use material 3 RadioListTile.adaptive")
   const RadioListItem.dense({
     required this.value,
     required this.onChanged,
