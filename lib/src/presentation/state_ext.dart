@@ -21,7 +21,7 @@ extension StateExt on BaseState {
     setTagIfAbsent(_tag, _SubscriptionCleaner.new).add(cancellable);
   }
 
-  void addListener(Listenable listenable, VoidCallback listener) {
+  void listenTo(Listenable listenable, VoidCallback listener) {
     listenable.addListener(listener);
     setTagIfAbsent(_tag, _SubscriptionCleaner.new)
         .add(_ListenableUnregister(listenable, listener));
