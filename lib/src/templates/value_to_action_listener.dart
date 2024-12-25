@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +49,7 @@ class _ValueToActionState<T extends Object>
   Widget build(BuildContext context) => widget.child;
 
   void _performAction(T value) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    Timer(Duration.zero, () {
       widget.actionBuilder(context, value);
     });
   }
