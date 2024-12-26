@@ -16,14 +16,11 @@ final class VectorIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = IconTheme.of(context);
-    final iconSize = size ?? theme.size ?? 24;
-    final iconColor = color ?? theme.color;
+    final iconSize = size ?? IconTheme.of(context).size ?? 24;
     assert(iconSize != 0);
-    assert(iconColor != null && iconColor != Colors.transparent);
     return CustomPaint(
       painter: _Painter(
-        color: iconColor,
+        color: color,
         painter: painter,
       ),
       size: Size.square(iconSize),
