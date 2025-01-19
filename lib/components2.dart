@@ -12,6 +12,7 @@ export 'src/components2/list_item.dart';
 export 'src/components2/misc.dart' hide decidePadding;
 export 'src/components2/no_colorized_image_icon.dart';
 export 'src/components2/platform.dart';
+export 'src/components2/platform_ext.dart';
 export 'src/components2/radio_list_item.dart';
 export 'src/components2/styled_texts.dart';
 export 'src/components2/swipe_to_dismiss.dart';

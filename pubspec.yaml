@@ -14,9 +14,9 @@ dependencies:
   flutter:
     sdk: flutter
   get_it: ^8.0.0
+  intl:
   meta:
   provider: ^6.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
-flutter:

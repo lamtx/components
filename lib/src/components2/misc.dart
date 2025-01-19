@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../dimens.dart';
+import 'platform_ext.dart';
 
 Widget decidePadding({
   required Widget child,
@@ -20,7 +20,7 @@ bool get isCupertino {
     return debugDefaultTargetPlatformOverride == TargetPlatform.iOS ||
         debugDefaultTargetPlatformOverride == TargetPlatform.macOS;
   }
-  return Platform.isIOS || Platform.isMacOS;
+  return PlatformExt.isIOS || PlatformExt.isMacOS;
 }
 
 ///
