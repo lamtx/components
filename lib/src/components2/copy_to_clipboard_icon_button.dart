@@ -7,11 +7,15 @@ final class CopyToClipboardIconButton extends StatefulWidget {
   const CopyToClipboardIconButton({
     required this.textToCopy,
     super.key,
-    this.size,
+    this.iconSize,
+    this.constraints,
+    this.padding,
   });
 
   final String Function() textToCopy;
-  final double? size;
+  final double? iconSize;
+  final BoxConstraints? constraints;
+  final EdgeInsetsGeometry? padding;
 
   @override
   State<CopyToClipboardIconButton> createState() =>
@@ -58,6 +62,9 @@ class _CopyToClipboardIconButtonState extends State<CopyToClipboardIconButton>
   Widget build(BuildContext context) {
     final opacity = _animation.value;
     return IconButton(
+      iconSize: widget.iconSize,
+      constraints: widget.constraints,
+      padding: widget.padding,
       onPressed: () {
         final text = widget.textToCopy();
         Clipboard.setData(ClipboardData(text: text));
