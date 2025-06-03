@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'dart:convert';
 
+import 'package:ext/ext.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components2.dart';
+import '../../../dimens.dart';
 import '../template_messages.dart';
 
 enum DialogButtonType { positive, negative, neutral }
@@ -65,12 +68,12 @@ FutureOr<ActionButton?> showMessage(
   List<ActionButton> actions = const [ActionButton.ok],
 }) {
   final titleUI = title == null ? null : Text(title);
-  final contentUI = content ?? Text(message!);
+
   return showPlatformDialog(
     context: context,
     builder: (context) => PlatformAlertDialog(
       title: titleUI,
-      content: contentUI,
+      content: _buildContent(content, message),
       actions: actions.map((e) {
         return DialogButton(
           onPressed: () {
@@ -109,4 +112,29 @@ Future<bool> askMessage(
     ],
   );
   return val?.type == DialogButtonType.positive;
+}
+
+Widget _buildContent(Widget? content, String? message) {
+  assert((message == null) != (content == null),
+      "Only message or content provided");
+  if (content != null) {
+    return content;
+  } else {
+    if (message!.contains("\n")) {
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const LineSplitter().convert(message).indexed.mapToList(
+              (e) => e.$1 == 0
+                  ? Text(e.$2)
+                  : Padding(
+                      padding: textSpacingTop,
+                      child: Text(e.$2),
+                    ),
+            ),
+      );
+    } else {
+      return Text(message);
+    }
+  }
 }
